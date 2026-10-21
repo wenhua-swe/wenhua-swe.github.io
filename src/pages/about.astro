@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { GITHUB_URL, SITE_DESCRIPTION } from '../consts';
+import { GITHUB_URL } from '../consts';
 ---
 
 <BaseLayout title='關於' description='關於 Wen-Hua Lin'>
@@ -9,10 +9,24 @@ import { GITHUB_URL, SITE_DESCRIPTION } from '../consts';
       <h1 class='display'>關於</h1>
     </div>
     <div class='prose'>
-      <p>{SITE_DESCRIPTION}</p>
-      <p>[自我介紹待補：你是誰、在做什麼、關心什麼。]</p>
       <p>
-        <a href={GITHUB_URL}>GitHub</a> · <a href='/rss.xml'>RSS 訂閱</a>
+        我是 Wen-Hua，一名軟體工程師。現在正在育嬰留停，難得有一整年可以慢下來，陪孩子長大，也重新找回自己的步調。
+      </p>
+      <p>
+        這裡是我的筆記本。讀完一本書，會在這裡留下劃線和想法；工作和自學中弄懂的事，整理成文章；出門帶著相機，拍下花、海、城市，還有路上遇見的貓。
+      </p>
+      <h2>最近在做的事</h2>
+      <ul>
+        <li>用 AI 做出能解決自己問題的小東西，再把過程寫下來</li>
+        <li>每天讀一點書：心理學、生產力，還有怎麼和人好好相處</li>
+        <li>上皮拉提斯，重新認識自己的身體</li>
+        <li>關心無障礙網頁，也好奇它在 AI 時代會變成什麼樣子</li>
+      </ul>
+      <p>
+        我相信「試過了」比「做好了」重要，所以這裡的文章不一定完整，但都是認真想過的。
+      </p>
+      <p>
+        歡迎在文章底下留言，或到 <a href={GITHUB_URL}>GitHub</a> 找我。也可以用 <a href='/rss.xml'>RSS</a> 訂閱新文章。
       </p>
     </div>
   </section>
