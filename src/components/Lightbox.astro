@@ -133,15 +133,17 @@
   dl {
     display: grid;
     grid-template-columns: auto 1fr;
+    /* Line each label up with its value on the text baseline */
+    align-items: baseline;
     gap: 10px 16px;
     margin: 8px 0 0;
     padding-top: 16px;
     border-top: 1px solid var(--softline);
     font-size: 14px;
+    line-height: 1.6;
   }
   dt {
     font-size: 11px;
-    line-height: 1.9;
   }
   dd {
     margin: 0;

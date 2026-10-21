@@ -12,7 +12,7 @@ interface Props {
 const { post, headings } = Astro.props;
 const { title, description, pubDate, updatedDate, heroImage, tags } = post.data;
 const book = post.collection === 'books' ? post.data.book : undefined;
-const section = post.collection === 'books' ? '01 — 閱讀筆記' : '02 — 技術筆記';
+const section = post.collection === 'books' ? '01 — 閱讀筆記' : '02 — 技術和生活';
 
 // Posts last touched more than two years ago get a "may be outdated" notice
 const OUTDATED_AFTER_MS = 2 * 365 * 24 * 60 * 60 * 1000;

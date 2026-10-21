@@ -7,10 +7,10 @@ const posts = await getBlogPosts();
 const years = [...new Set(posts.map((p) => p.data.pubDate.getFullYear()))];
 ---
 
-<BaseLayout title='技術筆記' description='前端、無障礙、系統設計與工具的學習筆記'>
+<BaseLayout title='技術和生活' description='技術上弄懂的事，和生活裡的一些想法'>
   <section class='container'>
     <div class='section-head'>
-      <h1 class='display'><em class='accent'>02</em> 技術筆記</h1>
+      <h1 class='display'><em class='accent'>02</em> 技術和生活</h1>
       <span class='mono muted'>{posts.length} 篇</span>
     </div>
     {
