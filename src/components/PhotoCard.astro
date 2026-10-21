@@ -1,0 +1,101 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import { exposure, shortDate, type Photo } from '../data/photos';
+
+interface Props {
+  photo: Photo;
+  sizes: string;
+  eager?: boolean;
+}
+
+const { photo, sizes, eager = false } = Astro.props;
+const full = await getImage({ src: photo.image, width: 2000, format: 'webp', quality: 88 });
+const shutter = photo.shutter >= 1 ? `${photo.shutter}s` : `1/${Math.round(1 / photo.shutter)}s`;
+---
+
+<article class='card' data-category={photo.category}>
+  <button
+    type='button'
+    class='open'
+    data-full={full.src}
+    data-alt={photo.alt}
+    data-title={photo.title}
+    data-no={photo.no}
+    data-category={photo.category}
+    data-date={photo.date.replaceAll('-', '.')}
+    data-exposure={exposure(photo)}
+    aria-label={`${photo.title}，查看大圖`}
+    style={`background-color: ${photo.color};`}
+  >
+    <Picture
+      src={photo.image}
+      alt={photo.alt}
+      formats={['avif', 'webp']}
+      widths={[360, 540, 720, 1080]}
+      sizes={sizes}
+      quality={85}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding='async'
+    />
+  </button>
+  <div class='info'>
+    <div class='row'>
+      <h3 class='name'>{photo.title}</h3>
+      <span class='mono muted'>{photo.no}</span>
+    </div>
+    <p class='mono muted'>{shortDate(photo)} · f/{photo.aperture} · {shutter}</p>
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .open {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .open :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s ease;
+  }
+  :global(.js) .open :global(img:not(.loaded)) {
+    opacity: 0;
+  }
+  .open:hover :global(img.loaded) {
+    opacity: 0.88;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .name {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .card:hover .name {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .mono {
+    font-size: 11px;
+  }
+  p {
+    margin: 0;
+  }
+</style>

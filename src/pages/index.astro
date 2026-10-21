@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostRow from '../components/PostRow.astro';
 import BookCard from '../components/BookCard.astro';
 import PhotoFigure from '../components/PhotoFigure.astro';
+import PhotoCard from '../components/PhotoCard.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { photos } from '../data/photos';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
@@ -11,7 +12,7 @@ import { getBlogPosts, getBookPosts } from '../lib/content';
 const books = (await getBookPosts()).slice(0, 3);
 const posts = (await getBlogPosts()).slice(0, 6);
 const heroPhoto = photos.find((p) => p.file === 'dscf0420')!;
-const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0523'].map((f) => photos.find((p) => p.file === f)!);
+const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0985'].map((f) => photos.find((p) => p.file === f)!);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -22,7 +23,7 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0523'].map((f) => pho
       <p class='muted'>{SITE_DESCRIPTION}</p>
     </div>
     <div class='hero-photo'>
-      <PhotoFigure photo={heroPhoto} sizes='(max-width: 1264px) 100vw, 1200px' caption={false} eager />
+      <PhotoFigure photo={heroPhoto} sizes='(max-width: 1264px) 100vw, 1200px' eager />
     </div>
   </section>
 
@@ -60,14 +61,9 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0523'].map((f) => pho
       <a href='/photos' class='mono'>全部作品 →</a>
     </div>
     <div class='photos'>
-      <div class='tall'>
-        <PhotoFigure photo={featured[0]} sizes='(max-width: 720px) 100vw, 40vw' />
-      </div>
-      <div class='rest'>
-        {featured.slice(1).map((photo) => (
-          <PhotoFigure photo={photo} sizes='(max-width: 720px) 100vw, 30vw' />
-        ))}
-      </div>
+      {featured.map((photo) => (
+        <PhotoCard photo={photo} sizes='(max-width: 720px) 50vw, (max-width: 1264px) 25vw, 290px' />
+      ))}
     </div>
   </section>
   <Lightbox />
@@ -109,23 +105,8 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0523'].map((f) => pho
   }
   .photos {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .tall {
-    grid-column: span 5;
-  }
-  .rest {
-    grid-column: span 7;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    align-content: start;
-    padding-top: 56px;
-  }
-  .rest :global(.photo:first-child) {
-    grid-column: span 2;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
   }
   .block .section-head {
     margin-bottom: 28px;
@@ -142,13 +123,12 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0523'].map((f) => pho
   }
   @media (max-width: 860px) {
     h1,
-    .hero-grid p,
-    .tall,
-    .rest {
+    .hero-grid p {
       grid-column: 1 / -1;
     }
-    .rest {
-      padding-top: 0;
+    .photos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 12px;
     }
     .hero-photo :global(.open) {
       aspect-ratio: 4 / 3 !important;

@@ -1,53 +1,124 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PhotoFigure from '../components/PhotoFigure.astro';
+import PhotoCard from '../components/PhotoCard.astro';
 import Lightbox from '../components/Lightbox.astro';
-import { photos } from '../data/photos';
+import { categories, photos } from '../data/photos';
+
+const sizes = '(max-width: 720px) 50vw, (max-width: 1264px) 25vw, 290px';
 ---
 
 <BaseLayout title='攝影' description='用 Fujifilm X-T5 拍下的日常'>
   <section class='container'>
-    <div class='section-head'>
-      <h1 class='display'><em class='accent'>03</em> 攝影</h1>
-      <span class='mono muted'>FUJIFILM X-T5 · {photos.length} 張</span>
-    </div>
-    <div class='grid'>
+    <header class='head'>
+      <div>
+        <div class='mono muted'>[ 03 — FUJIFILM X-T5 ]</div>
+        <h1 class='display'>攝影</h1>
+      </div>
+      <p class='muted'>花、海、城市和家裡的貓。點開每一張，看拍攝時的光圈與快門。</p>
+    </header>
+
+    <div class='filters' role='group' aria-label='依分類篩選'>
+      <button type='button' class='chip' data-filter='all' aria-pressed='true'>全部</button>
       {
-        photos.map((photo, i) => (
-          <PhotoFigure photo={photo} sizes='(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw' eager={i < 3} />
+        categories.map((c) => (
+          <button type='button' class='chip' data-filter={c} aria-pressed='false'>
+            {c}
+          </button>
         ))
       }
+    </div>
+
+    <div class='grid'>
+      {photos.map((photo, i) => <PhotoCard photo={photo} sizes={sizes} eager={i < 4} />)}
     </div>
   </section>
   <Lightbox />
 </BaseLayout>
 
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+  const cards = document.querySelectorAll<HTMLElement>('.grid .card');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      cards.forEach((card) => {
+        card.hidden = filter !== 'all' && card.dataset.category !== filter;
+      });
+    });
+  });
+</script>
+
 <style>
   section {
     padding-top: 48px;
   }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
   h1 {
-    margin: 0;
+    margin: 12px 0 0;
     font-size: clamp(32px, 5vw, 52px);
+    line-height: 1;
   }
-  /* Masonry: columns keep each photo's own aspect ratio */
+  .head p {
+    max-width: 360px;
+    margin: 0;
+    font-size: 15px;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 40px 0 28px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--softline);
+  }
+  .chip {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--softline);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fg);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .chip[aria-pressed='true'] {
+    border-color: var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+  }
   .grid {
-    margin-top: 32px;
-    columns: 3;
-    column-gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px 20px;
   }
-  .grid :global(.photo) {
-    break-inside: avoid;
-    margin-bottom: 24px;
+  .grid :global(.card[hidden]) {
+    display: none;
   }
   @media (max-width: 960px) {
     .grid {
-      columns: 2;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
-  @media (max-width: 560px) {
+  @media (max-width: 720px) {
     .grid {
-      columns: 1;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 12px;
+    }
+    .filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .chip {
+      flex-shrink: 0;
     }
   }
 </style>
