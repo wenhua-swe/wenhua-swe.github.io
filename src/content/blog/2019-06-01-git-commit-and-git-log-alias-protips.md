@@ -94,7 +94,7 @@ git lg
 - 多久以前 commit
 - 誰做了這個 commit
 
-#### 更多設定 `alias` 的內容可以參考[為你自己學 Git-其它方便的設定](https://gitbook.tw/chapters/config/convenient-settings.html)。
+### 更多設定 `alias` 的內容可以參考[為你自己學 Git-其它方便的設定](https://gitbook.tw/chapters/config/convenient-settings.html)。
 
 本文章內容是參考 `egghead.io` 的 Juri Strumpflohner 所開的 [Productive Git for Developers](https://egghead.io/courses/productive-git-for-developers)
 課程內容包含下面的情境，想學習的可以去**訂閱**唷！

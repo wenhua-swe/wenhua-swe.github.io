@@ -13,23 +13,23 @@ tags:
   - boundary
 ---
 
-### 基礎知識
+## 基礎知識
 
-#### JQuery AJAX: contentType
+### JQuery AJAX: contentType
 
 - 不填寫時，預設為 `application/x-www-form-urlencoded` 。
 
-#### FormData
+### FormData
 
 - FormData 介面可為表單資料中的欄位/值建立相對應的的鍵/值對（key/value）集合，之後便可使用 `XMLHttpRequest.send()` 方法來送出資料。
 
 - 它在編碼類型設定為 `multipart/form-data` 時會採用與表單相同的格式送出。
 
-#### [RFC1867](https://datatracker.ietf.org/doc/rfc1867/?include_text=1)
+### [RFC1867](https://datatracker.ietf.org/doc/rfc1867/?include_text=1)
 
 剛開始，`http` 協議中没有檔案上傳的功能，直到 `RFC1867` 為 http 協議添加了此功能。
 
-##### 在 `RFC1867` 中限定：
+#### 在 `RFC1867` 中限定：
 - `<form>` 的 `method` 必須是 `POST`。
 
 - `enctype` 屬性新增了 `multipart/form-data` 的選項。
@@ -39,9 +39,9 @@ tags:
 
 ---
 
-### 程式碼
+## 程式碼
 
-#### html
+### html
 ```html
 <form action="server/api/items" name="productForm" enctype="multipart/form-data" method="POST">
   <h3>新增商品</h3>
@@ -51,7 +51,7 @@ tags:
   <input type="submit" value="送出">
 </form>
 ```
-#### JavaScript
+### JavaScript
 ```javascript
 // 取得表單
 let productForm = document.forms.namedItem('productForm')
@@ -108,7 +108,7 @@ function api_post_items (event, form){
   }
 ```
 
-### 注意！
+## 注意！
 
 - 在 `<form>` 表單設定 `enctype="multipart/form-data"`。
 - `<form>` 中，需要有 `<input type="file">`。
@@ -121,11 +121,11 @@ function api_post_items (event, form){
 
 - `JavaScript` 中 設定 `cache = false`，檔案不需緩存。
 
-#### 表單送出後，去檢查 `Request Headers` 看到我們有帶 `boundary` 成功傳輸。
+### 表單送出後，去檢查 `Request Headers` 看到我們有帶 `boundary` 成功傳輸。
 
 ---
 
-### Reference
+## Reference
 
 > [FormData - MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/FormData)
 > [Content-Type - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)

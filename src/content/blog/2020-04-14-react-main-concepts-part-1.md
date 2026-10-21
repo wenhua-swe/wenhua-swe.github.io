@@ -24,7 +24,7 @@ ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
 
 - 重新介紹 JavaScript：複習 JS 的主要核心概念，推薦閱讀！
 
-#### 三個心法
+### 三個心法
 
 1. 以 `let`與 `const`定義變數，暫時當作與 `var`一樣意思的關鍵字。
 2. 使用 `class`關鍵字來定義 `JavaScript` [class](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Classes)，有兩件事要知道：
@@ -335,7 +335,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 > 事件處理器之於 React Element 與 DOM Element 十分相似，有兩點語法上差異：事件名稱寫法、事件的值的型別。
 
 [React/DOM 的事件處理，自己再加上 Vue 的比較](https://www.notion.so/51ef1bd54aab456796c4376df25d9579)
-| React Element | | 事件的值的型別 | 寫法範例 | 避免瀏覽器預設行為 |
+| React Element | 事件名稱寫法 | 事件的值的型別 | 寫法範例 | 避免瀏覽器預設行為 |
 | ------------- | ----------------------- | -------------- | ------------------------- | --------------------------------------------------------------------------- |
 | DOM Element | 小寫 | `string` | `onclick={createPost}` | 可以在 DOM 的 `onclick` 屬性中使用 `return false` |
 | React Element | 小駝峰 | `function` | `onClick="createPost()"` | 在 `function` 中明確呼叫 `preventDefault` |

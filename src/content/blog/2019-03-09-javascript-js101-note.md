@@ -69,7 +69,7 @@ false || 10
 // 程式遇到 false 不符合條件，往後繼續執行，遇到 10 達成條件！回傳 10。
 ```
 
-##### `&&` 短路性質：
+#### `&&` 短路性質：
 ```javascript
 3 && 10
 // => 10
@@ -287,7 +287,7 @@ https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/
 
 ### Number 類型的內建函式
 
-##### 常用的函式
+#### 常用的函式
 
 - 字串轉數字 - 整數
 ```javascript

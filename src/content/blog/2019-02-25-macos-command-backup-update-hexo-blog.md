@@ -14,10 +14,10 @@ tags:
 ![封面：一個指令更新及備份 #Hexo #Blog](https://i.imgur.com/5QlDFL8.jpg)
 
 ## Preparation
-#### 建立備份的repository
+### 建立備份的repository
 `hexo` 在 `_comfig.yml` 檔案可以設定部落格 `hexo d` 部署時，要部署到哪個`repository`，但是因為部署只會部署 `hexo g` (generate生成靜態網頁) 的 `public` 資料夾，我們也希望能備份樣式，所以要開好一個新的repository（我設為private），進入`.git/config` 修改備份的路徑。
 
-#### 修改 `.git/config` 檔案
+### 修改 `.git/config` 檔案
 
 ```bash
 [remote "origin"]
@@ -28,23 +28,23 @@ fetch = +refs/heads/*:refs/remotes/origin/*
 
 ## 流程
 
-#### 1. 進入 `/bin` 資料夾：
+### 1. 進入 `/bin` 資料夾：
 ```bash
 cd /usr/local/bin
 ```
 
-#### 2. 檢視目前電腦有哪些指令：
+### 2. 檢視目前電腦有哪些指令：
 ```bash
 ls
 ```
 
-#### 3. 自訂你的個人指令，進入 insert 模式編輯內容：
+### 3. 自訂你的個人指令，進入 insert 模式編輯內容：
 ```bash
 vim your-command
 ```
 PS. 若不存在這個檔案（你定義的名稱），vim 會在你儲存內容後自動建立這個檔案
 
-#### 4. 建立批次執行的指令們：
+### 4. 建立批次執行的指令們：
 
 ```bash
 #!/bin/bash
@@ -65,7 +65,7 @@ hexo g -d # 根據新內容生成 public 資料夾，並部署上線
 ## 可能會遇到的問題
 
 
-#### 權限不足
+### 權限不足
 
 ![終端機畫面：執行 chmod u+x 之後，update-blog 的權限從 -rw-r--r-- 變成 -rwxr--r--](https://i.imgur.com/XbOdA9o.png)
 

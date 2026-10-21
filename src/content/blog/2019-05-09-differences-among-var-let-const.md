@@ -14,7 +14,7 @@ tags:
 
 ## Var
 
-#### 露出去的變數 `i`
+### 露出去的變數 `i`
 
 ```javascript
 for(var i = 0; i<10; i++) {
@@ -25,7 +25,7 @@ console.log(i) // 10
 
 - 感謝 [Reynold Cheng](https://a7474267.github.io/) 於 2020/10/01 熱心指正第一個範例，結果為 `10`。
 
-#### function scope：function 外就存取不到變數 `i`
+### function scope：function 外就存取不到變數 `i`
 
 ```javascript
 function printing(){
@@ -37,7 +37,7 @@ printing()
 console.log(i) // Uncaught ReferenceError: i is not defined
 ```
 
-#### IIFE (immediately invoked function expression) 立即執行函式：將變數 `i` 鎖在 function scope 中
+### IIFE (immediately invoked function expression) 立即執行函式：將變數 `i` 鎖在 function scope 中
 
 ```javascript
 (function (){
@@ -51,7 +51,7 @@ console.log(i) // Uncaught ReferenceError: i is not defined
 
 ## Let
 
-#### block scope：block `{}` 外就存取不到變數 `i`
+### block scope：block `{}` 外就存取不到變數 `i`
 
 ```javascript
 for(let i = 0; i<10; i++) {

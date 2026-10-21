@@ -54,7 +54,7 @@ tags:
         - The react-dom package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
     - Babel - a JavaScript compiler that lets us use ES6+ in old browsers
 
-- #### 整個 `app` 的進入點會是這個 `div#root`，已經是使用慣例。
+- ### 整個 `app` 的進入點會是這個 `div#root`，已經是使用慣例。
 
 
 5. 現在，使用 `ES6` 的 `class` 來寫第一個 **React** 的程式，新增一個叫做 `app` 的 `component`。
@@ -144,17 +144,17 @@ CDN 引入 libraries 的方法並不是很有效率，也不容易維護，所�
 
 
 
-#### 設定 `create-react-app` （app 名稱）
+### 設定 `create-react-app` （app 名稱）
 
 打開 `terminal`，跟著以下步驟安裝。回到你想安裝專案的上一層資料夾，確定一下 `Node.js` 版本是否在 `5.2` 或以上。
 
 
-#### 一、安裝
+### 一、安裝
 ```bash
 npx create-react-app create-react-app
 ```
 
-#### 二、進入專案資料夾，開始專案
+### 二、進入專案資料夾，開始專案
 ```bash
 cd create-react-app
 npm start
@@ -162,7 +162,7 @@ npm start
 
 ![Create React App 的預設起始畫面，中央是 React 標誌](https://i.imgur.com/fgdmxV5.png)
 
-#### 專案檔案包含：
+### 專案檔案包含：
 
 觀察專案的結構，可以看到 `/public`、`/src` 兩個資料夾，和`node_modules`、`.gitignore`、`README.md`、`package.json` 這幾個檔案。
 
@@ -179,7 +179,7 @@ To get started, edit <code>src/App.js</code>
 
 ---
 
-#### 三、在 `index.js` 中 **import** `React`、`ReactDOM`、`CSS` 檔案：
+### 三、在 `index.js` 中 **import** `React`、`ReactDOM`、`CSS` 檔案：
 
 ```javascript
 import React from 'react'
@@ -202,7 +202,7 @@ class App extends Component {
 }
 ```
 
-#### 四、以下是完整的 `index.js`，這次我們要把 `Component` 當作 **React** 的參數載入，這樣也就不需再 extend `React.Component`：
+### 四、以下是完整的 `index.js`，這次我們要把 `Component` 當作 **React** 的參數載入，這樣也就不需再 extend `React.Component`：
 
 ```javascript
 import React, { Component } from 'react'
@@ -222,7 +222,7 @@ class App extends Component {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
-#### 五、打開瀏覽器 `localhost:3000` 看看，已經成功開始我們的 React 專案：
+### 五、打開瀏覽器 `localhost:3000` 看看，已經成功開始我們的 React 專案：
 
 ![localhost:3000 顯示 Hello, I'm here](https://i.imgur.com/BjzXdwT.png)
 
