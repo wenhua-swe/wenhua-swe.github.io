@@ -4,7 +4,7 @@ pubDate: '2020-05-14'
 description: >-
   如果服務越來越多，我們需要 ssh 進去的機器也變多了，當然我們不可能每次都去找到 IP 再來複製貼上，這樣不僅工作速度慢， content switch
   太頻繁會讓人心情不太好。所以來設定 ssh_config 拯救被浪費的時間！
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - ssh
 ---
@@ -39,7 +39,7 @@ ssh -i ~/.ssh/[your-keyfile] [username]@[private_ip]
 Host             service-a
 Hostname         10.10.0.1
 Port             22
-User             askie_lin
+User             wenhua_lin
 identityfile     ~/.ssh/opsworks
 # ----------------------------------------- #
 ```

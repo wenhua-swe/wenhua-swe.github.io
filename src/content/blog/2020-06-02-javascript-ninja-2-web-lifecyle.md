@@ -2,7 +2,7 @@
 title: 忍者 2：Web 應用程式生命週期
 pubDate: '2020-06-02'
 description: 本文內容涵蓋：Web 應用程式生命週期、處理 HTML 以產生網頁、JS 程式碼的執行順序、與事件互動、以及事件迴圈。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - ninja

@@ -2,7 +2,7 @@
 title: 在 JavaScript 中，Var、Let、Const 的差異？
 pubDate: '2019-05-09'
 description: 在 JavaScript 中，命名變數時，Var、Let、Const 有什麼差異？
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - javascript variable

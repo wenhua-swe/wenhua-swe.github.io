@@ -3,7 +3,7 @@ title: 系統設計入門：效能與可擴展性的差異
 pubDate: '2020-06-20'
 description: >-
   當資源投入時，服務的效能還能增加，也就是「效能增長程度」與「資源投入」成正比時，那麼這個服務即擁有可擴展性。因為效能增加代表服務可以處理更多資料，也就能服務更多的工作單位，...
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - system design
 ---

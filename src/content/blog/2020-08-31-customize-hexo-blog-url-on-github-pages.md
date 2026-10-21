@@ -2,7 +2,7 @@
 title: 客製化你的部落格網址：Hexo blog x GitHub Pages
 pubDate: '2020-08-31'
 description: 你有使用 Hexo 架設部落格嗎？可以透過我的經驗分享，一步一步教你如何設定你的個人網址，簡單擁有自己的網路識別唷！
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - 部落格網址
   - hexo blog

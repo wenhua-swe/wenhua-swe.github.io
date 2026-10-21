@@ -2,7 +2,7 @@
 title: JavaScript 十個單字
 pubDate: '2019-01-03'
 description: JavaScript 中，對於最常使用的詞彙介紹。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - array

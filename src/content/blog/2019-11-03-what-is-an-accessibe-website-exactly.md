@@ -4,7 +4,7 @@ pubDate: '2019-11-03'
 description: >-
   ## 只要花 60
   秒瞭解「無障礙網站」概念[![Yes](https://img.youtube.com/vi/hufMi9LZX2I/0.jpg)](https://www.youtube...
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - a11y
   - 好想工作室

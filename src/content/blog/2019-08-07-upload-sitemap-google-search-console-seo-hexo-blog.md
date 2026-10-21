@@ -4,7 +4,7 @@ pubDate: '2019-08-07'
 description: >-
   在 Hexo 這樣的靜態網頁產生器，沒想到提交 Sitemap 這麼地容易，簡單做個紀錄。有一個 Plugin 叫做
   hexo-generator-sitemap，可以幫助你產生 `Sitemap.xml`，就可以拿這份檔案去提交了唷！來看以下簡單三個步驟。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - sitemap
   - google search console

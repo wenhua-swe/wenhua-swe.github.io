@@ -4,7 +4,7 @@ pubDate: '2019-07-25'
 description: >-
   大家都知道，一個好的網站需要包含很多要素。其中有一個很大的 topic，「Accessible Web /
   Accessibility」，卻經常淪為建構網站時，有時間才去優化的事情，是一個 option 而不是 main feature。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - 無障礙規範
   - 通用設計

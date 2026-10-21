@@ -4,7 +4,7 @@ pubDate: '2020-07-18'
 description: >-
   讀 Docker 背景之前覺得會不會因為文鄒鄒讀不下去，讀完之後才發現只有這樣才能更了解歷史脈絡，以及這個技術背後的基礎是基於什麼，也是挺有趣的。關於
   Docker 的前世今生是透過讀書才理解的，這一篇文章算釐清了之前搞不太清楚的概念跟幾個名詞 Dockerfile 和 docker-compose。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - docker
   - dockerfile
@@ -98,7 +98,7 @@ Container 的中文翻譯就是貨櫃的意思。
 
 ## Docker Image
 
-> 顯示：askie/helloworld:lastest
+> 顯示：wenhua/helloworld:lastest
 > 格式：`Namespace`/`Repository`:`Tag`
 > 由此格式會用 Sha256 方式加密成為 Image ID （64 位元 16 進位字串）
 
@@ -166,7 +166,7 @@ docker exec -it prom-server /bin/sh
 ### 4. 版控更新過的 Container 環境
 
 ```bash
-docker commit -m "test" <your_image_id> askie/prometheus:v2
+docker commit -m "test" <your_image_id> wenhua/prometheus:v2
 ```
 
 - `-m` 輸入版本控制的訊息狀態
@@ -176,7 +176,7 @@ docker commit -m "test" <your_image_id> askie/prometheus:v2
 
 ```bash
 docker login
-docker push askie/prometheus:v2
+docker push wenhua/prometheus:v2
 ```
 
 - 要 login 需註冊並且有權限

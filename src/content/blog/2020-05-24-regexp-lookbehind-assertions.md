@@ -3,7 +3,7 @@ title: RegExp 踩雷：Lookbehind Assertions
 pubDate: '2020-05-24'
 description: >-
   之前對正規表達式一直不太熟悉，也沒仔細去研究正則規則寫法是什麼種類，所以踩到支援性的雷。大多數正規式會支援正規表達式的原因是，它是一個對於文字操作非常強大的工具，本來要寫數十行複雜邏輯的判斷式，只要一行就能達成。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - regexp

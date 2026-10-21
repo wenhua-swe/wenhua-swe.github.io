@@ -2,7 +2,7 @@
 title: 透過複製陣列理解 JS 的淺拷貝與深拷貝 - JavaScript
 pubDate: '2019-05-05'
 description: 處理資料時，我們的 JSON 幾乎都是多維陣列，該怎麼才能做到深拷貝？（拷貝後，改變多維陣列當中的值而不修改到原本的陣列）
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - deep copy

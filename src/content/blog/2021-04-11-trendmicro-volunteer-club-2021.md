@@ -4,7 +4,7 @@ pubDate: '2021-04-11'
 description: >-
   ![從台北出發到花蓮](https://i.imgur.com/7SEEjcZ.png)2021 年 1 月 21 日～ 1 月 23
   日，當我們這群魔法精靈們來到花蓮縣的吉安國小，和 21 個中...
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - Volunteering
   - 趨勢志工社

@@ -2,7 +2,7 @@
 title: 使用手機測試本機網頁狀況的方法
 pubDate: '2019-01-04'
 description: 同個網域下，使用電腦開啟 python 對外的 server。測試 RWD 及功能好方便。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - mobile
   - test

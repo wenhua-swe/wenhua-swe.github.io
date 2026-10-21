@@ -5,7 +5,7 @@ description: >-
   撰寫 CSS 的過程中，都會搭配 SASS 預處理器，之前一直有聽過 CSS IN
   JS，不知該如何寫起？剛好今年六角學院的前端精神時光屋切了第一週的版（蕃茄鐘），想說用 Vue 來練習 CSS Modules，其實是看到 Vue
   Loader 官方文件的介紹，動手做做看，再 google 大大們的文章吸收一下日月精華，整理在此。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - css
   - css-in-js
@@ -17,7 +17,7 @@ tags:
 
 ![前端精神時光屋：蕃茄鐘](https://i.imgur.com/ZqAOmnF.png)
 
-> [Demo(本頁開啟)](https://askiebaby.github.io/spirit_2019/pomodoro/) | [我的設計稿](https://challenge.thef2e.com/user/1875?schedule=2512#works-2512)
+> [Demo(本頁開啟)](https://wenhua-swe.github.io/spirit_2019/pomodoro/) | [我的設計稿](https://challenge.thef2e.com/user/1875?schedule=2512#works-2512)
 
 撰寫 CSS 的過程中，都會搭配 SASS 預處理器，之前一直有聽過 CSS IN JS，不知該如何寫起？剛好今年六角學院的前端精神時光屋切了第一週的版（蕃茄鐘），想說用 Vue 來練習 CSS Modules，其實是看到 Vue Loader 官方文件的介紹，動手做做看，再 google 大大們的文章吸收一下日月精華，整理在此。
 
@@ -79,7 +79,7 @@ CSS Modules 顧名思義就是希望能真正將 CSS 模組化，其非常單純
 <!-- 單純的 class 名稱 -->
 <template>
   <div id="app">
-    <h1 :class="$style.title">Hello world, askie.</h1>
+    <h1 :class="$style.title">Hello world, Wen-Hua.</h1>
   </div>
 </template>
 ```
@@ -88,7 +88,7 @@ CSS Modules 顧名思義就是希望能真正將 CSS 模組化，其非常單純
 <!-- 有連字號的 class 名稱 -->
 <template>
   <div id="app">
-    <h1 :class="$style['my-title']">Hello world, askie.</h1>
+    <h1 :class="$style['my-title']">Hello world, Wen-Hua.</h1>
   </div>
 </template>
 ```

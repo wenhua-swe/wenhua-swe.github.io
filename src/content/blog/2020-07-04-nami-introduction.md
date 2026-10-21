@@ -2,7 +2,7 @@
 title: My love
 pubDate: '2020-07-04'
 description: 誤打誤撞地推翻原本的計畫，唸書的我能照顧她的餘生嗎？
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - nami
   - cat

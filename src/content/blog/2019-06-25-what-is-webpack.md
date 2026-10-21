@@ -5,7 +5,7 @@ description: >-
   前端日新月異，我們寫的內容已不只是寫 HTML、CSS、JavaScript 單純的檔案。前端出現了許多預處理工具及框架，預處理工具如
   PUG、SASS、Babel；框架如
   Vue、React。不過瀏覽器並看不懂我們寫的預處理內容，每每都需要透過編譯才能使用，也因此出現了自動化工具，Webpack、Gulp、Grunt、Parcel、Browserify....等。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - webpack
   - javascript

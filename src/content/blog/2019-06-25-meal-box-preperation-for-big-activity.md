@@ -4,7 +4,7 @@ pubDate: '2019-06-25'
 description: >-
   辦活動最重要的就是！！！絕對不行「食物中毒」！到底辦千人的大活動時，需要注意哪些事情呢？Karl Lin
   寫了一篇文章實在太用有幫助了，自己沒辦過這樣的活動，只能向前輩們的經驗借鏡了。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - 活動
   - 辦活動

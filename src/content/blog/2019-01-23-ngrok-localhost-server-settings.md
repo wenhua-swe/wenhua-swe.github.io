@@ -4,7 +4,7 @@ pubDate: '2019-01-23'
 description: >-
   ![](https://i.imgur.com/tVPbUsC.png)## 緣起為了解決 `facebook API` 需要 `https`，所以利用
   `ngrok` 架了一個網頁伺服器...
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - ngrok
   - https

@@ -1,0 +1,51 @@
+---
+// Giscus stores comments as GitHub Discussions in this repo (Announcements category)
+---
+
+<section class='comments'>
+  <h2 class='display'>留言</h2>
+  <div class='giscus'></div>
+</section>
+
+<script>
+  const giscusTheme = () => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+
+  const script = document.createElement('script');
+  Object.entries({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'wenhua-swe/wenhua-swe.github.io',
+    'data-repo-id': 'R_kgDOVSfdCQ',
+    'data-category': 'Announcements',
+    'data-category-id': 'DIC_kwDOVSfdCc4DJRjv',
+    'data-mapping': 'pathname',
+    'data-strict': '1',
+    'data-reactions-enabled': '1',
+    'data-emit-metadata': '0',
+    'data-input-position': 'top',
+    'data-theme': giscusTheme(),
+    'data-lang': 'zh-TW',
+    'data-loading': 'lazy',
+    crossorigin: 'anonymous',
+  }).forEach(([key, value]) => script.setAttribute(key, value));
+  script.async = true;
+  document.querySelector('.giscus')?.after(script);
+
+  // Keep the comment frame in step with the site's theme toggle
+  new MutationObserver(() => {
+    document
+      .querySelector<HTMLIFrameElement>('iframe.giscus-frame')
+      ?.contentWindow?.postMessage({ giscus: { setConfig: { theme: giscusTheme() } } }, 'https://giscus.app');
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
+
+<style>
+  .comments {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  h2 {
+    margin: 0 0 20px;
+    font-size: 28px;
+  }
+</style>

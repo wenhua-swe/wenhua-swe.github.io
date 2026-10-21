@@ -2,7 +2,7 @@
 title: 新增 Git GPG Key 增加安全性
 pubDate: '2020-12-19'
 description: GPG Key 可以讓我們的 commit 都確定是我們本人所新增的。我覺得很不錯！！推薦大家使用。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - git
   - gpg key

@@ -2,7 +2,7 @@
 title: 談一下 CSS Specificity
 pubDate: '2019-05-06'
 description: 要了解 CSS 就一定要知道 Specificity 是什麼！Specificity 是決定優先套用哪個樣式的關鍵因素之一。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - css
   - css specificity

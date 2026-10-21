@@ -2,7 +2,7 @@
 title: 自訂一個指令同時更新及備份 hexo 部落格（macOS）
 pubDate: '2019-02-25'
 description: 看完本文章，你可以自訂一個自己的指令，用來同時更新及備份 hexo 部落格，超級方便！
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - blog
   - hexo

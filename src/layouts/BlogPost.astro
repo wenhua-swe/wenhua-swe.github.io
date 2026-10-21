@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import Comments from '../components/Comments.astro';
 import { formatDate, readingMinutes, stars, tagUrl, type Post } from '../lib/content';
 
 interface Props {
@@ -81,6 +82,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       <div class='prose'>
         <slot />
       </div>
+      <Comments />
     </article>
   </div>
 </BaseLayout>

@@ -4,7 +4,7 @@ pubDate: '2020-06-30'
 description: >-
   說這兩個詞彙（Latency 和
   Throughput）常常會被搞混，有時候可以交換使用，不過自己本來不是讀資訊相關背景，加上本身寫前端，看到這兩個字真的是生字，一點實務上的聯想都想不到，如果你也不懂的話，沒關係，下文會寫筆記來解釋...。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - system design
 ---

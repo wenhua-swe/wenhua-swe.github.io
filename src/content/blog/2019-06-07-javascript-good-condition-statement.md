@@ -4,7 +4,7 @@ pubDate: '2019-06-07'
 description: >-
   五個小技巧讓你寫出更好的 JavaScript 條件語句。範例中，乍看之下，寫法沒什麼錯誤。可是當我們有更多紅色水果的選項時，如 cherry（櫻桃）和
   cranberries（蔓越莓），難道我們要增加更多的 || 邏輯運算子來判斷？
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - 條件判斷

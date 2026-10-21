@@ -4,7 +4,7 @@ pubDate: '2020-08-30'
 description: >-
   使用者看到網頁內容，立即知道該怎麼操作，這不僅是因為我們看得見它，也是 UI/UX 的示能性。瀏覽器或螢幕閱讀器獲取網頁結構，立即知道元素代表的意義，這是
   HTML 的示能性。而這篇文章要談的就是 HTML 的之於的示能性！
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - the Accessibility Tree
   - AOM

@@ -4,7 +4,7 @@ pubDate: '2019-07-09'
 description: >-
   講到 CSS Framework，應該無人不知 Bootstrap。最近在 State of CSS 2019 的問卷結果中看到全球 CSS
   使用數據，包含知名度、感興趣程度及使用滿意度，Bootstrap 的滿意度極低，而 Bulma 在使用滿意度算表現得很好，高達 74%，居於第二名...
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - css
   - bulma
@@ -158,12 +158,12 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
 使用 `.title` 搭配 `modifiers`。
 
 ```html
-<h1 class="title is-1">Hello Askie</h1>
-<h2 class="title is-2">Hello Askie</h2>
-<h3 class="title is-3">Hello Askie</h3>
-<h4 class="title is-4">Hello Askie</h4>
-<h5 class="title is-5">Hello Askie</h5>
-<h6 class="title is-6">Hello Askie</h6>
+<h1 class="title is-1">Hello Wen-Hua</h1>
+<h2 class="title is-2">Hello Wen-Hua</h2>
+<h3 class="title is-3">Hello Wen-Hua</h3>
+<h4 class="title is-4">Hello Wen-Hua</h4>
+<h5 class="title is-5">Hello Wen-Hua</h5>
+<h6 class="title is-6">Hello Wen-Hua</h6>
 ```
 
 ### 內容 Content：使用 `.content`。
@@ -182,9 +182,9 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
 ### sizes：3 級。
 
 ```html
-<p class="content is-small">Hello Askie and Hello World!</p>
-<p class="content is-medium">Hello Askie and Hello World!</p>
-<p class="content is-large">Hello Askie and Hello World!</p>
+<p class="content is-small">Hello Wen-Hua and Hello World!</p>
+<p class="content is-medium">Hello Wen-Hua and Hello World!</p>
+<p class="content is-large">Hello Wen-Hua and Hello World!</p>
 ```
 
 ## 按鈕 Buttons
@@ -277,7 +277,7 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
     <!-- 對齊方式：置左 -->
     <a href="" clas="nav-item"
       ><!-- 元素 -->
-      <h1 class="title is-4">Askie Lin</h1>
+      <h1 class="title is-4">Wen-Hua Lin</h1>
       <!-- 標題 -->
     </a>
   </div>
@@ -303,7 +303,7 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
     <div class="container">
       <!-- 不一定需要，範例的情境適合用一個 container 包起來 -->
       <h1 class="title">Hello World</h1>
-      <h2 class="subtitle">I am Askie Lin.</h2>
+      <h2 class="subtitle">I am Wen-Hua Lin.</h2>
     </div>
   </div>
 </section>
@@ -316,7 +316,7 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
   <!-- card 容器 -->
   <div class="card-content">
     <!-- card 主體 -->
-    <p class="title">Hello world, Askie.</p>
+    <p class="title">Hello world, Wen-Hua.</p>
   </div>
   <footer class="card-footer">
     <!-- card 頁尾 -->

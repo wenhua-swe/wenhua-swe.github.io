@@ -3,7 +3,7 @@ title: 從零開始設定自己的開發環境、軟體推薦（MacOS）
 pubDate: '2020-02-14'
 description: >-
   最近到了新的工作環境，公司配了一台新電腦，要從零來設置自己習慣的開發環境，所以除了安裝開發上很順手的工具以外，也額外想推薦大家來安裝能夠增加效率或是提升開發速度的軟體。這篇文章不會各別介紹每個工具詳細設定的流程，我選擇紀錄每個推薦的工具能夠為我解決什麼問題，等於是為了以後買新電腦又要重設開發環境做準備（？）
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - w3HexSchool
   - development
@@ -44,8 +44,8 @@ user.email=eddie@5xruby.tw
 
 都還沒設定過的話，來設定一下：
 ```bash
-$ git config --global user.name "Askie Lin"
-$ git config --global user.email "askie_lin@xxxxxx.com"
+$ git config --global user.name "Wen-Hua Lin"
+$ git config --global user.email "wenhua_lin@xxxxxx.com"
 ```
 
 ### 每個專案使用不同作者
@@ -60,8 +60,8 @@ $ git config --local user.email "Kai@xxxxxx.com"
 加上 log 高亮語法及 alias 增進你的速度，我的 `~/.gitconfig`：
 ```
 [user]
-	name = Askie Lin
-	email = askie_lin@xxxxxx.com
+	name = Wen-Hua Lin
+	email = wenhua_lin@xxxxxx.com
 
 [alias]
 	co = checkout

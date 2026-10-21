@@ -2,7 +2,7 @@
 title: 開發者一定要知道的 GIT tricks
 pubDate: '2019-06-01'
 description: 修改了某些檔案，一次只 commit 其中某幾個檔案，該怎麼做？
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - git
   - git log
@@ -61,7 +61,7 @@ git add *.html
 
 ```bash
 commit 9a7f06bd416decd8ec8463248d159cde67c48c82
-Author: Askie <youremail@gmail.com>
+Author: Wen-Hua <youremail@gmail.com>
 Date:   Fri Oct 12 13:05:45
 ```
 

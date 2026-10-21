@@ -2,7 +2,7 @@
 title: 系統設計入門：內容傳遞網路 CDN
 pubDate: '2020-08-07'
 description: 網站在流量不高時，使用者對伺服器的回應速度較沒有感覺，但流量漸漸增加時，latency 就會拉長，我們通常會採購新的 sever 來負擔網站流量。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - system design
 ---

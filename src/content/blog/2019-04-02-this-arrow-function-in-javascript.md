@@ -2,7 +2,7 @@
 title: Arrow function 解決了什麼問題？
 pubDate: '2019-04-02'
 description: 原來 arrow function 的出現是為了解決 this 的問題。箭頭函數當中的 this 是定義時的對象，而不是使用時的對象。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - arrow function

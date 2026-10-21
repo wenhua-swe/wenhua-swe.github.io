@@ -4,7 +4,7 @@ pubDate: '2019-02-09'
 description: >-
   FormData 介面可為表單資料中的欄位/值建立相對應的的鍵/值對（key/value）集合，之後便可使用 XMLHttpRequest.send()
   方法來送出資料。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - javascript
   - jquery

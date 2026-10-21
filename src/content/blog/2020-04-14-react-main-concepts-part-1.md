@@ -4,7 +4,7 @@ pubDate: '2020-04-14'
 description: >-
   記錄著關於初學 REACT 時，官方文件提及的主要概念，基本上都是文件上的內容，希望用自己是初心者的方式整理關於
   JSX、生命週期、事件處理器、官方文件的觀念，可以更記得住。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - react
   - javascript
@@ -227,10 +227,10 @@ function withdraw(account, amount) {
 
 ```javascript
 // 錯誤！組件不會重新渲染
-this.state.username = 'askiebaby';
+this.state.username = 'wenhua';
 
 // 正確！
-this.setState({ username: 'askiebaby' });
+this.setState({ username: 'wenhua' });
 ```
 
 2. State 更新可能是非同步的

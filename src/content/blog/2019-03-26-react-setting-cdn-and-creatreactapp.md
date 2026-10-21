@@ -2,7 +2,7 @@
 title: React 環境設置 (CDN/CRA)
 pubDate: '2019-03-26'
 description: 用 CDN 跟 create-react-app 創建 react app。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - react
   - react track

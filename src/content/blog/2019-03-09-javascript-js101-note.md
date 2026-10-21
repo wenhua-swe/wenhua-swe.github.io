@@ -1,8 +1,8 @@
 ---
 title: 用 JavaScript 一步步打造程式基礎(Huli JS101課程筆記)
 pubDate: '2019-03-09'
-description: Askie 的 JavaScript 程式基礎筆記！
-author: Askie Lin
+description: Wen-Hua 的 JavaScript 程式基礎筆記！
+author: Wen-Hua Lin
 tags:
   - javascript
   - huli

@@ -4,7 +4,7 @@ pubDate: '2019-08-03'
 description: >-
   真正開發時，創建結構時常常都要建立新檔案去切分
   component，打幾乎同樣的程式碼有點煩，所以～找了一下該怎麼來設定自己要的程式碼片段。希望有幫助到你：）
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - vscode
   - custom user code snippets
@@ -65,7 +65,7 @@ tags:
 
 ```json
 {
-  "Askie 自訂的 Vue 樣板": {
+  "我自訂的 Vue 樣板": {
     "prefix": "vuetem",
     "body": [
       "<template>",
@@ -90,7 +90,7 @@ tags:
       "</style>",
       ""
     ],
-    "description": "Askie 自訂的 Vue 樣板"
+    "description": "我自訂的 Vue 樣板"
   }
 }
 ```

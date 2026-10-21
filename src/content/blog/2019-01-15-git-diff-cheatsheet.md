@@ -2,7 +2,7 @@
 title: Git diff 指令快速查詢！
 pubDate: '2019-01-15'
 description: 用來比較差異的 diff 指令這麼多，常用的 cheatSheet 整理。
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - git
   - diff

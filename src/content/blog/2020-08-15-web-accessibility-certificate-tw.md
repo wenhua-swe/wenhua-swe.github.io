@@ -2,7 +2,7 @@
 title: 無障礙標章：WCAG 與 NCC 國家通訊傳播委員會的無障礙規範（申請流程與標章使用規定）
 pubDate: '2020-08-15'
 description: 一句話道出了重點，無障礙網站之於某些使用者是必需的，卻能使全部的使用者受益。一個短短七分鐘的影片，也把生活情境融為其中，我們生活中不也是這樣子的嗎？
-author: Askie Lin
+author: Wen-Hua Lin
 tags:
   - WCAG
   - NCC
