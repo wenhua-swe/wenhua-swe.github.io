@@ -8,6 +8,7 @@
     <aside>
       <div class='mono muted' data-field='no'></div>
       <h2 class='display' data-field='title'></h2>
+      <p class='description' data-field='description'></p>
       <dl>
         <dt class='mono muted'>分類</dt>
         <dd data-field='category'></dd>
@@ -52,6 +53,7 @@
     big.alt = button.dataset.alt ?? '';
     dialog.querySelectorAll<HTMLElement>('[data-field]').forEach((el) => {
       el.textContent = button.dataset[el.dataset.field!] ?? '';
+      el.hidden = el.textContent === '';
     });
   };
 
@@ -119,6 +121,14 @@
     margin: 0;
     font-size: 32px;
     line-height: 1.2;
+  }
+  .description {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .description[hidden] {
+    display: none;
   }
   dl {
     display: grid;

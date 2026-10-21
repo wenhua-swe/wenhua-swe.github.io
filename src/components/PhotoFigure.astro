@@ -21,6 +21,7 @@ const full = await getImage({ src: photo.image, width: 2000, format: 'webp', qua
     data-full={full.src}
     data-alt={photo.alt}
     data-title={photo.title}
+    data-description={photo.description ?? ''}
     data-no={photo.no}
     data-category={photo.category}
     data-date={photo.date.replaceAll('-', '.')}
