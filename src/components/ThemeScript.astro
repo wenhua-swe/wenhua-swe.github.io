@@ -12,5 +12,7 @@
       theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     document.documentElement.dataset.theme = theme;
+    // Lets CSS hide images until they fade in, only when JS can reveal them
+    document.documentElement.classList.add('js');
   })();
 </script>

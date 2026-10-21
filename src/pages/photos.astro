@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoFigure from '../components/PhotoFigure.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { photos } from '../data/photos';
+---
+
+<BaseLayout title='攝影' description='用 Fujifilm X-T5 拍下的日常'>
+  <section class='container'>
+    <div class='section-head'>
+      <h1 class='display'><em class='accent'>03</em> 攝影</h1>
+      <span class='mono muted'>FUJIFILM X-T5 · {photos.length} 張</span>
+    </div>
+    <div class='grid'>
+      {
+        photos.map((photo, i) => (
+          <PhotoFigure photo={photo} sizes='(max-width: 560px) 100vw, (max-width: 960px) 50vw, 33vw' eager={i < 3} />
+        ))
+      }
+    </div>
+  </section>
+  <Lightbox />
+</BaseLayout>
+
+<style>
+  section {
+    padding-top: 48px;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 52px);
+  }
+  /* Masonry: columns keep each photo's own aspect ratio */
+  .grid {
+    margin-top: 32px;
+    columns: 3;
+    column-gap: 16px;
+  }
+  .grid :global(.photo) {
+    break-inside: avoid;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 960px) {
+    .grid {
+      columns: 2;
+    }
+  }
+  @media (max-width: 560px) {
+    .grid {
+      columns: 1;
+    }
+  }
+</style>

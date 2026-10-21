@@ -1,0 +1,67 @@
+---
+// One shared viewer for every .photo on the page; include once per page
+---
+
+<dialog class='lightbox' aria-label='照片檢視'>
+  <form method='dialog'>
+    <button class='close mono' aria-label='關閉'>關閉 ✕</button>
+  </form>
+  <img alt='' />
+</dialog>
+
+<script>
+  const show = (img: HTMLImageElement) => img.classList.add('loaded');
+  document.querySelectorAll<HTMLImageElement>('.photo img').forEach((img) => {
+    if (img.complete) show(img);
+    else img.addEventListener('load', () => show(img), { once: true });
+  });
+
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+  const big = dialog?.querySelector('img');
+  document.querySelectorAll<HTMLButtonElement>('.photo .open').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!dialog || !big) return;
+      big.src = button.dataset.full ?? '';
+      big.alt = button.dataset.alt ?? '';
+      dialog.showModal();
+    });
+  });
+  // Click on the backdrop closes it
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>
+
+<style>
+  .lightbox {
+    max-width: min(96vw, 1600px);
+    max-height: 94vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  .lightbox::backdrop {
+    background: rgba(10, 12, 8, 0.92);
+  }
+  .lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 88vh;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  form {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+  }
+  .close {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>

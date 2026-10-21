@@ -9,6 +9,7 @@ import { SITE_TITLE } from '../consts';
     <div class='links'>
       <HeaderLink href='/books'>讀書</HeaderLink>
       <HeaderLink href='/blog'>技術</HeaderLink>
+      <HeaderLink href='/photos'>攝影</HeaderLink>
       <HeaderLink href='/tags'>標籤</HeaderLink>
       <HeaderLink href='/about'>關於</HeaderLink>
       <a href='/search' class='search mono'>搜尋</a>
@@ -77,6 +78,25 @@ import { SITE_TITLE } from '../consts';
     background: transparent;
     color: var(--fg);
     cursor: pointer;
+  }
+  @media (max-width: 720px) {
+    nav {
+      padding-top: 16px;
+      padding-bottom: 12px;
+    }
+    .logo {
+      font-size: 24px;
+    }
+    /* One swipeable row instead of wrapping onto several lines */
+    .links {
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .links > :global(*) {
+      flex-shrink: 0;
+    }
   }
   .icon-sun {
     display: none;

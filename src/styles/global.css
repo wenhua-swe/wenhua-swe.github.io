@@ -117,7 +117,7 @@ a:hover {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(26px, 3.2vw, 38px);
   line-height: 1.2;
 }
 
@@ -191,15 +191,15 @@ a:hover {
 }
 
 .prose h2 {
-  font-size: 36px;
+  font-size: clamp(24px, 3vw, 30px);
 }
 
 .prose h3 {
-  font-size: 26px;
+  font-size: clamp(20px, 2.4vw, 23px);
 }
 
 .prose h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .prose a {
@@ -261,4 +261,14 @@ a:hover {
   background: var(--pill);
   font-family: var(--font-mono);
   font-size: 0.85em;
+}
+
+@media (max-width: 560px) {
+  .prose {
+    font-size: 17px;
+    line-height: 1.9;
+  }
+  .prose > p:first-of-type::first-letter {
+    font-size: 54px;
+  }
 }
