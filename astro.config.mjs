@@ -3,50 +3,49 @@ import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 import expressiveCode from 'astro-expressive-code';
 import tailwindcss from '@tailwindcss/vite';
+import { satteri } from '@astrojs/markdown-satteri';
 
 // Lazy-load every image in Markdown, including remote ones Astro does not optimize
-function rehypeLazyImages() {
-  const visit = (node) => {
-    if (node.type === 'element' && node.tagName === 'img') {
-      node.properties.loading ??= 'lazy';
-      node.properties.decoding ??= 'async';
-    }
-    node.children?.forEach(visit);
-  };
-  return visit;
-}
+const lazyImages = {
+  name: 'lazy-images',
+  element: {
+    filter: ['img'],
+    visit(node, ctx) {
+      if (node.properties.loading == null) ctx.setProperty(node, 'loading', 'lazy');
+      if (node.properties.decoding == null) ctx.setProperty(node, 'decoding', 'async');
+    },
+  },
+};
 
 // GFM task-list checkboxes have no label; name each one after its item text
-function rehypeTaskListLabels() {
-  const text = (node) =>
-    node.type === 'text'
-      ? node.value
-      : ['ul', 'ol', 'input'].includes(node.tagName)
-        ? ''
-        : (node.children ?? []).map(text).join('');
-  const visit = (node) => {
-    if (node.type === 'element' && node.tagName === 'li' && node.properties.className?.includes('task-list-item')) {
-      const parent = node.children.find((c) => c.tagName === 'p') ?? node;
-      const input = parent.children.find((c) => c.tagName === 'input');
-      if (input) {
-        input.properties.ariaLabel ??= parent.children.map(text).join('').trim() || (input.properties.checked ? '已完成' : '未完成');
-      }
-    }
-    node.children?.forEach(visit);
-  };
-  return visit;
-}
+const taskListLabels = {
+  name: 'task-list-labels',
+  element: {
+    filter: ['input'],
+    visit(node, ctx) {
+      if (node.properties.type !== 'checkbox' || node.properties.ariaLabel != null) return;
+      // The item text sits beside the checkbox; leave out any nested sub-list
+      const item = ctx.parent(node);
+      const label = (item?.children ?? [])
+        .filter((child) => !(child.type === 'element' && ['ul', 'ol', 'input'].includes(child.tagName)))
+        .map((child) => (child.type === 'text' ? child.value : ctx.textContent(child)))
+        .join('')
+        .trim();
+      ctx.setProperty(node, 'ariaLabel', label || (node.properties.checked ? '已完成' : '未完成'));
+    },
+  },
+};
 
 // .prose table scrolls horizontally on narrow screens; let keyboard users reach and scroll it
-function rehypeFocusableTables() {
-  const visit = (node) => {
-    if (node.type === 'element' && node.tagName === 'table') {
-      node.properties.tabIndex ??= 0;
-    }
-    node.children?.forEach(visit);
-  };
-  return visit;
-}
+const focusableTables = {
+  name: 'focusable-tables',
+  element: {
+    filter: ['table'],
+    visit(node, ctx) {
+      if (node.properties.tabIndex == null) ctx.setProperty(node, 'tabIndex', 0);
+    },
+  },
+};
 
 // Expressive Code turns scrollable <pre> into role="region"; give each one a unique name
 const codeBlockLabels = {
@@ -87,10 +86,12 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    rehypePlugins: [rehypeLazyImages, rehypeTaskListLabels, rehypeFocusableTables],
+    processor: satteri({ hastPlugins: [lazyImages, taskListLabels, focusableTables] }),
   },
   vite: {
     plugins: [tailwindcss()],
   },
   output: 'static',
+  // Keep Astro 5 whitespace handling; v7's 'jsx' default drops spaces between inline elements
+  compressHTML: true,
 });
