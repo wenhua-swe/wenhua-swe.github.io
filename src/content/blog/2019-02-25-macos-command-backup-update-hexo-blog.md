@@ -11,7 +11,7 @@ tags:
 ---
 
 
-![](https://i.imgur.com/5QlDFL8.jpg)
+![封面：一個指令更新及備份 #Hexo #Blog](https://i.imgur.com/5QlDFL8.jpg)
 
 ## Preparation
 #### 建立備份的repository
@@ -67,7 +67,7 @@ hexo g -d # 根據新內容生成 public 資料夾，並部署上線
 
 #### 權限不足
 
-![](https://i.imgur.com/XbOdA9o.png)
+![終端機畫面：執行 chmod u+x 之後，update-blog 的權限從 -rw-r--r-- 變成 -rwxr--r--](https://i.imgur.com/XbOdA9o.png)
 
 檢視指令的權限：
 ```bash

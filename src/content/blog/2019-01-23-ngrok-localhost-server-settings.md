@@ -2,7 +2,7 @@
 title: ngrok 的設定，來架一個臨時伺服器！
 pubDate: '2019-01-23'
 description: >-
-  ![](https://i.imgur.com/tVPbUsC.png)## 緣起為了解決 `facebook API` 需要 `https`，所以利用
+  ![ngrok 執行畫面：顯示連線狀態，以及轉址到 localhost:80 的公開網址](https://i.imgur.com/tVPbUsC.png)## 緣起為了解決 `facebook API` 需要 `https`，所以利用
   `ngrok` 架了一個網頁伺服器...
 author: Wen-Hua Lin
 tags:
@@ -15,7 +15,7 @@ tags:
 ---
 
 
-![](https://i.imgur.com/tVPbUsC.png)
+![ngrok 執行畫面：顯示連線狀態，以及轉址到 localhost:80 的公開網址](https://i.imgur.com/tVPbUsC.png)
 
 
 ## 緣起

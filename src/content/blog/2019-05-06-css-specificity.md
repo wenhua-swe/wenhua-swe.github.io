@@ -10,7 +10,7 @@ tags:
   - 特定度
   - 優先權
 ---
-![](https://i.imgur.com/q0yhJxA.png)
+![封面：CSS3 Specificity](https://i.imgur.com/q0yhJxA.png)
 
 
 
@@ -113,7 +113,7 @@ CSS
 
 ## 權重計算的基本規則
 
-![](https://i.imgur.com/7Bp5y7r.png)
+![CSS 權重的六個欄位，由高到低：!important、行內樣式、ID、class／屬性／偽類、元素／偽元素、*](https://i.imgur.com/7Bp5y7r.png)
 
 如上圖，檢查對應的出現的次數、**由左向右**比較，看 [W3C 的定義](https://www.w3.org/TR/2018/REC-selectors-3-20181106/#specificity)，其實是從 `id`=> `class` => `element`，檢查完再去看是否有設定 `important` `行內樣式`。但我把它們集合起來畫成一張對應的表，比較方便理解、查閱跟記憶。
 
@@ -141,7 +141,7 @@ CSS
 
 ------
 
-# 實例
+## 實例
 
 一個新手容易踩的雷：使用 `id` 選取器，等專案越做越大時，開始有製作新的 table 需求時....
 
@@ -180,7 +180,7 @@ CSS
 
 開始進入惡性循環，權重只要一開始疊的高，以後只能越設越高！
 
-# !important 該死？
+## !important 該死？
 
 ------
 
@@ -241,7 +241,7 @@ CSS
 
 [有趣的圖](http://cssspecificity.com/)
 
-# Reference
+## Reference
 
 ------
 

@@ -28,7 +28,7 @@ tags:
 
 這些新功能的支援度目前還不高，尤其是 lookbehind 支援
 
-# Assertions
+## Assertions
 
 想要 match 文字是否符合規則，需要仰賴文字前後的順序，從而丟棄不合規則的 pattern。尤其是當我們處理到很長的字串，比對的過程中，幾乎都是不正確的格式。好險正則表達式基本上都有提供 `lookbehind assertions` 和 `lookahead assertions`，讓我們的格式判斷能有效率。
 

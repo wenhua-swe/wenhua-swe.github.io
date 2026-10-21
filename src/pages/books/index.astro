@@ -6,10 +6,10 @@ import { getBookPosts } from '../../lib/content';
 const posts = await getBookPosts();
 ---
 
-<BaseLayout title='讀書心得' description='讀過的書與一些想法'>
+<BaseLayout title='閱讀筆記' description='讀過的書，和在書頁邊緣寫下的想法'>
   <section class='container'>
     <div class='section-head'>
-      <h1 class='display'><em class='accent'>01</em> 讀書心得</h1>
+      <h1 class='display'><em class='accent'>01</em> 閱讀筆記</h1>
       <span class='mono muted'>{posts.length} 本</span>
     </div>
     {
@@ -20,7 +20,7 @@ const posts = await getBookPosts();
           ))}
         </div>
       ) : (
-        <p class='empty muted'>第一篇心得正在寫，敬請期待。</p>
+        <p class='empty muted'>正在閱讀中，第一篇筆記整理好就會放上來。</p>
       )
     }
   </section>

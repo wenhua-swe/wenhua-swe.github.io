@@ -41,7 +41,7 @@ gpg --default-new-key-algo rsa4096 --gen-key
 ```
 
 建議：
-![](https://i.imgur.com/bgoh7ws.png)
+![終端機執行 gpg --full-generate-key 的完整互動過程：選擇 RSA、長度 4096、永不過期](https://i.imgur.com/bgoh7ws.png)
 
 - GitHub 要求 RSA 加密
 - 長度：4096，不建議超過這長度
@@ -57,7 +57,7 @@ gpg --default-new-key-algo rsa4096 --gen-key
 gpg --list-secret-keys --keyid-format LONG
 ```
 
-![](https://i.imgur.com/ky71WEB.png)
+![gpg --list-secret-keys 的輸出，列出新產生的 RSA 4096 金鑰](https://i.imgur.com/ky71WEB.png)
 
 ## Step 3: 擷取 GPG 需要的資料
 

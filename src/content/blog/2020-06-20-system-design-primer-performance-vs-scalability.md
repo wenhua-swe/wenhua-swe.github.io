@@ -45,7 +45,7 @@ tags:
 
 ---
 
-# Weekly Notes
+## Weekly Notes
 
 - Multi-tier architecture：3-tier Architecture 是最常使用的架構，尤其是[電商網站](https://en.wikipedia.org/wiki/Multitier_architecture#Web_development_usage)。
   - Presentation Layer a.k.a. UI layer（Presentation tier）

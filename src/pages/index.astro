@@ -11,13 +11,16 @@ import { getBlogPosts, getBookPosts } from '../lib/content';
 
 const books = (await getBookPosts()).slice(0, 3);
 const posts = (await getBlogPosts()).slice(0, 6);
+// Number the sections that are actually shown, so an empty one leaves no gap
+const shown = [...(books.length > 0 ? ['books'] : []), 'blog', 'photos'];
+const no = (section: string) => String(shown.indexOf(section) + 1).padStart(2, '0');
 const heroPhoto = photos.find((p) => p.file === 'dscf0420')!;
 const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0985'].map((f) => photos.find((p) => p.file === f)!);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <section class='container hero'>
-    <div class='mono muted'>[ 00 — 讀書、寫程式、拍照 ]</div>
+    <div class='mono muted'>[ 00 — 閱讀、寫程式、拍照 ]</div>
     <div class='hero-grid'>
       <h1 class='display'>Notes from <em>the margin</em><span class='accent'>.</span></h1>
       <p class='muted'>{SITE_DESCRIPTION}</p>
@@ -27,27 +30,29 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0985'].map((f) => pho
     </div>
   </section>
 
-  <section class='container block'>
-    <div class='section-head'>
-      <h2><em>01</em> 讀書心得</h2>
-      <a href='/books' class='mono'>全部書單 →</a>
-    </div>
-    {
-      books.length > 0 ? (
+  {
+    books.length > 0 && (
+      <section class='container block'>
+        <div class='section-head'>
+          <h2>
+            <em>{no('books')}</em> 閱讀筆記
+          </h2>
+          <a href='/books' class='mono'>
+            全部筆記 →
+          </a>
+        </div>
         <div class='books'>
           {books.map((post) => (
             <BookCard post={post} />
           ))}
         </div>
-      ) : (
-        <p class='empty muted'>第一篇心得正在寫，敬請期待。</p>
-      )
-    }
-  </section>
+      </section>
+    )
+  }
 
   <section class='container block'>
     <div class='section-head'>
-      <h2><em>02</em> 技術筆記</h2>
+      <h2><em>{no('blog')}</em> 技術筆記</h2>
       <a href='/blog' class='mono'>全部文章 →</a>
     </div>
     <div>
@@ -57,7 +62,7 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0985'].map((f) => pho
 
   <section class='container block'>
     <div class='section-head'>
-      <h2><em>03</em> 攝影</h2>
+      <h2><em>{no('photos')}</em> 攝影</h2>
       <a href='/photos' class='mono'>全部作品 →</a>
     </div>
     <div class='photos'>
@@ -115,11 +120,6 @@ const featured = ['dscf0923', 'dscf0274', 'dscf1152', 'dscf0985'].map((f) => pho
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
-  }
-  .empty {
-    margin: 0;
-    padding: 48px 0;
-    text-align: center;
   }
   @media (max-width: 860px) {
     h1,

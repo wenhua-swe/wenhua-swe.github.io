@@ -8,7 +8,7 @@ tags:
   - diff
 ---
 
-![](https://i.imgur.com/BDYNv9o.jpg)
+![Git 流程圖：工作目錄、暫存區域與 HEAD 之間的 checkout、add、commit](https://i.imgur.com/BDYNv9o.jpg)
 
 ## 名詞解釋
 

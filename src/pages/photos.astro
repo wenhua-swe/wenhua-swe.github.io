@@ -28,6 +28,7 @@ const sizes = '(max-width: 720px) 50vw, (max-width: 1264px) 25vw, 290px';
       }
     </div>
 
+    <h2 class='sr-only'>作品列表</h2>
     <div class='grid'>
       {photos.map((photo, i) => <PhotoCard photo={photo} sizes={sizes} eager={i < 4} />)}
     </div>

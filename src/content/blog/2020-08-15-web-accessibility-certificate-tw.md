@@ -85,7 +85,7 @@ UAAG 全名為 User Agent Accessibility Guidelines 使用者代理無障礙準�
 
 ---
 
-# 國家通訊傳播委員會的無障礙規範
+## 國家通訊傳播委員會的無障礙規範
 
 > 國家通播傳播委員會又稱 NCC， NCC 也是遵從國際的規範來訂定臺灣的無障礙規範，目前是以 2.0 版作為基準。 [NCC 網站公告會列出開課訊息](https://www.handicap-free.nat.gov.tw/News/Category/43/1)。
 

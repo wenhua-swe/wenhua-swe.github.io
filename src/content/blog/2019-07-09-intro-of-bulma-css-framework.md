@@ -147,7 +147,7 @@ NPM package 有包含哪些項目及相依套件請參考：[What's included](ht
 
 ---
 
-# 我的 Cheatsheet
+## 我的 Cheatsheet
 
 不是完整官方文件的 cheatSheet，由於一開始看 Bulma 不熟悉，所以串得不是很起來，透過整理 [bulma 教學影片](https://www.youtube.com/watch?v=IiPQYQT2-wg)去熟悉 bulma 的架構與設計，這時搭配文件非常好上手了～
 

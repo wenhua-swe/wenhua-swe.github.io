@@ -10,7 +10,7 @@ tags:
   - javascript
 ---
 
-![](https://i.imgur.com/wFChjrF.png)
+![封面：React 標誌與 Step by step tutorial for Newbie](https://i.imgur.com/wFChjrF.png)
 
 ## 安裝與設定環境
 
@@ -130,7 +130,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ---
 
 ### 可以在瀏覽器看到內容就代表成功了：
-![](https://i.imgur.com/b2Vd21c.png)
+![瀏覽器開啟 React CDN 範例頁，畫面顯示 Hello, I'm here](https://i.imgur.com/b2Vd21c.png)
 
 
 ---
@@ -160,7 +160,7 @@ cd create-react-app
 npm start
 ```
 
-![](https://i.imgur.com/fgdmxV5.png)
+![Create React App 的預設起始畫面，中央是 React 標誌](https://i.imgur.com/fgdmxV5.png)
 
 #### 專案檔案包含：
 
@@ -224,7 +224,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 #### 五、打開瀏覽器 `localhost:3000` 看看，已經成功開始我們的 React 專案：
 
-![](https://i.imgur.com/BjzXdwT.png)
+![localhost:3000 顯示 Hello, I'm here](https://i.imgur.com/BjzXdwT.png)
 
 
 ---

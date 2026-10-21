@@ -10,7 +10,7 @@ tags:
 ---
 
 
-![](https://i.imgur.com/PKxcikD.png)
+![封面：一段箭頭函式程式碼，註解寫著 what is 'this' ?!](https://i.imgur.com/PKxcikD.png)
 
 ## **目的**
 將 `this` 鎖在 `function` 當中。
