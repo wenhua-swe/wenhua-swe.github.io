@@ -37,14 +37,17 @@ const sizes = '(max-width: 720px) 50vw, (max-width: 1264px) 25vw, 290px';
 </BaseLayout>
 
 <script>
-  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
-  const cards = document.querySelectorAll<HTMLElement>('.grid .card');
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const filter = chip.dataset.filter;
-      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-      cards.forEach((card) => {
-        card.hidden = filter !== 'all' && card.dataset.category !== filter;
+  // Runs on every ClientRouter navigation into this page
+  document.addEventListener('astro:page-load', () => {
+    const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+    const cards = document.querySelectorAll<HTMLElement>('.grid .card');
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        cards.forEach((card) => {
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+        });
       });
     });
   });

@@ -34,76 +34,80 @@
 </dialog>
 
 <script>
-  const reveal = (img: HTMLImageElement) => img.classList.add('loaded');
-  document.querySelectorAll<HTMLImageElement>('.open img').forEach((img) => {
-    if (img.complete) reveal(img);
-    else img.addEventListener('load', () => reveal(img), { once: true });
-  });
+  // Runs on every ClientRouter navigation, binding to the new page's photos
+  document.addEventListener('astro:page-load', () => {
+    const reveal = (img: HTMLImageElement) => img.classList.add('loaded');
+    document.querySelectorAll<HTMLImageElement>('.open img').forEach((img) => {
+      if (img.complete) reveal(img);
+      else img.addEventListener('load', () => reveal(img), { once: true });
+    });
 
-  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
-  const stage = dialog.querySelector<HTMLElement>('.stage')!;
-  const big = dialog.querySelector<HTMLImageElement>('.big')!;
-  let current: HTMLButtonElement | undefined;
+    const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+    if (!dialog) return;
+    const stage = dialog.querySelector<HTMLElement>('.stage')!;
+    const big = dialog.querySelector<HTMLImageElement>('.big')!;
+    let current: HTMLButtonElement | undefined;
 
-  // Only photos currently shown (category filters hide the rest)
-  const visible = () =>
-    [...document.querySelectorAll<HTMLButtonElement>('.open[data-full]')].filter(
-      (b) => b.offsetParent !== null,
-    );
+    // Only photos currently shown (category filters hide the rest)
+    const visible = () =>
+      [...document.querySelectorAll<HTMLButtonElement>('.open[data-full]')].filter(
+        (b) => b.offsetParent !== null,
+      );
 
-  // Fetch neighbours in the background so arrow-key switching is instant
-  const preload = (button?: HTMLButtonElement) => {
-    if (button?.dataset.full) new Image().src = button.dataset.full;
-  };
-
-  const showPhoto = (button: HTMLButtonElement) => {
-    current = button;
-    const src = button.dataset.full ?? '';
-    // Hide the previous photo until the new one has loaded, instead of flashing it
-    big.classList.remove('ready');
-    stage.setAttribute('aria-busy', 'true');
-    stage.style.backgroundColor = button.dataset.color ?? '';
-    const reveal = () => {
-      if (big.getAttribute('src') !== src) return;
-      big.classList.add('ready');
-      stage.setAttribute('aria-busy', 'false');
+    // Fetch neighbours in the background so arrow-key switching is instant
+    const preload = (button?: HTMLButtonElement) => {
+      if (button?.dataset.full) new Image().src = button.dataset.full;
     };
-    big.onload = reveal;
-    big.src = src;
-    big.alt = button.dataset.alt ?? '';
-    if (big.complete) reveal();
 
-    const list = visible();
-    const index = list.indexOf(button);
-    preload(list[(index + 1) % list.length]);
-    preload(list[(index - 1 + list.length) % list.length]);
-    dialog.querySelectorAll<HTMLElement>('[data-field]').forEach((el) => {
-      el.textContent = button.dataset[el.dataset.field!] ?? '';
-      el.hidden = el.textContent === '';
+    const showPhoto = (button: HTMLButtonElement) => {
+      current = button;
+      const src = button.dataset.full ?? '';
+      // Hide the previous photo until the new one has loaded, instead of flashing it
+      big.classList.remove('ready');
+      stage.setAttribute('aria-busy', 'true');
+      stage.style.backgroundColor = button.dataset.color ?? '';
+      const reveal = () => {
+        if (big.getAttribute('src') !== src) return;
+        big.classList.add('ready');
+        stage.setAttribute('aria-busy', 'false');
+      };
+      big.onload = reveal;
+      big.src = src;
+      big.alt = button.dataset.alt ?? '';
+      if (big.complete) reveal();
+
+      const list = visible();
+      const index = list.indexOf(button);
+      preload(list[(index + 1) % list.length]);
+      preload(list[(index - 1 + list.length) % list.length]);
+      dialog.querySelectorAll<HTMLElement>('[data-field]').forEach((el) => {
+        el.textContent = button.dataset[el.dataset.field!] ?? '';
+        el.hidden = el.textContent === '';
+      });
+    };
+
+    const step = (delta: number) => {
+      const list = visible();
+      if (!current || list.length === 0) return;
+      const index = (list.indexOf(current) + delta + list.length) % list.length;
+      showPhoto(list[index]);
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('.open[data-full]').forEach((button) => {
+      button.addEventListener('click', () => {
+        showPhoto(button);
+        dialog.showModal();
+      });
     });
-  };
-
-  const step = (delta: number) => {
-    const list = visible();
-    if (!current || list.length === 0) return;
-    const index = (list.indexOf(current) + delta + list.length) % list.length;
-    showPhoto(list[index]);
-  };
-
-  document.querySelectorAll<HTMLButtonElement>('.open[data-full]').forEach((button) => {
-    button.addEventListener('click', () => {
-      showPhoto(button);
-      dialog.showModal();
+    dialog.querySelector('.prev')?.addEventListener('click', () => step(-1));
+    dialog.querySelector('.next')?.addEventListener('click', () => step(1));
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') step(-1);
+      if (event.key === 'ArrowRight') step(1);
     });
-  });
-  dialog.querySelector('.prev')?.addEventListener('click', () => step(-1));
-  dialog.querySelector('.next')?.addEventListener('click', () => step(1));
-  dialog.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') step(-1);
-    if (event.key === 'ArrowRight') step(1);
-  });
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
   });
 </script>
 

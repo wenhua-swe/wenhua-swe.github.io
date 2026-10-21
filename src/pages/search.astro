@@ -2,12 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title='搜尋' description='搜尋網站內容'>
-  <section class='container'>
-    <div class='section-head'>
-      <h1 class='display'>搜尋</h1>
+<BaseLayout title="搜尋" description="搜尋網站內容">
+  <section class="container">
+    <div class="section-head">
+      <h1 class="display">搜尋</h1>
     </div>
-    <div id='search'></div>
+    <div id="search"></div>
   </section>
 </BaseLayout>
 
@@ -18,22 +18,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
+  // Runs on every ClientRouter navigation; the Pagefind script itself loads only once
+  document.addEventListener('astro:page-load', () => {
+    if (!document.querySelector('#search')) return;
     const loadPagefind = async () => {
-      // 動態載入 Pagefind 腳本和樣式
-      const script = document.createElement('script');
-      script.src = '/pagefind/pagefind-ui.js';
-      document.head.appendChild(script);
+      // 樣式表每次都檢查：換頁時 <head> 會被替換，之前加的可能已經不在了
+      if (!document.querySelector('link[href="/pagefind/pagefind-ui.css"]')) {
+        const style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = '/pagefind/pagefind-ui.css';
+        document.head.appendChild(style);
+      }
 
-      const style = document.createElement('link');
-      style.rel = 'stylesheet';
-      style.href = '/pagefind/pagefind-ui.css';
-      document.head.appendChild(style);
+      if (!window.PagefindUI) {
+        // 動態載入 Pagefind 腳本
+        const script = document.createElement('script');
+        script.src = '/pagefind/pagefind-ui.js';
+        document.head.appendChild(script);
 
-      // 等待腳本加載
-      await new Promise((resolve) => {
-        script.onload = resolve;
-      });
+        // 等待腳本加載
+        await new Promise((resolve) => {
+          script.onload = resolve;
+        });
+      }
 
       // 初始化搜索
       new window.PagefindUI({

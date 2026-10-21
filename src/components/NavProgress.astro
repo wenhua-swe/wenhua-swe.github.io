@@ -1,0 +1,58 @@
+---
+// Thin bar at the top of the window while ClientRouter loads the next page
+---
+
+<div class='nav-progress' aria-hidden='true' transition:persist></div>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('.nav-progress');
+  let timer: ReturnType<typeof setTimeout> | undefined;
+
+  document.addEventListener('astro:before-preparation', () => {
+    if (!bar) return;
+    clearTimeout(timer);
+    bar.classList.remove('done');
+    bar.classList.add('loading');
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    if (!bar) return;
+    bar.classList.remove('loading');
+    bar.classList.add('done');
+    timer = setTimeout(() => bar.classList.remove('done'), 400);
+  });
+</script>
+
+<style>
+  .nav-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* Creeps towards 90% while waiting, so slow loads still look alive */
+  .nav-progress.loading {
+    opacity: 1;
+    transform: scaleX(0.9);
+    transition: transform 8s cubic-bezier(0.1, 0.7, 0.2, 1);
+  }
+  .nav-progress.done {
+    opacity: 0;
+    transform: scaleX(1);
+    transition:
+      transform 0.2s ease-out,
+      opacity 0.3s ease 0.15s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-progress.loading {
+      transition-duration: 0s;
+    }
+  }
+</style>

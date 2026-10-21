@@ -27,13 +27,16 @@ import { SITE_TITLE } from '../consts';
 </header>
 
 <script>
-  document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-    const root = document.documentElement;
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem('theme', next);
-    } catch {}
+  // Runs on every ClientRouter navigation, since the header is swapped with each page
+  document.addEventListener('astro:page-load', () => {
+    document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+    });
   });
 </script>
 
