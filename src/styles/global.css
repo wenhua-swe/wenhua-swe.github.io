@@ -1,0 +1,319 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #eeede9;
+  --card: #d6ccc2;
+  --text: #333;
+  --accent: #d5bdaf;
+  --border: #e3d5ca;
+
+  --link: #928075;
+  --link-hover: #6d5c51;
+  --gray: #dadada;
+  --max-width: 960px;
+}
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+	  --bg: #1E1E1C;
+	  --card: #3D3935;
+	  --text: #fff;
+	  --accent: #A68C7B;
+	  --border: #4B423B;
+	}
+  } */
+
+body {
+  font-family: 'Noto Serif TC', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: var(--bg);
+  background-size: 100% 600px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: rgb(var(--gray-dark));
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+main {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3em 2em;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.5rem 0;
+  color: rgb(var(--black));
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1.25em;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+p {
+  margin-bottom: 1.75em;
+}
+
+.prose p {
+  /* margin-bottom: 2em; */
+}
+
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+
+input {
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+code {
+  padding: 2px 5px;
+  background-color: var(--gray);
+  border-radius: 3px;
+}
+
+pre {
+  padding: 1.5em;
+  border-radius: 8px;
+}
+
+pre > code {
+  all: unset;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0 0 0 20px;
+  margin: 0px;
+  font-size: 1.25rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgb(var(--gray-light));
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding: 2em 1.5em;
+  }
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5em 1em;
+  }
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1em;
+  }
+  body {
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  blockquote {
+    padding: 1rem;
+  }
+}
+
+ul, ol {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+ul li, ol li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+ol {
+  counter-reset: list-counter;
+}
+
+ol li {
+  counter-increment: list-counter;
+}
+
+ol li::before {
+  content: counter(list-counter);
+  position: absolute;
+  left: 0;
+  color: var(--link);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* 巢狀列表樣式 */
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* 互動效果 */
+li:hover::before {
+  background-color: var(--link-hover);
+  transform: translateY(-50%) scale(1.2);
+  transition: all 0.2s ease;
+}
+
+ol li:hover::before {
+  color: var(--link-hover);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+blockquote {
+  background-color: var(--border);
+  padding: 2rem;
+  margin: 1rem 0;
+  border-left: 5px solid var(--link);
+
+  p {
+    margin: 0;
+  }
+}
+
+.noto-serif-tc-title {
+  font-family: 'Noto Serif TC', serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
+}
+
+/* 列表響應式處理 */
+@media (max-width: 768px) {
+  ul, ol {
+    padding-left: 1rem;
+  }
+  
+  ul li, ol li {
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* 代碼塊響應式處理 */
+@media (max-width: 768px) {
+  pre {
+    padding: 1em;
+    font-size: 0.9em;
+    overflow-x: auto;
+  }
+}
+
+/* 引用塊響應式處理 */
+@media (max-width: 768px) {
+  blockquote {
+    margin: 0.5rem 0;
+    padding: 1.5rem;
+  }
+}

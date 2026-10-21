@@ -1,0 +1,112 @@
+---
+// src/components/Search.astro
+import Header from '../components/Header.astro';
+import BaseHead from '../components/BaseHead.astro';
+---
+
+<html lang='zh-Hant-TW'>
+  <head>
+    <BaseHead title={'搜尋'} description={'搜尋網站內容'} />
+  </head>
+
+  <Header />
+  <div class='max-w-4xl mx-auto py-8 px-4'>
+    <h1 class='text-3xl font-bold mb-6 text-gray-800'>站內搜尋</h1>
+    <div id='search' class='bg-white rounded-lg shadow-md p-6 border border-gray-200'></div>
+  </div>
+</html>
+
+<script>
+  declare global {
+    interface Window {
+      PagefindUI: any;
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const loadPagefind = async () => {
+      // 動態載入 Pagefind 腳本和樣式
+      const script = document.createElement('script');
+      script.src = '/pagefind/pagefind-ui.js';
+      document.head.appendChild(script);
+
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = '/pagefind/pagefind-ui.css';
+      document.head.appendChild(style);
+
+      // 等待腳本加載
+      await new Promise((resolve) => {
+        script.onload = resolve;
+      });
+
+      // 初始化搜索
+      new window.PagefindUI({
+        element: '#search',
+        resetStyles: false,
+        showImages: true,
+        translations: {
+          placeholder: '輸入關鍵字搜尋...',
+          clear_search: '清除',
+          load_more: '載入更多結果',
+          search_label: '搜尋此網站',
+          filters_label: '篩選',
+          zero_results: '找不到符合「[SEARCH_TERM]」的結果',
+          many_results: '找到 [COUNT] 個符合「[SEARCH_TERM]」的結果',
+          one_result: '找到 1 個符合「[SEARCH_TERM]」的結果',
+          searching: '搜尋中...',
+        },
+      });
+    };
+
+    loadPagefind();
+  });
+</script>
+
+<style is:global>
+  @reference "../styles/global.css";
+
+  /* 自定義 Pagefind UI 樣式 + Tailwind 兼容 */
+  .pagefind-ui {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: #2563eb;
+    --pagefind-ui-text: #1f2937;
+    --pagefind-ui-background: #ffffff;
+    --pagefind-ui-border: #e5e7eb;
+    --pagefind-ui-border-radius: 0.5rem;
+    --pagefind-ui-font: inherit;
+    width: 100%;
+  }
+
+  .pagefind-ui__form {
+    @apply mb-6;
+  }
+
+  .pagefind-ui__search-input {
+    @apply w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .pagefind-ui__results {
+    @apply mt-6;
+  }
+
+  .pagefind-ui__result {
+    @apply border-b border-gray-200 py-4 last:border-b-0;
+  }
+
+  .pagefind-ui__result-title {
+    @apply text-xl font-medium mb-2 text-blue-600 hover:text-blue-800;
+  }
+
+  .pagefind-ui__result-excerpt {
+    @apply text-gray-600 mb-2;
+  }
+
+  .pagefind-ui__message {
+    @apply py-4 text-gray-600;
+  }
+
+  .pagefind-ui__button {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4;
+  }
+</style>

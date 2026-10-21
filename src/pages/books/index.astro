@@ -1,0 +1,71 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('books', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang='zh-Hant-TW'>
+  <head>
+    <BaseHead title={`讀書心得 | ${SITE_TITLE}`} description='讀過的書與一些想法' />
+    <style>
+      main {
+        width: 720px;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        padding: 1em 0;
+        border-bottom: 1px solid var(--border);
+      }
+      ul li a {
+        display: block;
+        text-decoration: none;
+      }
+      .title {
+        margin: 0 0 0.25em;
+      }
+      .meta {
+        margin: 0;
+        color: var(--link);
+        font-size: 0.9em;
+      }
+      .empty {
+        color: var(--link);
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>讀書心得</h1>
+      {posts.length === 0 && <p class='empty'>還沒有文章，正在讀。</p>}
+      <ul>
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/books/${post.id}/`}>
+                <h3 class='title'>{post.data.title}</h3>
+                <p class='meta'>
+                  《{post.data.book.title}》／{post.data.book.author} ·{' '}
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
