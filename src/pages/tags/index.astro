@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTagIndex } from '../../lib/content';
+
+const tags = [...(await getTagIndex())].sort((a, b) => b[1].posts.length - a[1].posts.length);
+---
+
+<BaseLayout title='標籤' description='依標籤瀏覽所有文章'>
+  <section class='container'>
+    <div class='section-head'>
+      <h1 class='display'>標籤</h1>
+      <span class='mono muted'>{tags.length} 個</span>
+    </div>
+    <ul class='tags'>
+      {
+        tags.map(([slug, { name, posts }]) => (
+          <li>
+            <a class='pill' href={`/tags/${slug}/`}>
+              #{name} <span class='muted'>{posts.length}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    padding-top: 48px;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(40px, 6vw, 64px);
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pill {
+    padding: 8px 16px;
+  }
+</style>

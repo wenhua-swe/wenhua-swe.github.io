@@ -1,0 +1,49 @@
+---
+import { formatDate, postUrl, type Post } from '../lib/content';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const tag = post.data.tags[0];
+---
+
+<a href={postUrl(post)} class='row'>
+  <span class='mono muted'>{formatDate(post.data.pubDate)}</span>
+  <span class='text'>
+    <span class='title'>{post.data.title}</span>
+    {tag && <span class='mono muted'>#{tag}</span>}
+  </span>
+</a>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 20px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--softline);
+    text-decoration: none;
+  }
+  .row .mono {
+    font-size: 12px;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  @media (max-width: 560px) {
+    .row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 4px;
+    }
+  }
+</style>

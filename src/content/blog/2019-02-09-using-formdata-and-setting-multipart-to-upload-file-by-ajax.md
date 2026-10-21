@@ -42,7 +42,7 @@ tags:
 ### 程式碼
 
 #### html
-```html=
+```html
 <form action="server/api/items" name="productForm" enctype="multipart/form-data" method="POST">
   <h3>新增商品</h3>
   <input type="file" name="files" class="productFile">
@@ -52,7 +52,7 @@ tags:
 </form>
 ```
 #### JavaScript
-```javascript=
+```javascript
 // 取得表單
 let productForm = document.forms.namedItem('productForm')
 productForm.addEventListener('submit', function(event){

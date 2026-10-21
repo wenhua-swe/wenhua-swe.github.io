@@ -31,7 +31,7 @@ tags:
 
 - Example
 
-```javascript=
+```javascript
 let BMI = {
   test: function () {
     console.log('BMI.test', this)

@@ -48,16 +48,16 @@ tags:
 從官網註冊你的信箱，取得 [token](https://dashboard.ngrok.com/auth)
 
 ### 4. 開啟你的 `terminal`（我使用 `iTerm`），進入專案底下執行：
-```=
+```
 ./ngrok authtoken <YOUR_AUTH_TOKEN>
 ```
 ### 5. 架起渠道：
-```=
+```
 ./ngrok http 80
 ```
 ### 6. 讓 `localhost` 對外
 用 `Python` 的 `SimpleHTTPServer` 模組建立一個臨時網頁伺服器（Web Server），`port` 要與 `ngrok` 要開的 `port` 相同。
-```=
+```
 python -m SimpleHTTPServer [port]
 ```
 ### 7. 大功告成

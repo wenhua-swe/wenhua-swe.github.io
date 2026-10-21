@@ -1,71 +1,57 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookCard from '../../components/BookCard.astro';
+import { getBookPosts } from '../../lib/content';
 
-const posts = (await getCollection('books', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = await getBookPosts();
 ---
 
-<!doctype html>
-<html lang='zh-Hant-TW'>
-  <head>
-    <BaseHead title={`讀書心得 | ${SITE_TITLE}`} description='讀過的書與一些想法' />
-    <style>
-      main {
-        width: 720px;
-      }
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      ul li {
-        padding: 1em 0;
-        border-bottom: 1px solid var(--border);
-      }
-      ul li a {
-        display: block;
-        text-decoration: none;
-      }
-      .title {
-        margin: 0 0 0.25em;
-      }
-      .meta {
-        margin: 0;
-        color: var(--link);
-        font-size: 0.9em;
-      }
-      .empty {
-        color: var(--link);
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>讀書心得</h1>
-      {posts.length === 0 && <p class='empty'>還沒有文章，正在讀。</p>}
-      <ul>
-        {
-          posts.map((post) => (
-            <li>
-              <a href={`/books/${post.id}/`}>
-                <h3 class='title'>{post.data.title}</h3>
-                <p class='meta'>
-                  《{post.data.book.title}》／{post.data.book.author} ·{' '}
-                  <FormattedDate date={post.data.pubDate} />
-                </p>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title='讀書心得' description='讀過的書與一些想法'>
+  <section class='container'>
+    <div class='section-head'>
+      <h1 class='display'><em class='accent'>01</em> 讀書心得</h1>
+      <span class='mono muted'>{posts.length} 本</span>
+    </div>
+    {
+      posts.length > 0 ? (
+        <div class='books'>
+          {posts.map((post) => (
+            <BookCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <p class='empty muted'>第一篇心得正在寫，敬請期待。</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    padding-top: 48px;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(40px, 6vw, 64px);
+  }
+  .books {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 24px;
+    margin-top: 32px;
+  }
+  .empty {
+    padding: 64px 0;
+    text-align: center;
+  }
+  @media (max-width: 860px) {
+    .books {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 520px) {
+    .books {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

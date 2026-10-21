@@ -96,7 +96,7 @@ tags:
     - 在 function被產生當下記住其與會環境，在執行環境消失後仍可使用，因為記憶體位置保留著。
     - 避免污染全域環境。
 - 用程式形容？
-```javascript=
+```javascript
 function a (x) {
     return() => console.log(x++);
 };
@@ -123,7 +123,7 @@ b();  // 2
 ## 9. loop
 
 - 在特定條件下執行重複的程式碼，重複做一件事直到不符合條件
-```javascript=
+```javascript
 for  // 知次數
 while // 不知次數
 do ... while // 不知次數，至少一次
@@ -138,7 +138,7 @@ do ... while // 不知次數，至少一次
     - 重點是滿足條件後，要從哪裡開始執行，下 break; 才停止
 
 - 幾種寫法？（2019-7-16 更新）
-```javascript=
+```javascript
 // example 1
 
 var fruit = 'Cherry';

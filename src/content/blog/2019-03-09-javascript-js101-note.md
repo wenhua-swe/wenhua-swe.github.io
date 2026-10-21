@@ -21,13 +21,13 @@ tags:
 
 #### 1. 建立 `JavaScript`：`vim index.js`
 
-```javascript=
+```javascript
 // index.js 
 console.log(123)
 ```
 
 #### 2. 用 `node` 執行寫好的程式碼
-```bash=
+```bash
 $ node index.js
 => 123
 ```
@@ -36,7 +36,7 @@ $ node index.js
 
 #### 1. 執行
 
-```bash=
+```bash
 $ node
 => 等同於進入瀏覽器的 console tab
 ```
@@ -44,7 +44,7 @@ $ node
 #### 2. 離開
 快速鍵 `control + c` (輸入兩次) 或是輸入指令：
 
-```bash=
+```bash
 $ .exit
 ```
 
@@ -55,7 +55,7 @@ $ .exit
 ### 邏輯運算子 `||`（或）、`&&`（和）、`!`（not）
 
 #### `||` 短路性質：
-```javascript=
+```javascript
 3 || 10
 // => 3
 // 程式遇到 3 時，因為是 truthy value，所以直接回傳 3，後面就直接不執行了。
@@ -70,7 +70,7 @@ false || 10
 ```
 
 ##### `&&` 短路性質：
-```javascript=
+```javascript
 3 && 10
 // => 10
 // 第一個值符合條件，檢查第二個值是否符合條件，回傳第二個值 10。
@@ -100,7 +100,7 @@ false && 10
      - 往**右移** 2 位，是**除以** 2的2次方（4）
      
 
-```javascript=
+```javascript
 10 << 1
 // 20 => 往左移一位，乘以2的1次方，= 10 * 2
 
@@ -123,32 +123,32 @@ false && 10
 
 #### 都會換算成二進位來運算
 `&` and 位元運算子：
-```javascript=
+```javascript
 10 & 15
 // 10 => 1010 and 1111 = 1010(2) = 10(10)
 ```
 
 `|` or 位元運算子：
-```javascript=
+```javascript
 10 & 15
 // 15 => 1010 or 1111 = 1111(2) = 15(10)
 ```
 
 `xor` 位元運算子：當一個 falsy value 和 truthy value 共存時回傳 true，其他都是回傳 false。
-```javascript=
+```javascript
 10 ^ 15
 // 5 => 1010 xor 1111 = 101(2) = 5(10)
 ```
 
 `not`：1變0，0變1
-```javascript=
+```javascript
 ~15
 // -16 => 1111 = 0000 （因電腦位元關係，原本的1111前有眾多的0，經過not運算會全轉為眾多的1）
 ```
 
 
 ### tips: 判斷數值是奇數或偶數
-```javascript=
+```javascript
 10 & 1
 // 0 => 判斷最後一個字是零的話，代表是偶數。
 
@@ -180,7 +180,7 @@ false && 10
 - 兩個等號 `==`，判斷值。
 - 三個等號 `===`，判斷類型與值。
 
-```javascript=
+```javascript
 let a = 10 == 10
 console.log(a)
 // true，通常先執行右邊的程式 10 == 10，再把判斷結果賦值給 a。
@@ -188,7 +188,7 @@ console.log(a)
 
 
 #### 物件與陣列的判斷
-```javascript=
+```javascript
 console.log([] === []) // false
 console.log([1] === [1]) // false
 console.log({} === {}) // false
@@ -203,7 +203,7 @@ console.log({a: 1} === {a: 2}) //false
 ### if... else if... else...
 ### switch
 
-```javascript=
+```javascript
 let number = 11
 
 if (!(number % 5)) {
@@ -217,14 +217,14 @@ if (!(number % 5)) {
 ```
 
 ### ternary 三元運算子
-```javascript=
+```javascript
 (a > b) ? 'big' : 'small'
 ```
 
 ## 迴圈/函式
 
 ### 實現輸入的數值會回傳一個區間陣列
-```javascript=
+```javascript
 
 function generateArray (min, max) {
   var result = []
@@ -240,7 +240,7 @@ console.log(generateArray(5, 10)) // [5, 6, 7, 8, 9, 10]
 - tip: 實作的時候，如果細節尚不清楚，可以試著先把function列出來，整理出邏輯（流程）
 
 #### 把 function 當成引數傳入
-```javascript=
+```javascript
 function transform(arr, transformFunction) {
   var result = []
   for (var i = 0; i < arr.length; i++) {
@@ -260,7 +260,7 @@ transform([2, 4, 6], double) // 把 function 當成引數傳入
 
 - 參數：定義在 `function` 中 `()` 的變數。
 - 引數：呼叫某函式時的 `()` 的變數。
-```javascript=
+```javascript
 funtcion myFunc(a, b) { // a, b => 參數
   console.log(arguments.length) // 引數的數量
   console.log(arguments[0]) // 第一個引數
@@ -290,7 +290,7 @@ https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/
 ##### 常用的函式
 
 - 字串轉數字 - 整數
-```javascript=
+```javascript
 // 沒填進位制的話預設是 10 進位，可接受 2~36
 
 function roughScale(x, base) {
@@ -314,18 +314,18 @@ parseInt('50.2個', 10) // 50
 ```
 
 - 字串轉數字 - 浮點數
-```javascript=
+```javascript
 parseFloat('20.5') // 20.5
 ```
 
 - 數字轉字串
-```javascript=
+```javascript
 let num = 1
 num.toString()
 ```
 
 - 四捨五入
-```javascript=
+```javascript
 function calculator (x) {
     return Math.round(x)
 }
@@ -334,7 +334,7 @@ calculator(20.5456789) // 21小數點第一位四捨五入後回傳整數
 ```
 
 - 無條件進位
-```javascript=
+```javascript
 function calculator (x) {
     return Math.ceil(x)
 }
@@ -343,7 +343,7 @@ calculator(20.3456789) // 20，小數點第一位無條件進位後回傳整數
 ```
 
 - 無條件捨去
-```javascript=
+```javascript
 function calculator (x) {
     return Math.floor(x)
 }
@@ -352,7 +352,7 @@ calculator(20.3456789) // 20，小數點第一位無條件捨去後回傳整數
 ```
 
 - 小數點後取幾位數（並四捨五入）
-```javascript=
+```javascript
 function calculator (x) {
     return x.toFixed(2) // 如果都不傳，則直接回傳整數（四捨五入）
     // 接受 0~20
@@ -363,7 +363,7 @@ calculator(20.5416789) // 20.54
 ```
 
 - 開根號
-```javascript=
+```javascript
 function calculator (x) {
     return Math.sqrt(x)
 }
@@ -372,7 +372,7 @@ calculator(9) // 3
 ```
 
 - 平方
-```javascript=
+```javascript
 function calculator (x, y) {
     return Math.pow(x, y)
 }
@@ -381,19 +381,19 @@ calculator(2, 10) // 1024
 ```
 
 - 最大值
-```javascript=
+```javascript
 let biggestNum = Number.MAX_VALUE
 console.log(biggestNum) // 1.7976931348623157e+308
 ```
 
 - 最小值
-```javascript=
+```javascript
 let smallestNum = Number.MIN_VALUE
 console.log(smallestNum) // 5e-324
 ```
 
 - 隨機亂數
-```javascript=
+```javascript
 // 產生 0~0.99999 隨機小數
 Math.random()
 
@@ -402,7 +402,7 @@ Math.floor(Math.random()*10 +1)
 ```
 
 - 檢查是否是數字
-```javascript=
+```javascript
 Number.isNaN(NaN);        // true
 Number.isNaN(Number.NaN); // true
 Number.isNaN(0 / 0);      // true
@@ -436,7 +436,7 @@ Number.isNaN(' ');
 - `str.charAt(5)`：回傳 `str` 找第六個字是哪一個字。
 - `str.split(' ')`：將 `str` 這個字串以 ` ` 空格切開後回傳一個陣列。
 - `str.slice(index1, b)`：切字串，但是以範圍來切後回傳，索引也可以從字串最後算起。
-```javascript=
+```javascript
 var str = 'The quick brown fox jumps over the lazy dog.';
 
 console.log(str.slice(1));

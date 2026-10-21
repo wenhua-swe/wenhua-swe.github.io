@@ -21,7 +21,7 @@ tags:
 
 ### 比較 Working Directory 和 Staging Area
 
-```bash=
+```bash
 git diff
 ```
 
@@ -29,7 +29,7 @@ git diff
 
 ### 比較 Working Directory 和 HEAD
 
-```bash=
+```bash
 git diff head
 ```
 
@@ -37,7 +37,7 @@ git diff head
 
 ### 比較 Working Directory 和該 commit 的 tree 物件
 
-```bash=
+```bash
 git diff commit
 ```
 
@@ -45,7 +45,7 @@ git diff commit
 
 ### 比較 Staging Area 和 HEAD
 
-```bash=
+```bash
 git diff --cached
 git diff --cached head
 git diff --staged
@@ -55,7 +55,7 @@ git diff --staged
 
 ### 比較 Staging Area 和該 commit 的 tree 物件
 
-```bash=
+```bash
 git diff --cached commit
 ```
 
@@ -63,7 +63,7 @@ git diff --cached commit
 
 ### 比較兩個 branch 之間的 HEAD
 
-```bash=
+```bash
 git diff branchName..branchName
 git diff branchName branchName
 ```
@@ -72,7 +72,7 @@ git diff branchName branchName
 
 ### 比較 branch2 和兩個 branch 的共同祖先
 
-```bash=
+```bash
 git diff branch1...branch2
 ```
 
@@ -80,6 +80,6 @@ git diff branch1...branch2
 
 ### 比較兩個 commit 物件下的 tree 物件
 
-```bash=
+```bash
 git diff commit commit
 ```

@@ -22,14 +22,14 @@ tags:
 1. 在 `iTerm` 進入專案的資料夾根目錄。
 
 2. 找到對外 `IP`，要找 IPV4 的 。
-```bash=
+```bash
 ifconfig // MacOS
 ipconfig // Windows
 ```
 
 3. 輸入以下指令，預設 `port` 是 `8000`。
 - [ ] port 儘量使用 4 位數以上（因爲有一些是預設的 port 號，可能會有重疊到的可能）
-```bash=
+```bash
 python -m SimpleHTTPServer [port]
 ```
 

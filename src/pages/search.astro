@@ -1,20 +1,15 @@
 ---
-// src/components/Search.astro
-import Header from '../components/Header.astro';
-import BaseHead from '../components/BaseHead.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang='zh-Hant-TW'>
-  <head>
-    <BaseHead title={'搜尋'} description={'搜尋網站內容'} />
-  </head>
-
-  <Header />
-  <div class='max-w-4xl mx-auto py-8 px-4'>
-    <h1 class='text-3xl font-bold mb-6 text-gray-800'>站內搜尋</h1>
-    <div id='search' class='bg-white rounded-lg shadow-md p-6 border border-gray-200'></div>
-  </div>
-</html>
+<BaseLayout title='搜尋' description='搜尋網站內容'>
+  <section class='container'>
+    <div class='section-head'>
+      <h1 class='display'>搜尋</h1>
+    </div>
+    <div id='search'></div>
+  </section>
+</BaseLayout>
 
 <script>
   declare global {
@@ -44,7 +39,7 @@ import BaseHead from '../components/BaseHead.astro';
       new window.PagefindUI({
         element: '#search',
         resetStyles: false,
-        showImages: true,
+        showImages: false,
         translations: {
           placeholder: '輸入關鍵字搜尋...',
           clear_search: '清除',
@@ -64,49 +59,27 @@ import BaseHead from '../components/BaseHead.astro';
 </script>
 
 <style is:global>
-  @reference "../styles/global.css";
-
-  /* 自定義 Pagefind UI 樣式 + Tailwind 兼容 */
+  #search {
+    margin-top: 32px;
+  }
   .pagefind-ui {
     --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: #2563eb;
-    --pagefind-ui-text: #1f2937;
-    --pagefind-ui-background: #ffffff;
-    --pagefind-ui-border: #e5e7eb;
-    --pagefind-ui-border-radius: 0.5rem;
-    --pagefind-ui-font: inherit;
-    width: 100%;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--fg);
+    --pagefind-ui-background: var(--bg);
+    --pagefind-ui-border: var(--softline);
+    --pagefind-ui-tag: var(--pill);
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-font: var(--font-body);
   }
+</style>
 
-  .pagefind-ui__form {
-    @apply mb-6;
+<style>
+  section {
+    padding-top: 48px;
   }
-
-  .pagefind-ui__search-input {
-    @apply w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  }
-
-  .pagefind-ui__results {
-    @apply mt-6;
-  }
-
-  .pagefind-ui__result {
-    @apply border-b border-gray-200 py-4 last:border-b-0;
-  }
-
-  .pagefind-ui__result-title {
-    @apply text-xl font-medium mb-2 text-blue-600 hover:text-blue-800;
-  }
-
-  .pagefind-ui__result-excerpt {
-    @apply text-gray-600 mb-2;
-  }
-
-  .pagefind-ui__message {
-    @apply py-4 text-gray-600;
-  }
-
-  .pagefind-ui__button {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md mt-4;
+  h1 {
+    margin: 0;
+    font-size: clamp(40px, 6vw, 64px);
   }
 </style>

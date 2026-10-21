@@ -19,7 +19,7 @@ tags:
 
 #### 修改 `.git/config` 檔案
 
-```git=
+```bash
 [remote "origin"]
 url = 準備用來備份樣式跟設定的repository.git
 fetch = +refs/heads/*:refs/remotes/origin/*
@@ -29,24 +29,24 @@ fetch = +refs/heads/*:refs/remotes/origin/*
 ## 流程
 
 #### 1. 進入 `/bin` 資料夾：
-```bash=
+```bash
 cd /usr/local/bin
 ```
 
 #### 2. 檢視目前電腦有哪些指令：
-```bash=
+```bash
 ls
 ```
 
 #### 3. 自訂你的個人指令，進入 insert 模式編輯內容：
-```bash=
+```bash
 vim your-command
 ```
 PS. 若不存在這個檔案（你定義的名稱），vim 會在你儲存內容後自動建立這個檔案
 
 #### 4. 建立批次執行的指令們：
 
-```bash=
+```bash
 #!/bin/bash
 cd 你的部落格絕對路徑
 git add .
@@ -70,12 +70,12 @@ hexo g -d # 根據新內容生成 public 資料夾，並部署上線
 ![](https://i.imgur.com/XbOdA9o.png)
 
 檢視指令的權限：
-```bash=
+```bash
 ll -a your-command
 ```
 
 如果發現權限只可讀，使用以下語法，加上執行的權限：
-```bash=
+```bash
 chmod u+x your-command
 ```
 

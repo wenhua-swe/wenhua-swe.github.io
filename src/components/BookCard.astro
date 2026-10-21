@@ -1,0 +1,65 @@
+---
+import { formatDate, postUrl, stars } from '../lib/content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'books'>;
+}
+
+const { post } = Astro.props;
+const { title, pubDate, heroImage, book } = post.data;
+---
+
+<a href={postUrl(post)} class='card'>
+  <div class='shelf'>
+    {
+      heroImage ? (
+        <img class='cover' src={heroImage} alt={`《${book.title}》書封`} loading='lazy' decoding='async' />
+      ) : (
+        <div class='cover blank' aria-hidden='true' />
+      )
+    }
+  </div>
+  <div class='mono accent'>{stars(book.rating)} · {formatDate(pubDate)}</div>
+  <div class='title display'>{title}</div>
+  <div class='muted'>《{book.title}》／{book.author}</div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .shelf {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    border-radius: 16px;
+    background: var(--surface);
+  }
+  .cover {
+    width: 46%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    transition: transform 0.3s;
+  }
+  .card:hover .cover {
+    transform: translateY(-6px);
+  }
+  .blank {
+    background: var(--cover);
+  }
+  .mono {
+    font-size: 12px;
+  }
+  .title {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+</style>
