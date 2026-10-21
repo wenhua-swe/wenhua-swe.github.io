@@ -1598,6 +1598,11 @@ eventemitter3@^5.0.1:
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.1.tgz"
   integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
 
+exif-reader@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/exif-reader/-/exif-reader-2.0.3.tgz#259997735080bc6bb959c37b32c60f004ec4391d"
+  integrity sha512-zFbQvguwT9JkqyYhR7pjE1Yn8SagwaGLNRU0Oh14xFa1paSf5Gzxn4gxgk0XhnudI0UIqU+HgnBX93+nva592A==
+
 expressive-code@^0.44.3:
   version "0.44.3"
   resolved "https://registry.yarnpkg.com/expressive-code/-/expressive-code-0.44.3.tgz#c4d48c9a076a21f98b453ae1bd3d5a2d1d61816b"
