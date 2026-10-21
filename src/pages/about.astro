@@ -16,9 +16,9 @@ import portrait from '../assets/about/portrait.jpg';
       src={portrait}
       alt='Wen-Hua 隔著玻璃拿著相機拍下自己，背後是一片樹林'
       formats={['avif', 'webp']}
-      widths={[480, 800, 1200]}
+      widths={[480, 800, 1200, 1600]}
       sizes='(max-width: 860px) 100vw, 440px'
-      quality={85}
+      quality={90}
       loading='eager'
     />
     <div class='prose'>
@@ -65,10 +65,7 @@ import portrait from '../assets/about/portrait.jpg';
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    /* Keep the subject, who stands right of centre, in the crop */
-    object-position: 68% center;
+    /* The file is already cropped to 4:5, so it never gets upscaled */
     border-radius: 2px;
   }
   .prose {
