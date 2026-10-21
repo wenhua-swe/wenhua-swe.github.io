@@ -103,7 +103,7 @@ git lg
 2. 下 git log 時，提高可讀性，顯示時間、commit 的人
 3. 不小心把 commit 下在 Master，如何移動某些 commits 到另一個新分支？
 4. 取 master 最新的 commit 內容，搬到現在正在開發中的 feature branch
-5. 將本地端有 rebase 過的分支 push 到遠端（使用 --force-with-lease）
+5. 將本地端有 rebase 過的分支 push 到遠端（使用 `--force-with-lease`）
 6. 在提交要給夥伴 review、merge 前，怎樣整理好我們的 git branch
 7. 利用 Git Autosquash 自動清理我們的 feature branch（有時候開發途中會發現其他小問題，會產生一些 fix 這種可讀性低的 commits）
 8. 整合數個 commits 成一個 commit，並且 merge 到 master
