@@ -18,6 +18,7 @@ const shutter = photo.shutter >= 1 ? `${photo.shutter}s` : `1/${Math.round(1 / p
     type='button'
     class='open'
     data-full={full.src}
+    data-color={photo.color}
     data-alt={photo.alt}
     data-title={photo.title}
     data-description={photo.description ?? ''}

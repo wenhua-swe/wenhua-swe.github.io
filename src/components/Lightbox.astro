@@ -4,7 +4,10 @@
 
 <dialog class='lightbox' aria-label='照片檢視'>
   <div class='frame'>
-    <img class='big' alt='' />
+    <div class='stage' aria-busy='true'>
+      <span class='spinner' aria-hidden='true'></span>
+      <img class='big' alt='' />
+    </div>
     <aside>
       <div class='mono muted' data-field='no'></div>
       <h2 class='display' data-field='title'></h2>
@@ -38,6 +41,7 @@
   });
 
   const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
+  const stage = dialog.querySelector<HTMLElement>('.stage')!;
   const big = dialog.querySelector<HTMLImageElement>('.big')!;
   let current: HTMLButtonElement | undefined;
 
@@ -47,10 +51,32 @@
       (b) => b.offsetParent !== null,
     );
 
+  // Fetch neighbours in the background so arrow-key switching is instant
+  const preload = (button?: HTMLButtonElement) => {
+    if (button?.dataset.full) new Image().src = button.dataset.full;
+  };
+
   const showPhoto = (button: HTMLButtonElement) => {
     current = button;
-    big.src = button.dataset.full ?? '';
+    const src = button.dataset.full ?? '';
+    // Hide the previous photo until the new one has loaded, instead of flashing it
+    big.classList.remove('ready');
+    stage.setAttribute('aria-busy', 'true');
+    stage.style.backgroundColor = button.dataset.color ?? '';
+    const reveal = () => {
+      if (big.getAttribute('src') !== src) return;
+      big.classList.add('ready');
+      stage.setAttribute('aria-busy', 'false');
+    };
+    big.onload = reveal;
+    big.src = src;
     big.alt = button.dataset.alt ?? '';
+    if (big.complete) reveal();
+
+    const list = visible();
+    const index = list.indexOf(button);
+    preload(list[(index + 1) % list.length]);
+    preload(list[(index - 1 + list.length) % list.length]);
     dialog.querySelectorAll<HTMLElement>('[data-field]').forEach((el) => {
       el.textContent = button.dataset[el.dataset.field!] ?? '';
       el.hidden = el.textContent === '';
@@ -102,13 +128,51 @@
     grid-template-columns: minmax(0, 1fr) 300px;
     max-height: 94vh;
   }
+  .stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 94vh;
+    background: #0a0c08;
+    transition: background-color 0.3s;
+  }
   .big {
     display: block;
     width: 100%;
-    height: 94vh;
-    max-height: 94vh;
+    height: 100%;
     object-fit: contain;
-    background: #0a0c08;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .big.ready {
+    opacity: 1;
+  }
+  .spinner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .stage[aria-busy='false'] .spinner {
+    display: none;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .big,
+    .stage {
+      transition: none;
+    }
+    .spinner {
+      animation-duration: 2.4s;
+    }
   }
   aside {
     display: flex;
@@ -170,9 +234,8 @@
     .frame {
       grid-template-columns: minmax(0, 1fr);
     }
-    .big {
-      height: auto;
-      max-height: 60vh;
+    .stage {
+      height: 60vh;
     }
     aside {
       padding: 20px;
