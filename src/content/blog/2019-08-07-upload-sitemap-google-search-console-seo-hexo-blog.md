@@ -15,7 +15,7 @@ tags:
 
 ## 查看使用者搜尋什麼關鍵字
 
-想提升 SEO ，所以之前就有把我的[部落格網址](https://askiebaby.github.io/)提交到 [Google Search Console](https://search.google.com/search-console/)，在後台能了解：
+想提升 SEO ，所以之前就有把部落格網址提交到 [Google Search Console](https://search.google.com/search-console/)，在後台能了解：
 
 1. 成效報表：網頁搜尋總點擊次數
 2. 使用者點擊錯誤的網址數量
@@ -60,7 +60,7 @@ hexo g -d
 檢查看看有沒有順利產生 `Sitemap.xml`？
 
 ```plain
-https://askie.today/sitemap.xml => 我的
+https://example.com/sitemap.xml => 我的
 ```
 
 ## 提交至 Google Search Console

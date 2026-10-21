@@ -15,7 +15,7 @@ tags:
 
 ## 必要 Prerequisites
 
-- 先註冊好你的網址，比如說，我的部落格網址是 `askie.today`。
+- 先註冊好你的網址，比如說 `example.com`。
 - 準備好透過 GitHub Pages 架的 Hexo 部落格與 Repository。
 
 ## 設定步驟 Configuration
@@ -35,7 +35,7 @@ tags:
 
 可以在 `Terminal` 使用 `dig` 或是 `nslookup` 語法，來確定我們是否設定正確，DNS 在同步全球的 Record 時需要點時間。
 
-![使用 dig askie.today 的結果](https://i.imgur.com/GkaZ4HA.png)
+![使用 dig 查詢自訂網域的結果](https://i.imgur.com/GkaZ4HA.png)
 
 ### 建立 CNAME 檔案
 
@@ -46,7 +46,7 @@ tags:
 比如說，我的內容是：
 
 ```html
-askie.today
+example.com
 ```
 
 ### 更新 GitHub Pages 的設定
