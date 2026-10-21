@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
 import { GITHUB_URL } from '../consts';
+import portrait from '../assets/about/portrait.jpg';
 ---
 
 <BaseLayout title='關於' description='關於 Wen-Hua Lin'>
@@ -8,6 +10,17 @@ import { GITHUB_URL } from '../consts';
     <div class='section-head'>
       <h1 class='display'>關於</h1>
     </div>
+    <div class='layout'>
+    <Picture
+      class='portrait'
+      src={portrait}
+      alt='Wen-Hua 隔著玻璃拿著相機拍下自己，背後是一片樹林'
+      formats={['avif', 'webp']}
+      widths={[480, 800, 1200]}
+      sizes='(max-width: 860px) 100vw, 440px'
+      quality={85}
+      loading='eager'
+    />
     <div class='prose'>
       <p>
         我是 Wen-Hua，一名軟體工程師。現在正在育嬰留停，難得有一整年可以慢下來，陪孩子長大，也重新找回自己的步調。
@@ -29,6 +42,7 @@ import { GITHUB_URL } from '../consts';
         歡迎在文章底下留言，或到 <a href={GITHUB_URL}>GitHub</a> 找我。也可以用 <a href='/rss.xml'>RSS</a> 訂閱新文章。
       </p>
     </div>
+    </div>
   </section>
 </BaseLayout>
 
@@ -40,8 +54,36 @@ import { GITHUB_URL } from '../consts';
     margin: 0;
     font-size: clamp(32px, 5vw, 52px);
   }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 56px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .layout :global(.portrait) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    /* Keep the subject, who stands right of centre, in the crop */
+    object-position: 68% center;
+    border-radius: 2px;
+  }
   .prose {
-    max-width: 680px;
-    margin-top: 32px;
+    max-width: 640px;
+  }
+  .prose > p:first-of-type::first-letter {
+    float: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+  }
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
   }
 </style>
