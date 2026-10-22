@@ -56,7 +56,7 @@ yarn add-photos ~/Desktop/攝影作品
 - 已經轉過的照片會略過。
 - 終端機會印出每張照片的資料，貼進 `src/data/photos.ts` 的 `list`，再補上：
   - `title`：照片名稱
-  - `category`：`花木`、`海港`、`城市`、`夜色`、`日常` 其中一個（要新增分類就改同一個檔案裡的 `categories`）
+  - `category`：`花木`、`海港`、`城市`、`夜色`、`貓`、`日常` 其中一個（要新增分類就改同一個檔案裡的 `categories`）
   - `alt`：畫面描述，給看不到圖片的讀者
   - `description`：選填，照片背後的故事，點開照片時顯示
 - 想放上首頁的照片，改 `src/pages/index.astro` 裡的 `heroPhoto`（橫幅）和 `featured`（四張卡片）。

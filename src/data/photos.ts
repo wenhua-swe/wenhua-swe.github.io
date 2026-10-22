@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 
 // Web copies live in src/assets/photos (long edge 2560px, metadata stripped).
 // Shooting data was read from the originals before stripping.
-export const categories = ['花木', '海港', '城市', '夜色', '日常'] as const;
+export const categories = ['花木', '海港', '城市', '夜色', '貓', '日常'] as const;
 
 export interface Photo {
   file: string;
@@ -42,9 +42,9 @@ const list: Omit<Photo, 'image' | 'no'>[] = [
   { file: 'dscf0923', title: '停泊小船', category: '海港', alt: '藍天下的港口與停泊的小船', date: '2026-06-01', focal: 52.7, aperture: 20, shutter: 1 / 2000, iso: 5000, color: '#6b8ea5' },
   { file: 'dscf0924', title: '排好隊的樹', category: '花木', alt: '藍天前一排高聳的松樹', date: '2026-06-01', focal: 35.8, aperture: 18, shutter: 1 / 2000, iso: 5000, color: '#7c9ab2' },
   { file: 'dscf0985', title: '花火節', category: '夜色', alt: '夜空中綻放的煙火', date: '2026-06-01', focal: 18, aperture: 18, shutter: 1, iso: 800, color: '#060403' },
-  { file: 'dscf1149', title: 'Brook 布魯克', category: '日常', description: '試拍新鏡頭，好糊啊', alt: '黑白色的貓 Brook 直直看著鏡頭', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 320, color: '#b7a993' },
-  { file: 'dscf1152', title: 'Nami 娜美', category: '日常', alt: '橘貓 Nami 坐著望向一旁', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 500, color: '#c8ad96' },
-  { file: 'dscf1153', title: 'Sanji 香吉士', category: '日常', alt: '虎斑白貓 Sanji 在碗邊舔嘴', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 320, color: '#c0a896' },
+  { file: 'dscf1149', title: 'Brook 布魯克', category: '貓', description: '試拍新鏡頭，好糊啊', alt: '黑白色的貓 Brook 直直看著鏡頭', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 320, color: '#b7a993' },
+  { file: 'dscf1152', title: 'Nami 娜美', category: '貓', alt: '橘貓 Nami 坐著望向一旁', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 500, color: '#c8ad96' },
+  { file: 'dscf1153', title: 'Sanji 香吉士', category: '貓', alt: '虎斑白貓 Sanji 在碗邊舔嘴', date: '2026-09-09', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 320, color: '#c0a896' },
   { file: 'dscf1162', title: '為自己備餐', category: '日常', alt: '木桌上的一盤早午餐沙拉', date: '2026-09-12', focal: 23, aperture: 1.4, shutter: 1 / 34, iso: 160, color: '#c5a484' },
 ];
 
