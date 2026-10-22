@@ -20,6 +20,7 @@ const full = await getImage({ src: photo.image, width: 2000, format: 'webp', qua
     class='open'
     data-full={full.src}
     data-color={photo.color}
+    data-ratio={(photo.image.width / photo.image.height).toFixed(4)}
     data-alt={photo.alt}
     data-title={photo.title}
     data-description={photo.description ?? ''}

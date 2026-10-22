@@ -38,6 +38,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
   <div class='container body'>
     <aside>
+      <div class='rail'>
       {
         toc.length > 0 && (
           <nav class='toc' aria-label='文章目錄'>
@@ -61,6 +62,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
           </div>
         )
       }
+      </div>
     </aside>
 
     <article>
@@ -143,12 +145,17 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     grid-column: span 3;
     font-size: 14px;
   }
-  aside > * + * {
+  /* ToC and tags stick together while the article scrolls */
+  .rail {
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+  .rail > * + * {
     margin-top: 24px;
   }
   .toc {
-    position: sticky;
-    top: 24px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -191,8 +198,9 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     article {
       grid-column: 1 / -1;
     }
-    .toc {
+    .rail {
       position: static;
+      max-height: none;
     }
   }
 </style>
