@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import './reset.css';
 @import '@fontsource-variable/fraunces/full.css';
 @import '@fontsource-variable/fraunces/full-italic.css';
 @import '@fontsource/ibm-plex-mono/400.css';
@@ -139,6 +139,8 @@ a:hover {
   position: absolute;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;

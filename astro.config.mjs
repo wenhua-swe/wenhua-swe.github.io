@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 import expressiveCode from 'astro-expressive-code';
-import tailwindcss from '@tailwindcss/vite';
 import { satteri } from '@astrojs/markdown-satteri';
 
 // Lazy-load every image in Markdown, including remote ones Astro does not optimize
@@ -87,9 +86,6 @@ export default defineConfig({
   ],
   markdown: {
     processor: satteri({ hastPlugins: [lazyImages, taskListLabels, focusableTables] }),
-  },
-  vite: {
-    plugins: [tailwindcss()],
   },
   output: 'static',
   // Keep Astro 5 whitespace handling; v7's 'jsx' default drops spaces between inline elements
