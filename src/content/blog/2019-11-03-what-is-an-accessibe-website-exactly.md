@@ -1,22 +1,27 @@
 ---
-title: 無障礙網站又稱為可訪問的網站，難道還有不可訪問的網站嗎？ What is an accessibe website exactly？
-pubDate: '2019-11-03'
+title: 無障礙網站又稱為可訪問的網站，難道還有不可訪問的網站嗎？ What is an accessible website exactly？
+pubDate: '2019-09-16'
+updatedDate: '2026-10-27'
 description: >-
-  ## 只要花 60
-  秒瞭解「無障礙網站」概念[![Yes](https://img.youtube.com/vi/hufMi9LZX2I/0.jpg)](https://www.youtube...
+  無障礙網站（Web Accessibility）指的是每個人都能順利取得資訊、操作的網站。本文從 A11Y 的縮寫與發音談起，思考「障礙」的定義、障礙類型與輔助技術，也實際體驗色盲的瀏覽情境。
 author: Wen-Hua Lin
+series: 實踐無障礙網頁設計
 tags:
+  - iThome 鐵人賽
+  - 實踐無障礙網頁設計
   - a11y
   - 好想工作室
   - 無障礙網站
   - 無障礙
-  - null
 ---
 
+> 本文原刊於 2019 第 11 屆 iThome 鐵人賽「實踐無障礙網頁設計」Day 1（[原文連結](https://ithelp.ithome.com.tw/articles/10215933)）。
+>
+> 2026-10-27 依 NIH MedlinePlus、Google 搜尋中心與 MDN 的官方文件校訂，改動處以刪除線或「更正」框標示，失效連結已直接更新。規範會持續修訂，實作前請以各「更正」框附的官方連結為準。
 
 ## 只要花 60 秒瞭解「無障礙網站」概念
 
-[![Yes](https://img.youtube.com/vi/hufMi9LZX2I/0.jpg)](https://www.youtube.com/watch?v=hufMi9LZX2I)
+[影片：What is Web Accessibility in 60 seconds!（Google Women Techmaker）](https://www.youtube.com/watch?v=hufMi9LZX2I)
 
 > Your Website + Accessibility = BFF —— Jenn Lukas
 
@@ -32,7 +37,7 @@ tags:
 
 ## 無障礙網站
 
-![A11Y 是 Accessibility 的縮寫](https://i.imgur.com/lzugMwP.jpg)
+![A11Y 是 Accessibility 的縮寫](/images/ironman-a11y/day01-1.webp)
 
 
 ### 無障礙網站又稱為 Web Accessibility
@@ -49,7 +54,7 @@ tags:
 
 可以唸作 A-one-one-Y 或是 A-eleven-Y，在業界也有人會唸作 ally 或是 alley 的發音。
 
-其餘還有很多同樣形式的縮寫：如 [g11n](https://en.wiktionary.org/wiki/g11n#English)（globalization）、[i18n](https://en.wiktionary.org/wiki/i18n#English)（Internationalization）[L10n](https://en.wiktionary.org/wiki/L10n#English)（Localization）、[p13n](https://en.wiktionary.org/wiki/p13n#English)（personalization）、[k8s](https://en.wiktionary.org/wiki/k8s#English)（Kubernetes）等。
+其餘還有很多同樣形式的縮寫：如 [g11n](https://en.wiktionary.org/wiki/g11n#English)（globalization）、[i18n](https://en.wiktionary.org/wiki/i18n#English)（Internationalization）、[L10n](https://en.wiktionary.org/wiki/L10n#English)（Localization）、[p13n](https://en.wiktionary.org/wiki/p13n#English)（personalization）、[k8s](https://en.wiktionary.org/wiki/k8s#English)（Kubernetes）等。
 
 ### 用愛開發，實踐「無障礙」
 
@@ -59,7 +64,12 @@ tags:
 
 不可訪問的網站其實真的很多。
 
-訪問性通常不是我們在設計、建置網站時的第一件事情，在某些問題出現以前，我們通常不會考量到隱形的需求。舉例一個情境：當我們處於產品開發週期的測試階段，某位使用者無法閱讀螢幕的文字，去瞭解才發現世界上男性中有 8% 的色盲。（[從 WHO 了解視力障礙數據](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment)）
+訪問性通常不是我們在設計、建置網站時的第一件事情，在某些問題出現以前，我們通常不會考量到隱形的需求。舉例一個情境：當我們處於產品開發週期的測試階段，某位使用者無法閱讀螢幕的文字，去瞭解才發現~~世界上男性中有 8% 的色盲~~ <ins>北歐血統的男性約每 12 人就有 1 人有紅綠色覺異常，全球整體約 2.5% 的人有色覺異常</ins>。（[從 WHO 了解視力障礙數據](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment)）
+
+> [!更正]
+> 「8% 的男性」不是全世界的數字，WHO 這份視力障礙的資料也沒有提到色盲。依美國國家醫學圖書館的資料，紅綠色覺異常在北歐血統族群中約每 12 位男性有 1 位（約 8%），東亞族群也不少見，其他族群大多較少；全球整體估計約 2.5% 的人有色覺異常。另外，色盲（色覺異常）多半是分辨某些顏色有困難，不是完全看不到顏色。
+>
+> 來源：[MedlinePlus Genetics — Color vision deficiency](https://medlineplus.gov/genetics/condition/color-vision-deficiency/)、[National Eye Institute — Color Blindness](https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/color-blindness)
 
 有些國家法律規定政府、教育機構、企業網站要符合無障礙的規範，以保障人權，訪問性的問題會在產品生命週期中蔓延，也會引發訴訟的問題。而且無障礙問題通常會出現在產品進入後期或是完成後，這時要從零導入「無障礙」實踐恐怕需要負擔更高額的成本。
 
@@ -69,7 +79,7 @@ tags:
 
 ## 來思考「障礙」的定義
 
-一個人有多種不同機能障礙的可能，「障礙（Disabled）」是一種相對的且會變動的狀態，也是一個事實的描述，是[你的能力在所處「環境」下是否有辦法互動發揮作用而定](https://www.facebook.com/color.cheng/posts/10215351794401924)。
+一個人有多種不同機能障礙的可能，「障礙（Disability）」是一種相對的且會變動的狀態，也是一個事實的描述，是[你的能力在所處「環境」下是否有辦法互動發揮作用而定](https://www.facebook.com/color.cheng/posts/10215351794401924)。
 
 在中文翻譯上，「無障礙」這個詞彙挺容易讓人直接聯想成：「喔！我們要做無障礙網站，那就是為了身心障礙人士瀏覽專用而設計嗎？」
 
@@ -108,7 +118,7 @@ tags:
     - 嚴重：無法聽到 95 分貝以下的聲音。主要透過手語溝通。
 - **視覺**
 
-    > 開發基本原則：提升顏色對比度、填寫替代文字、減少顏文字的使用、確保超連結文字的提示性、超連結的路徑不要寫無意義的 JavaScript（ `href="javascript: void;"` ）、勿僅靠顏色作為傳達重要訊息的唯一方式、資訊結構順序設計、文字不要壓在圖上...等。
+    > 開發基本原則：提升顏色對比度、填寫替代文字、減少顏文字的使用、確保超連結文字的提示性、超連結的路徑不要寫無意義的 JavaScript（ ~~`href="javascript: void;"`~~ <ins>`href="javascript:void(0)"`</ins> ）、勿僅靠顏色作為傳達重要訊息的唯一方式、資訊結構順序設計、文字不要壓在圖上...等。
 
     - 色盲
     - 色弱
@@ -118,11 +128,16 @@ tags:
     - 白化症
     - 年邁的老人
 
+> [!更正]
+> `void` 是運算子，後面一定要接運算式，`javascript: void;` 本身就是語法錯誤；常見的反模式寫法是 `javascript:void(0)`。不過重點還是一樣：MDN 也不建議用 `javascript:` 偽協定，會觸發動作的元素請用 `<button>`，要換頁才用有真實網址的 `<a href>`。
+>
+> 來源：[MDN — void operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void)
+
 還有一些是屬於暫時性或環境的障礙，比如網路速度不佳的問題、我們因為車禍導致手臂受傷而暫時無法使用滑鼠。
 
 ---
 
-## 現實生活有哪些透過輔助技術消彌障礙的情境？
+## 現實生活有哪些透過輔助技術消弭障礙的情境？
 
 - 近視配戴眼鏡或隱形眼鏡
 - 長者配戴老花眼鏡
@@ -162,13 +177,18 @@ tags:
 
 很多企業都開始重視起無障礙網站，因為實踐無障礙網站的過程，還可以達成以下優點
 
-- 提高 SEO 搜尋引擎排名（看看[這篇的內容](https://www.dbswebsite.com/blog/accessibility-seo-a-perfect-fit/)）
+- ~~提高 SEO 搜尋引擎排名~~ <ins>有助於 SEO</ins>（看看[這篇的內容](https://www.dbswebsite.com/blog/accessibility-seo-a-perfect-fit/)）
 - 吸引更廣泛的受眾、拓展市場機會
 - 展示社會責任
 - 提高易用性（Usability）
 - 編寫更清晰的程式碼
 - 降低產品成本：避免日後產品迭代時才需要從零導入無障礙的窘境
 - 協助網路速度慢的使用者訪問
+
+> [!更正]
+> 「提高排名」說得太滿了。無障礙和 SEO 的需求有不少重疊，例如 Google 會用替代文字搭配頁面內容來理解圖片，語意清楚的結構也讓搜尋引擎更好解析，所以是「有幫助」，但不保證排名一定會提高。
+>
+> 來源：[Google 搜尋中心 — Google 圖片 SEO 最佳做法](https://developers.google.com/search/docs/appearance/google-images)
 
 看完文章後，對於無障礙網站的觀念是不是有更多的認識跟釐清了呢？
 
@@ -178,14 +198,18 @@ tags:
 
 ## Reference
 
-- [Cognitve](https://webaim.org/articles/cognitive/) - WebAIM
+- [Cognitive](https://webaim.org/articles/cognitive/) - WebAIM
 - [Visual](https://webaim.org/articles/visual/) - WebAIM
 - [Auditory](https://webaim.org/articles/auditory/) - WebAIM
 - [Assistive](https://webaim.org/articles/motor/assistive) - WebAIM
 - [Seizure](https://webaim.org/articles/seizure/) - WebAIM
 - [React Rally 2019](https://www.youtube.com/watch?v=dvtfNpt75aA&feature=youtu.be&t=25550) @YouTube
 - [What is Web Accessibility in 60 seconds!](https://www.youtube.com/watch?v=hufMi9LZX2I) - Google Women Techmaker
-- [Blindness and vision impairment](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment) - WTO
+- [Blindness and vision impairment](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment) - WHO
 - [設計師 YR Cheng 聊聊 Accessibility](https://www.facebook.com/color.cheng/posts/10215351794401924)
 - [Wikipedia - Accessibility](https://en.wikipedia.org/wiki/Accessibility)
-- [Myth: Accessibility is 'blind people'](https://a11yproject.com/posts/myth-accessibility-is-blind-people/) - The A11Y Project
+- [Myth: Accessibility is 'blind people'](https://www.a11yproject.com/posts/accessibility-is-blind-people/) - The A11Y Project
+
+## 更正紀錄
+
+- 2026-10-27：依 NIH MedlinePlus、Google 搜尋中心與 MDN 更正色盲比例與出處、`javascript:void(0)` 寫法、SEO 效益的說法；已下架的 YouTube 縮圖改為文字連結，更新 A11Y Project 失效連結。

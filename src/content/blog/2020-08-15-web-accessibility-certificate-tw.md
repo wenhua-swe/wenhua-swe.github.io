@@ -1,14 +1,22 @@
 ---
 title: 無障礙標章：WCAG 與 NCC 國家通訊傳播委員會的無障礙規範（申請流程與標章使用規定）
-pubDate: '2020-08-15'
+pubDate: '2019-09-17'
+updatedDate: '2026-10-27'
 description: 一句話道出了重點，無障礙網站之於某些使用者是必需的，卻能使全部的使用者受益。一個短短七分鐘的影片，也把生活情境融為其中，我們生活中不也是這樣子的嗎？
 author: Wen-Hua Lin
+series: 實踐無障礙網頁設計
 tags:
+  - iThome 鐵人賽
+  - 實踐無障礙網頁設計
   - WCAG
   - NCC
   - 無障礙規範
   - 無障礙標章
 ---
+
+> 本文原刊於 2019 第 11 屆 iThome 鐵人賽「實踐無障礙網頁設計」Day 2（[原文連結](https://ithelp.ithome.com.tw/articles/10216639)）。
+>
+> 2026-10-27 依 WCAG 2.2、WAI-ARIA 1.2、ARIA Authoring Practices Guide（APG）與數位發展部「無障礙網路空間服務網」的現行說明校訂，改動處以刪除線或「更正」框標示，失效連結已直接更新。規範會持續修訂，實作前請以各「更正」框附的官方連結為準。
 
 ## 十個真實生活中的幫助
 
@@ -47,21 +55,31 @@ tags:
 
 ## W3C 全球資訊網協會
 
-W3C 全名為 World Wide Web Consortium，是製定國際 Web 技術標準的組織，現如由 W3C 和 WHATWG 網頁超文字應用技術工作小組共同製定規範（查看 [W3C 聲明稿](https://www.w3.org/2019/04/WHATWG-W3C-MOU.html)、[始末說明](https://www.ithome.com.tw/news/130950)）。
+W3C 全名為 World Wide Web Consortium，是制定國際 Web 技術標準的組織，現今由 W3C 和 WHATWG 網頁超文字應用技術工作小組共同制定規範（查看 [W3C 聲明稿](https://www.w3.org/2019/04/WHATWG-W3C-MOU.html)、[始末說明](https://www.ithome.com.tw/news/130950)）。
 
-- [一個標準的建立過程](https://www.w3.org/2019/Process-20190301/#Reports)：
+> [!更正]
+> 「共同制定」說得不夠精確。依 2019 年的協議，HTML 與 DOM 主要在 WHATWG 以 Living Standard 的方式維護，W3C 則是把 WHATWG 的 Review Draft 背書成 W3C Recommendation，兩邊是同一份文件。所以要查 HTML 規範，以 WHATWG 的 Living Standard 為準。
+>
+> 來源：[W3C 與 WHATWG 合作備忘錄](https://www.w3.org/2019/04/WHATWG-W3C-MOU.html)
+
+- [一個標準的建立過程](https://www.w3.org/policies/process/)：
 
 工作草案 ⇒ 公布審查或修訂的草案 ⇒ 候選推薦標準 ⇒ 提案推薦標準 ⇒ W3C 發布推薦標準（W3C Recommendation）⇒ 後續修訂（列入勘誤表）。
 
 ## WAI・Web Accessibility Initiative 可訪問性計畫
 
-WAI 是由 Ｗ 3C 推動的網路無障礙計畫組織，制定了 WCAG、ATAG、UAAG 三個不同面向的可訪問指南及多個技術規範（如 WAI-ARIA、音訊、影片、發音、如何評估...等等），讓工程師對無障礙網站實務有個依歸得以遵循。
+WAI 是由 W3C 推動的網路無障礙計畫組織，制定了 WCAG、ATAG、UAAG 三個不同面向的可訪問指南及多個技術規範（如 WAI-ARIA、音訊、影片、發音、如何評估...等等），讓工程師對無障礙網站實務有個依歸得以遵循。
 
 ### WCAG：Web 內容無障礙指南
 
 > [2.1 英文規範](http://w3.org/TR/WCAG21/)、[2.1 簡中翻譯．2019 年 3 月 11 日](https://www.w3.org/Translations/WCAG21-zh/)
 
-WCAG 全名為 Web Content Accessibility Guidelines 是 Web 內容無障礙指南， 2018 年 6 月 5 日推出 2.1 版，是以十年前的 2.0 版本內容的擴充，增加認知、學習障礙、視力不佳的輔助技術指南，WCAG 2.1 版本的發布並未棄用或取代 WCAG 2.0，意思是說若符合 2.1 版，也將會符合 2.0 版的內容。目前 W3C 正在如火如荼地開發更高版本的無障礙指南。
+WCAG 全名為 Web Content Accessibility Guidelines 是 Web 內容無障礙指南， 2018 年 6 月 5 日推出 2.1 版，是以十年前的 2.0 版本內容的擴充，增加認知、學習障礙、視力不佳的輔助技術指南，WCAG 2.1 版本的發布並未棄用或取代 WCAG 2.0，意思是說若符合 2.1 版，也將會符合 2.0 版的內容。~~目前 W3C 正在如火如荼地開發更高版本的無障礙指南。~~ <ins>WCAG 2.2 已在 2023 年 10 月 5 日成為 W3C 推薦標準。</ins>
+
+> [!更正]
+> WCAG 2.2 已經是 W3C 推薦標準（2023 年 10 月 5 日發布，2024 年 12 月 12 日更新），新增了焦點不被遮擋、拖曳動作的替代方式、點擊目標的最小尺寸、無障礙驗證等成功準則。另外要注意，2.2 把 4.1.1 Parsing 標為過時並移除，所以「符合新版就符合舊版」這句話放到 2.2 時要多一個例外。
+>
+> 來源：[WCAG 2.2](https://www.w3.org/TR/WCAG22/)、[What's New in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/)
 
 ### ATAG：創作工具無障礙指南
 
@@ -73,37 +91,55 @@ ATAG 全名為 Authoring Tool Accessibility Guidelines 創作工具無障礙準�
 
 > [2.0 英文規範](https://www.w3.org/TR/UAAG20/)
 
-UAAG 全名為 User Agent Accessibility Guidelines 使用者代理無障礙準則，針對 Web 瀏覽器、瀏覽器擴充套件、媒體播放器、閱讀器等，在輔助技術方面製定標準，使未來的瀏覽器更易於使用。
+UAAG 全名為 User Agent Accessibility Guidelines 使用者代理無障礙準則，針對 Web 瀏覽器、瀏覽器擴充套件、媒體播放器、閱讀器等，在輔助技術方面制定標準，使未來的瀏覽器更易於使用。
+
+> [!更正]
+> UAAG 2.0 是 W3C 工作小組備忘（Working Group Note），不是推薦標準（W3C Recommendation），性質是給瀏覽器等使用者代理參考的指引。
+>
+> 來源：[UAAG 2.0](https://www.w3.org/TR/UAAG20/)
 
 ### WAI-ARIA 可訪問的網路應用程式
 
-> [1.1 英文規範](https://www.w3.org/TR/wai-aria/)
+> [1.2 英文規範](https://www.w3.org/TR/wai-aria-1.2/)
 
 全名為 Accessible Rich Internet Applications Suite，定義如何透過 WAI-ARIA 提供有關該功能的訊息來解決獲取資訊的挑戰，使大眾可以訪問如 Ajax 技術開發的動態內容 Web 應用程式。
 
-可以查看這個網頁「[WAI-ARIA 創作實踐 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)」瞭解實務上該怎麼運用，在後續文章也會多做說明。
+可以查看這個網頁「[WAI-ARIA 創作實踐指南（APG）](https://www.w3.org/WAI/ARIA/apg/)」瞭解實務上該怎麼運用，在後續文章也會多做說明。
 
 ---
 
 ## 國家通訊傳播委員會的無障礙規範
 
-> 國家通播傳播委員會又稱 NCC， NCC 也是遵從國際的規範來訂定臺灣的無障礙規範，目前是以 2.0 版作為基準。 [NCC 網站公告會列出開課訊息](https://www.handicap-free.nat.gov.tw/News/Category/43/1)。
+> 國家通訊傳播委員會又稱 NCC， NCC 也是遵從國際的規範來訂定臺灣的無障礙規範，目前是以 ~~2.0 版~~ <ins>WCAG 2.1</ins> 作為基準。 [NCC 網站公告會列出開課訊息](https://accessibility.moda.gov.tw/News/Category/43/1)。
 
-我們想提高自己網站的可訪問性，要先來了解「三級別、四原則、十二指引」：
+> [!更正]
+> 臺灣網站無障礙的主管機關已經改為數位發展部，「無障礙網路空間服務網」也搬到 `accessibility.moda.gov.tw`，舊網域 `handicap-free.nat.gov.tw` 已經連不上，文中的連結都已換成新網址。規範版本也更新了兩次：
+>
+> - 「網站無障礙規範（110.07）」對應 WCAG 2.1，自 110 年 7 月 1 日起實施。
+> - 數位發展部在 115 年 5 月 29 日修正發布「網站無障礙規範（115.11）」，改以 WCAG 2.2 為參考標準（四項原則、十三項指引、八十七項成功準則），自 115 年 11 月 30 日起用新版做標章檢測，同時不再受理 110.7 版的申請；在 115 年 11 月 29 日以前取得的標章，效期仍是 3 年。
+>
+> 來源：[網站無障礙規範（110.07）](https://accessibility.moda.gov.tw/Accessible/Guide/68)、[115 年 11 月 30 日起正式實施修正版「網站無障礙規範」](https://accessibility.moda.gov.tw/Download/Detail/2783?Category=36)
 
-### 三個一致性級別：（查看 WAI [一致性級別](https://www.w3.org/WAI/WCAG21/Understanding/conformance#levels)的說明）
+我們想提高自己網站的可訪問性，要先來了解「三級別、四原則、~~十二指引~~ <ins>十三指引</ins>」：
+
+### 三個一致性級別：（查看 WAI [一致性級別](https://www.w3.org/WAI/WCAG22/Understanding/conformance#levels)的說明）
 
 - **A**：最低級別，要符合 A 級需要符合 A 級的成功準則。
 - **AA**：要符合 AA 級需要符合 A、AA 級的成功準則。通常符合這個級別的話，已經可以讓大多數的使用者順利瀏覽。
-- **AAA**：是最高的級別，要符合 A Ａ A 級需要符合 A、AA、AAA 級的成功準則。
+- **AAA**：是最高的級別，要符合 AAA 級需要符合 A、AA、AAA 級的成功準則。
 
 ### [四原則](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)與十二指引：（查看 WAI [快速導覽](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_customize&versions=2.0)、[2.1 新增的內容](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-21/)）
+
+> [!更正]
+> 十二條指引是 WCAG 2.0 的數字。WCAG 2.1 新增了指引 2.5「輸入方式（Input Modalities）」，所以 2.1 和 2.2 都是十三條，下方「可操作」原本少了 2.5，已補上。
+>
+> 來源：[WCAG 2.2 — Guideline 2.5 Input Modalities](https://www.w3.org/TR/WCAG22/#input-modalities)
 
 ### 1. 可感知 Perceivable
 
 > 訊息和使用者介面組件必須以「可感知」的方式呈現給使用者。
 
-**1.1 替代文字**：為文字以外的內容提供「相等意義的替代文字」，使其可以轉化為人們需要的其他形式（如字版、點字、語音、符號...等）。
+**1.1 替代文字**：為文字以外的內容提供「相等意義的替代文字」，使其可以轉化為人們需要的其他形式（如大字版、點字、語音、符號...等）。
 
 **1.2 時間媒體**：為所有基於「時間」的媒體（如影片、音訊）提供一個替代的方案。
 
@@ -119,9 +155,11 @@ UAAG 全名為 User Agent Accessibility Guidelines 使用者代理無障礙準�
 
 **2.2 時間充分**： 給使用者足夠時間閱讀並使用內容。
 
-**2.3 癲癇**： 不以會誘發癲癇的方式設計內容。
+**2.3 ~~癲癇~~ <ins>癲癇與身體反應</ins>**： 不以會誘發癲癇的方式設計內容。
 
 **2.4 可導覽**：提供協助使用者導覽、尋找內容及判斷所在的方法。
+
+<ins>**2.5 輸入方式**：讓使用者更容易透過鍵盤以外的各種輸入方式操作功能。</ins>
 
 ### 3. 可理解 Understandable
 
@@ -141,29 +179,40 @@ UAAG 全名為 User Agent Accessibility Guidelines 使用者代理無障礙準�
 
 ### 補充
 
-WCAG 2.1 相較於 WACG 2.0 更新的內容，我覺得除了可以看 WAI [2.1 新增的內容](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-21/)，[這篇文章](https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb)寫得很仔細，更多的是實務上的應用，以符合規範內容，會比純看規範來得更快速理解。
+WCAG 2.1 相較於 WCAG 2.0 更新的內容，我覺得除了可以看 WAI [2.1 新增的內容](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-21/)，[這篇文章](https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb)寫得很仔細，更多的是實務上的應用，以符合規範內容，會比純看規範來得更快速理解。
 
 ---
 
-## 臺灣的無障礙標章申請流程（查看[詳細流程](https://www.handicap-free.nat.gov.tw/Accessible/Detail/109?Category=8)）
+## 臺灣的無障礙標章申請流程（查看[詳細流程](https://accessibility.moda.gov.tw/Accessible/Detail/109?Category=8)）
 
-> 各級政府及其附屬機關（構）、學校所建置之網站，應通過第一優先等級（即檢測等級 A）以上之無障礙檢測。**106 年度起，各政府機關或學校於網站新設或改版（網址不變）時，應依檢測等級 AA 進行設計。 [查看公告](https://www.handicap-free.nat.gov.tw/Questions/Detail/3284?Category=18)**
+> 各級政府及其附屬機關（構）、學校所建置之網站，應通過第一優先等級（即檢測等級 A）以上之無障礙檢測。**106 年度起，各政府機關或學校於網站新設或改版（網址不變）時，應依檢測等級 AA 進行設計。 [查看公告](https://accessibility.moda.gov.tw/Questions/Detail/3284?Category=18)**
 
-![官方申請無障礙標章的完整流程](https://www.handicap-free.nat.gov.tw/ImagesUploads/e564bca8-7ba1-4ace-b913-8307c1ca07f5.jpg)
+（官方的完整流程圖已隨舊網站下架，最新版請見[標章申請與檢測作業說明](https://accessibility.moda.gov.tw/Accessible/Detail/109?Category=8)。）
 
-- 依據身份（公務員或一般民眾）[註冊會員](https://www.handicap-free.nat.gov.tw/Home/Join)並登入。
-- 去[這個頁面](https://www.handicap-free.nat.gov.tw/Download/Detail/1375?Category=52)，依據作業系統下載官方提供的檢測軟體 Freego，目前版本 2.0，依據想通過的等級（A / AA / AAA）全站進行檢測，將報告另存新檔。
+- 依據身份（公務員或一般民眾）[註冊會員](https://accessibility.moda.gov.tw/Home/Join)並登入。
+- 去[這個頁面](https://accessibility.moda.gov.tw/Download/Category/70/1)，依據作業系統下載官方提供的檢測軟體 Freego，~~目前版本 2.0~~ <ins>請下載對應現行規範的版本</ins>，依據想通過的等級（A / AA / AAA）全站進行檢測，將報告另存新檔。
 - 填寫承辦人：政府單位網站請勿填寫「承包廠商」作為「承辦人」，一般民眾填寫自己即可。
 - 填寫標章機關代碼：標章的機關名稱請透過「查詢機關代碼」按鈕，查詢並選取機關名稱；無機關代碼者，請選擇「民間團體」。
 - 完整填寫其他必填欄位，並上傳檢測報告，填寫的網址要與報告中相符（如 `http`、 `https` ）。
 
 送出，等收信吧，也可以在會員專區查看紀錄！
 
-若不符合之後的人工檢測，需要自退回修正七個工作天後，才可以再申請。
+~~若不符合之後的人工檢測，需要自退回修正七個工作天後，才可以再申請。~~ <ins>若人工檢測不符合，會退回申請單位修正，需於 7 個日曆天後才能重新提出申請。</ins>
+
+> [!更正]
+> 申請流程和當年相比有幾個變動：
+>
+> - Freego 2.0 對應的是已停止受理的「網站無障礙規範 2.0」，現在要用對應現行規範的 Freego。
+> - 登錄申請資料後，多了一步「自我評量」，要依規範的稽核評量碼填寫自我評量報告。
+> - 人工檢測不符合退回後，現行規定是 7 個**日曆天**（週末、假日也算）後才能重新申請。
+> - 被要求「限期改善」時，期限從原本的 5 個工作日改為 14 個日曆天，可以申請延長 1 週。
+> - 標章自核發起三年有效，超過半年會安排身障者抽測。
+>
+> 來源：[標章申請與檢測作業說明](https://accessibility.moda.gov.tw/Accessible/Detail/109?Category=8)、[「限期改善」期間調整說明](https://accessibility.moda.gov.tw/News/Detail/5610?Category=43)、[單機版檢測工具 Freego](https://accessibility.moda.gov.tw/Download/Category/70/1)
 
 ---
 
-## 無障礙標章使用規定（查看[詳細說明](https://www.handicap-free.nat.gov.tw/Accessible/Detail/5?Category=8)）
+## 無障礙標章使用規定（查看[詳細說明](https://accessibility.moda.gov.tw/Accessible/Detail/5?Category=8)）
 
 括號 `（）`為備註內容， 其餘的文字為明確要輸入的內容。
 
@@ -194,9 +243,9 @@ WCAG 2.1 相較於 WACG 2.0 更新的內容，我覺得除了可以看 WAI [2.1 
 
 ## 國際相關的政策
 
-因為太多哩，每個關鍵字寫起來都可以自成一篇，既然是這系列文是講述無障礙網站實踐，重點就在於我們理解觀念與規範後的實踐哩！
+因為太多哩，每個關鍵字寫起來都可以自成一篇，既然這系列文是講述無障礙網站實踐，重點就在於我們理解觀念與規範後的實踐哩！
 
-這邊幫補些常聽到的關鍵字，想知道的自己搜尋一下啦！
+這邊補充一些常聽到的關鍵字，想知道的自己搜尋一下啦！
 
 ### 1. [WAI 列出世界因應無障礙網站的政策表格](https://www.w3.org/WAI/policies/)
 
@@ -206,15 +255,14 @@ WCAG 2.1 相較於 WACG 2.0 更新的內容，我覺得除了可以看 WAI [2.1 
 
 ### 4. 聯合國
 
-    4.1 [聯合國針對身心障礙的關注與資源](https://www.un.org/development/desa/disabilities/issues.html#accessibility)
+- 4.1 [聯合國針對身心障礙的關注與資源](https://www.un.org/development/desa/disabilities/issues.html#accessibility)
+- 4.2 [聯合國針對各類輔助工具的整理](https://www.un.org/disabilities/documents/2019/AssistiveTechnologyDevices2017-Chi.pdf)
 
-    4.2 [聯合國針對各類輔助工具的整理](https://www.un.org/disabilities/documents/2019/AssistiveTechnologyDevices2017-Chi.pdf)
-
-### 5. 國際身心障礙人士公約 [CRPD](http://www.internationaldisabilityalliance.org/CRPD)（The UN of Convention on the Rights of Persons with Disabilities）
+### 5. 身心障礙者權利公約 [CRPD](http://www.internationaldisabilityalliance.org/CRPD)（The UN Convention on the Rights of Persons with Disabilities）
 
 21 世紀第一個人權公約，影響全球身心障礙者之權利保障。以圖片來簡單看[公約](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/345108/easy-read-un-convention.pdf)內容，第九頁在闡述無障礙。
 
-如果你也關心身心障礙者的權利的話，可以前往[衛生福利部身心障礙者權利公約網站](http://crpd.sfaa.gov.tw/)！
+如果你也關心身心障礙者的權利的話，可以前往[衛生福利部身心障礙者權利公約網站](https://crpd.sfaa.gov.tw/)！
 
 ---
 
@@ -222,7 +270,11 @@ WCAG 2.1 相較於 WACG 2.0 更新的內容，我覺得除了可以看 WAI [2.1 
 
 - [WAI](https://www.w3.org/WAI/) - W3C
 - [Web Accessibility Perspectives - Compilation of 10 Topics/Videos](https://www.youtube.com/watch?v=3f31oufqFSM) - WAI
-- [無障礙網路空間服務網](https://www.handicap-free.nat.gov.tw/) - 國家通訊傳播委員會
-- [WCAG 2.1 Guidelines Explained with Examples](https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb) - The C2 Group @Mediem
+- [無障礙網路空間服務網](https://accessibility.moda.gov.tw/) - 數位發展部
+- [WCAG 2.1 Guidelines Explained with Examples](https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb) - The C2 Group @Medium
 - [認識無障礙網頁設計規範](https://www.hischool.com.tw/accessibility/認識無障礙網頁設計/) - 亮怡資訊
 - [無障礙網頁](https://www.slideshare.net/clifflu666/20121206) - Cliff Chao-kuan Lu @SlideShare
+
+## 更正紀錄
+
+- 2026-10-27：依 WCAG 2.2、WAI-ARIA 1.2、APG 與數位發展部「無障礙網路空間服務網」更正主管機關與規範版本（110.07 對應 WCAG 2.1、115.11 修正版對應 WCAG 2.2）、WCAG 指引數量與 2.2 現況、UAAG 性質、W3C 與 WHATWG 的分工、標章申請流程；修正聯合國連結的排版；失效連結改連數位發展部新網址。
