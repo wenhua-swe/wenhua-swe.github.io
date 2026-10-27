@@ -15,6 +15,23 @@ export async function getBookPosts() {
   return (await getCollection('books', isVisible)).sort(byNewest);
 }
 
+// Where a post sits in its series, oldest first; undefined when it isn't part of one
+export async function getSeriesNav(post: Post) {
+  if (post.collection !== 'blog' || !post.data.series) return undefined;
+  const series = post.data.series;
+  const posts = (await getBlogPosts())
+    .filter((p) => p.data.series === series)
+    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+  const index = posts.findIndex((p) => p.id === post.id);
+  return {
+    name: series,
+    position: index + 1,
+    total: posts.length,
+    prev: posts[index - 1],
+    next: posts[index + 1],
+  };
+}
+
 export function postUrl(post: Post) {
   return `/${post.collection}/${post.id}/`;
 }

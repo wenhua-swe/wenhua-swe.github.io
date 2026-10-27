@@ -267,6 +267,50 @@ a:hover {
   font-size: 0.85em;
 }
 
+/* Corrections to old posts: struck-out original, then the fix. Line style, not colour alone, tells them apart */
+.prose del {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Match inline code's pill so an <ins> wrapping code looks the same as a <del> wrapping code */
+.prose ins {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: var(--pill);
+  text-decoration: underline dotted var(--notice);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.prose ins > code {
+  padding: 0;
+  background: none;
+}
+
+.prose .correction {
+  margin: 0 0 1.4em;
+  padding: 14px 18px;
+  border: 1px solid var(--notice-line);
+  border-left: 4px solid var(--notice);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.prose .correction > :last-child {
+  margin-bottom: 0;
+}
+
+.prose .correction-label {
+  margin: 0 0 0.6em;
+  color: var(--notice);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
 @media (max-width: 560px) {
   .prose {
     font-size: 17px;

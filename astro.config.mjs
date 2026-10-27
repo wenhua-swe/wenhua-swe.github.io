@@ -46,6 +46,56 @@ const focusableTables = {
   },
 };
 
+// Screen readers rarely announce <del>/<ins>; prefix each with hidden text that says what changed
+const DEL_LABEL = '原文（已刪除）：';
+const INS_LABEL = '更正為：';
+const editMarks = {
+  name: 'edit-marks',
+  // `~~text~~` arrives as a <del> element
+  element: {
+    filter: ['del'],
+    visit(node, ctx) {
+      ctx.prependChild(node, {
+        type: 'element',
+        tagName: 'span',
+        properties: { className: ['sr-only'] },
+        children: [{ type: 'text', value: DEL_LABEL }],
+      });
+    },
+  },
+  // Markdown has no insert syntax, so <ins> is inline HTML and its opening tag is a raw node
+  raw(node, ctx) {
+    if (node.value.trim().toLowerCase() !== '<ins>') return;
+    ctx.replaceNode(node, { type: 'raw', value: `<ins><span class="sr-only">${INS_LABEL}</span>` });
+  },
+};
+
+// `> [!更正]` blockquotes become a labelled note instead of a quotation
+const CORRECTION_MARKER = '[!更正]';
+const correctionNotes = {
+  name: 'correction-notes',
+  element: {
+    filter: ['blockquote'],
+    visit(node, ctx) {
+      const first = node.children.find((child) => child.type === 'element');
+      const marker = first?.tagName === 'p' && first.children[0];
+      if (marker?.type !== 'text' || !marker.value.trimStart().startsWith(CORRECTION_MARKER)) return;
+      const rest = marker.value.trimStart().slice(CORRECTION_MARKER.length).replace(/^\s+/, '');
+      if (rest) ctx.replaceNode(marker, { type: 'text', value: rest });
+      else ctx.removeNode(marker);
+      ctx.replaceNode(node, {
+        type: 'element',
+        tagName: 'div',
+        properties: { className: ['correction'], role: 'note', ariaLabel: '更正' },
+        children: [
+          { type: 'element', tagName: 'p', properties: { className: ['correction-label'] }, children: [{ type: 'text', value: '更正' }] },
+          ...node.children,
+        ],
+      });
+    },
+  },
+};
+
 // Expressive Code turns scrollable <pre> into role="region"; give each one a unique name
 const codeBlockLabels = {
   name: 'code-block-labels',
@@ -85,7 +135,7 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    processor: satteri({ hastPlugins: [lazyImages, taskListLabels, focusableTables] }),
+    processor: satteri({ hastPlugins: [lazyImages, taskListLabels, focusableTables, editMarks, correctionNotes] }),
   },
   output: 'static',
   // Keep Astro 5 whitespace handling; v7's 'jsx' default drops spaces between inline elements

@@ -2,7 +2,7 @@
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import Comments from '../components/Comments.astro';
-import { formatDate, readingMinutes, stars, tagUrl, type Post } from '../lib/content';
+import { formatDate, getSeriesNav, postUrl, readingMinutes, stars, tagUrl, type Post } from '../lib/content';
 
 interface Props {
   post: Post;
@@ -20,6 +20,7 @@ const lastTouched = updatedDate ?? pubDate;
 const isOutdated = Date.now() - lastTouched.valueOf() > OUTDATED_AFTER_MS;
 
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const series = await getSeriesNav(post);
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -30,7 +31,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     <h1 class='display'>{title}<span class='accent'>.</span></h1>
     {
       updatedDate && (
-        <div class='mono muted'>最後更新 {formatDate(updatedDate)}</div>
+        <div class='mono muted'>最新編輯日期 {formatDate(updatedDate)}</div>
       )
     }
     {heroImage && <img class='hero' src={heroImage} alt='' width='1200' height='457' />}
@@ -84,6 +85,36 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       <div class='prose'>
         <slot />
       </div>
+      {
+        series && series.total > 1 && (
+          <nav class='series' aria-labelledby='series-heading'>
+            <p id='series-heading' class='series-head mono muted'>
+              <span>系列文章</span>
+              <a href={tagUrl(series.name)}>{series.name}</a>
+              <span aria-hidden='true'>{series.position} / {series.total}</span>
+              <span class='sr-only'>第 {series.position} 篇，共 {series.total} 篇</span>
+            </p>
+            <ul>
+              {series.prev && (
+                <li class='prev'>
+                  <a href={postUrl(series.prev)} rel='prev'>
+                    <span class='mono muted'>← 上一篇</span>
+                    <span class='series-title'>{series.prev.data.title}</span>
+                  </a>
+                </li>
+              )}
+              {series.next && (
+                <li class='next'>
+                  <a href={postUrl(series.next)} rel='next'>
+                    <span class='mono muted'>下一篇 →</span>
+                    <span class='series-title'>{series.next.data.title}</span>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </nav>
+        )
+      }
       <Comments />
     </article>
   </div>
@@ -188,6 +219,58 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
   article > .book-info {
     margin-bottom: 32px;
   }
+  .series {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--softline);
+  }
+  .series-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin: 0 0 16px;
+    font-size: 13px;
+  }
+  .series-head a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+  .series ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .series a[rel] {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--softline);
+    border-radius: 12px;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .series a[rel]:hover {
+    border-color: var(--accent);
+  }
+  .series a[rel]:hover .series-title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .series .mono {
+    font-size: 12px;
+  }
+  .series .next {
+    grid-column: 2;
+    text-align: right;
+  }
+  .series-title {
+    line-height: 1.5;
+  }
   .book-info {
     margin-top: 0;
     font-family: var(--font-display);
@@ -201,6 +284,15 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     .rail {
       position: static;
       max-height: none;
+    }
+  }
+  @media (max-width: 560px) {
+    .series ul {
+      grid-template-columns: 1fr;
+    }
+    .series .next {
+      grid-column: auto;
+      text-align: left;
     }
   }
 </style>

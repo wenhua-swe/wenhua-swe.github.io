@@ -14,6 +14,8 @@ const blog = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
 		tags: z.array(z.coerce.string()).default([]),
+		// Posts sharing a series name get previous/next links, ordered by pubDate
+		series: z.string().optional(),
 		// Drafts are kept in the repo but skipped by every page and the RSS feed
 		draft: z.boolean().default(false),
 	}),
