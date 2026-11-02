@@ -27,6 +27,15 @@ jobs:
           cache-dependency-path: yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      # End-to-end and axe checks against the built site; a failure stops the deploy
+      - run: yarn playwright install --with-deps chromium
+      - run: yarn playwright test
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

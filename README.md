@@ -11,7 +11,10 @@ yarn install
 yarn dev        # http://localhost:4321，存檔就會自動更新；草稿也看得到
 yarn build      # 產生正式網站到 dist/，草稿不會出現
 yarn preview    # 預覽 build 結果；站內搜尋只有在這裡才能用
+yarn test:e2e   # build 後跑搜尋、選單、快捷鍵和 axe 無障礙測試；push 到 master 時 CI 也會跑，沒過就不部署
 ```
+
+第一次跑測試前要先裝瀏覽器：`yarn playwright install chromium`。
 
 ## 寫一篇文章
 
