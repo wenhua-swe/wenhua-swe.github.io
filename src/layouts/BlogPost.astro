@@ -28,7 +28,7 @@ const series = await getSeriesNav(post);
     <div class='mono muted'>
       [ {section} ] · {formatDate(pubDate)} · 閱讀 {readingMinutes(post.body)} 分鐘
     </div>
-    <h1 class='display'>{title}<span class='accent'>.</span></h1>
+    <h1 class='display' data-pagefind-meta={`title:${title}`}>{title}<span class='accent'>.</span></h1>
     {
       updatedDate && (
         <div class='mono muted'>最新編輯日期 {formatDate(updatedDate)}</div>
@@ -69,7 +69,7 @@ const series = await getSeriesNav(post);
     <article>
       {
         book && (
-          <p class='book-info'>
+          <p class='book-info' data-pagefind-body>
             《{book.title}》／{book.author}
             {book.rating && <span class='accent'> {stars(book.rating)}</span>}
           </p>
@@ -82,7 +82,8 @@ const series = await getSeriesNav(post);
           </p>
         )
       }
-      <div class='prose'>
+      {/* Pagefind indexes only data-pagefind-body elements, and skips pages that have none */}
+      <div class='prose' data-pagefind-body>
         <slot />
       </div>
       {
