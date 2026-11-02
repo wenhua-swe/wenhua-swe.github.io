@@ -6,23 +6,42 @@ import { SITE_TITLE } from '../consts';
 <header>
   <nav class='container' aria-label='主選單'>
     <a href='/' class='logo'>{SITE_TITLE}<span class='accent'>.</span></a>
-    <div class='links'>
-      <HeaderLink href='/books'>閱讀</HeaderLink>
-      <HeaderLink href='/blog'>技術和生活</HeaderLink>
-      <HeaderLink href='/photos'>攝影</HeaderLink>
-      <HeaderLink href='/tags'>標籤</HeaderLink>
-      <HeaderLink href='/about'>關於</HeaderLink>
-      <a href='/search' class='search mono' data-search-dialog>搜尋</a>
-      <button type='button' class='theme-toggle' aria-label='切換深淺色模式'>
-        <svg class='icon-moon' viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
-          <path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'></path>
+    <div class='menu'>
+      <!-- Narrow screens fold the links behind this button; it stays hidden until the script can drive it -->
+      <button type='button' class='menu-toggle' aria-expanded='false' aria-controls='menu-links' hidden>
+        <svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
+          <path class='bar-top' d='M4 7h16'></path>
+          <path class='bar-mid' d='M4 12h16'></path>
+          <path class='bar-bottom' d='M4 17h16'></path>
         </svg>
-        <svg class='icon-sun' viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
-          <circle cx='12' cy='12' r='4.5'></circle>
-          <path d='M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'></path>
-        </svg>
+        <span class='sr-only'>選單</span>
       </button>
+      <ul id='menu-links' class='links'>
+        <li><HeaderLink href='/books'>閱讀</HeaderLink></li>
+        <li><HeaderLink href='/blog'>技術和生活</HeaderLink></li>
+        <li><HeaderLink href='/photos'>攝影</HeaderLink></li>
+        <li><HeaderLink href='/tags'>標籤</HeaderLink></li>
+        <li><HeaderLink href='/about'>關於</HeaderLink></li>
+      </ul>
     </div>
+    <a href='/search' class='search' data-search-dialog>
+      <svg viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
+        <circle cx='11' cy='11' r='6.5'></circle>
+        <path d='M16 16l4.5 4.5'></path>
+      </svg>
+      <span class='search-label'>搜尋</span>
+      <!-- Filled in by SearchDialog once the shortcut is live -->
+      <kbd class='search-key mono' aria-hidden='true' hidden></kbd>
+    </a>
+    <button type='button' class='theme-toggle' aria-label='切換深淺色模式'>
+      <svg class='icon-moon' viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
+        <path d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z'></path>
+      </svg>
+      <svg class='icon-sun' viewBox='0 0 24 24' width='18' height='18' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' aria-hidden='true'>
+        <circle cx='12' cy='12' r='4.5'></circle>
+        <path d='M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'></path>
+      </svg>
+    </button>
   </nav>
 </header>
 
@@ -37,6 +56,31 @@ import { SITE_TITLE } from '../consts';
         localStorage.setItem('theme', next);
       } catch {}
     });
+
+    // APG disclosure navigation: the button shows and hides the link list on narrow screens
+    const menu = document.querySelector<HTMLElement>('.menu');
+    const toggle = menu?.querySelector<HTMLButtonElement>('.menu-toggle');
+    if (!menu || !toggle) return;
+    toggle.hidden = false;
+    menu.classList.add('collapsible');
+    const setOpen = (open: boolean) => toggle.setAttribute('aria-expanded', String(open));
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true') return;
+      setOpen(false);
+      toggle.focus();
+    });
+    // Close when focus or a click moves somewhere else on the page
+    menu.addEventListener('focusout', (event) => {
+      if (!menu.contains(event.relatedTarget as Node | null)) setOpen(false);
+    });
+    const onPointer = (event: PointerEvent) => {
+      if (!menu.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('astro:before-swap', () => document.removeEventListener('pointerdown', onPointer), {
+      once: true,
+    });
   });
 </script>
 
@@ -44,13 +88,13 @@ import { SITE_TITLE } from '../consts';
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 6px;
     align-items: center;
-    justify-content: space-between;
     padding-top: 24px;
     padding-bottom: 24px;
   }
   .logo {
+    margin-right: auto;
     font-family: var(--font-display);
     font-size: 28px;
     font-style: italic;
@@ -61,45 +105,41 @@ import { SITE_TITLE } from '../consts';
     flex-wrap: wrap;
     gap: 6px;
     align-items: center;
+    margin: 0;
+    padding: 0;
     font-size: 15px;
+    list-style: none;
   }
+  .menu-toggle,
   .search,
   .theme-toggle {
+    min-width: 40px;
     min-height: 40px;
     display: inline-flex;
+    gap: 8px;
     align-items: center;
+    justify-content: center;
     border: 1px solid var(--softline);
     border-radius: 999px;
-    text-decoration: none;
-  }
-  .search {
-    padding: 0 14px;
-  }
-  .theme-toggle {
-    justify-content: center;
-    min-width: 40px;
     background: transparent;
     color: var(--fg);
+    font-size: 15px;
+    text-decoration: none;
     cursor: pointer;
   }
-  @media (max-width: 720px) {
-    nav {
-      padding-top: 16px;
-      padding-bottom: 12px;
-    }
-    .logo {
-      font-size: 24px;
-    }
-    /* One swipeable row instead of wrapping onto several lines */
-    .links {
-      flex-wrap: nowrap;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .links > :global(*) {
-      flex-shrink: 0;
-    }
+  .search {
+    padding: 0 10px 0 12px;
+  }
+  .search-key {
+    padding: 1px 6px;
+    border: 1px solid var(--softline);
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  /* Only shown where links fold away */
+  .menu-toggle {
+    display: none;
   }
   .icon-sun {
     display: none;
@@ -109,5 +149,70 @@ import { SITE_TITLE } from '../consts';
   }
   :global([data-theme='dark']) .icon-moon {
     display: none;
+  }
+  @media (max-width: 768px) {
+    nav {
+      padding-top: 16px;
+      padding-bottom: 12px;
+    }
+    .logo {
+      font-size: 24px;
+    }
+    /* Logo, then the menu button and the two icon buttons on the right; the link list drops below */
+    .menu {
+      display: contents;
+    }
+    .menu-toggle:not([hidden]) {
+      display: inline-flex;
+    }
+    .search {
+      padding: 0;
+    }
+    .search-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .search-key {
+      display: none;
+    }
+    .links {
+      order: 1;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+      width: 100%;
+      padding-top: 8px;
+    }
+    .links :global(a) {
+      display: flex;
+      min-height: 44px;
+    }
+    .collapsible:has([aria-expanded='false']) .links {
+      display: none;
+    }
+    .menu-toggle path {
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      /* Each bar turns around its own middle */
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    [aria-expanded='true'] .bar-top {
+      transform: translateY(5px) rotate(45deg);
+    }
+    [aria-expanded='true'] .bar-mid {
+      opacity: 0;
+    }
+    [aria-expanded='true'] .bar-bottom {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+  }
+  @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    .menu-toggle path {
+      transition: none;
+    }
   }
 </style>
