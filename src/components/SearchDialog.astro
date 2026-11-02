@@ -1,0 +1,287 @@
+---
+// Site search as a modal dialog over the current page; opened by any [data-search-dialog] link.
+// The link still points at /search/, which stays as the fallback when this script can't run.
+---
+
+<dialog class='search-dialog' aria-labelledby='search-dialog-title' transition:persist='search-dialog'>
+  <div class='head'>
+    <h2 id='search-dialog-title' class='display'>搜尋網站內容</h2>
+    <form method='dialog'>
+      <button class='close mono' aria-label='關閉搜尋'>關閉</button>
+    </form>
+  </div>
+  <div class='search-ui'></div>
+</dialog>
+
+<script>
+  import { mountSearch } from '../lib/pagefind';
+
+  let opener: HTMLAnchorElement | undefined;
+  let mounted: Promise<HTMLInputElement | null> | undefined;
+
+  const open = async (trigger: HTMLAnchorElement) => {
+    const dialog = document.querySelector<HTMLDialogElement>('dialog.search-dialog');
+    if (!dialog || dialog.open) return;
+    // Pagefind loads on first use; its stylesheet lives in the dialog so it survives page swaps
+    mounted ??= mountSearch(dialog.querySelector<HTMLElement>('.search-ui')!, {
+      labelledBy: 'search-dialog-title',
+      styleParent: dialog,
+    });
+    let input;
+    try {
+      input = await mounted;
+      addResultsClose(dialog);
+    } catch {
+      mounted = undefined;
+      location.assign(trigger.href);
+      return;
+    }
+    opener = trigger;
+    dialog.showModal();
+    input?.focus();
+  };
+
+  // A second way out right before the results, so keyboard and screen reader users don't have to
+  // go through every result first. It only shows while focused, like a skip link.
+  // Pagefind keeps the input and the results in one form; this goes between them.
+  const addResultsClose = (dialog: HTMLDialogElement) => {
+    const drawer = dialog.querySelector('.pagefind-ui__drawer');
+    if (!drawer || dialog.querySelector('.results-close')) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'results-close';
+    button.innerHTML =
+      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>關閉搜尋';
+    button.addEventListener('click', () => dialog.close());
+    drawer.before(button);
+  };
+
+  // Keyboard focus that can be reached right now, in DOM order
+  const focusables = (root: HTMLElement) =>
+    [...root.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled])')].filter((el) =>
+      el.checkVisibility({ visibilityProperty: true }),
+    );
+
+  const isMac = /mac|ios|iphone|ipad/i.test((navigator as any).userAgentData?.platform ?? navigator.platform);
+
+  // The dialog is persisted across ClientRouter navigations, so bind it only once
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.search-dialog');
+  if (dialog) {
+    // APG dialog: Tab past the last control wraps to the first, Shift+Tab on the first wraps to the last
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const items = focusables(dialog);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    // Covers Esc, the close button and every other way out; Safari doesn't focus a clicked link,
+    // so don't rely on the browser restoring focus by itself
+    dialog.addEventListener('close', () => {
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
+    });
+    // Close on a backdrop click, but not when a drag that started inside ends outside
+    let pressedBackdrop = false;
+    dialog.addEventListener('pointerdown', (event) => {
+      pressedBackdrop = event.target === dialog;
+    });
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog && pressedBackdrop) {
+        dialog.close();
+        return;
+      }
+      // Choosing a result: close, then let ClientRouter navigate. Modified clicks open a new tab
+      const link = (event.target as Element).closest('.pagefind-ui__results a[href]');
+      if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      dialog.close();
+    });
+  }
+
+  // ⌘K / Ctrl+K opens search from anywhere, or puts focus back in the box if it's already open.
+  // It needs a modifier, so it can't fire by accident while typing (WCAG 2.1.4 only covers single keys)
+  document.addEventListener('keydown', (event) => {
+    // Only the platform's own modifier: Ctrl+K on a Mac is "delete to end of line" in text fields
+    const modifier = isMac ? event.metaKey && !event.ctrlKey : event.ctrlKey && !event.metaKey;
+    if (event.key.toLowerCase() !== 'k' || !modifier || event.altKey || event.shiftKey) return;
+    const trigger = document.querySelector<HTMLAnchorElement>('a[data-search-dialog]');
+    if (!dialog || !trigger) return;
+    event.preventDefault();
+    if (dialog.open) {
+      const input = dialog.querySelector<HTMLInputElement>('.pagefind-ui__search-input');
+      input?.focus();
+      input?.select();
+    } else {
+      open(trigger);
+    }
+  });
+
+  // Runs on every ClientRouter navigation, since the header (and its trigger) is swapped with each page
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLAnchorElement>('a[data-search-dialog]').forEach((trigger) => {
+      trigger.setAttribute('aria-keyshortcuts', isMac ? 'Meta+K' : 'Control+K');
+      const hint = trigger.querySelector<HTMLElement>('.search-key');
+      if (hint) {
+        hint.textContent = isMac ? '⌘K' : 'Ctrl K';
+        hint.hidden = false;
+      }
+      // It now opens a dialog instead of going to a page, so announce it as a button
+      trigger.setAttribute('role', 'button');
+      trigger.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        open(trigger);
+      });
+      // Buttons activate with Space as well as Enter; links only get Enter for free
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key !== ' ') return;
+        event.preventDefault();
+        open(trigger);
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  /* Shared with the /search/ page */
+  .pagefind-ui {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--fg);
+    --pagefind-ui-background: var(--bg);
+    --pagefind-ui-border: var(--softline);
+    --pagefind-ui-tag: var(--pill);
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-font: var(--font-body);
+  }
+</style>
+
+<style>
+  .search-dialog {
+    --max-h: 84vh;
+    width: min(720px, calc(100% - 32px));
+    max-width: none;
+    max-height: var(--max-h);
+    /* reset.css zeroes margins; keep it horizontally centred, a little below the top */
+    margin: 8vh auto auto;
+    padding: 0;
+    border: 1px solid var(--softline);
+    border-radius: 16px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  @supports (height: 100dvh) {
+    .search-dialog {
+      --max-h: 84dvh;
+    }
+  }
+  /* Header stays put; only the results scroll */
+  .search-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-dialog::backdrop {
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+  }
+  /* The page behind can't be used, so don't let it scroll either */
+  :global(html:has(.search-dialog[open])) {
+    overflow: hidden;
+  }
+  .head {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--softline);
+  }
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .close {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--softline);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+  }
+  /* Visually hidden until it takes keyboard focus */
+  .search-dialog :global(.results-close) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .search-dialog :global(.results-close:focus) {
+    position: static;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    width: auto;
+    height: auto;
+    min-height: 44px;
+    margin-top: 12px;
+    padding: 0 16px;
+    font-size: 14px;
+    clip: auto;
+    border: 1px solid var(--softline);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+  }
+  .search-ui {
+    flex: 1;
+    min-height: 0;
+    padding: 20px 24px 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .search-dialog[open] {
+      animation: search-dialog-in 0.18s ease-out;
+    }
+    .search-dialog[open]::backdrop {
+      animation: search-dialog-fade 0.18s ease-out;
+    }
+  }
+  @keyframes search-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes search-dialog-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  /* Narrow screens: take over the whole viewport */
+  @media (max-width: 720px) {
+    .search-dialog {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+    }
+    .head {
+      padding: 12px var(--gutter);
+    }
+    .search-ui {
+      padding: 16px var(--gutter) 24px;
+    }
+  }
+</style>

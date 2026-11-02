@@ -5,83 +5,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="搜尋" description="搜尋網站內容">
   <section class="container">
     <div class="section-head">
-      <h1 class="display">搜尋</h1>
+      <h1 class="display" id="search-title">搜尋</h1>
     </div>
     <div id="search"></div>
+    <noscript><p>搜尋功能需要啟用 JavaScript。</p></noscript>
   </section>
 </BaseLayout>
 
 <script>
-  declare global {
-    interface Window {
-      PagefindUI: any;
-    }
-  }
+  import { mountSearch } from '../lib/pagefind';
 
   // Runs on every ClientRouter navigation; the Pagefind script itself loads only once
   document.addEventListener('astro:page-load', () => {
-    if (!document.querySelector('#search')) return;
-    const loadPagefind = async () => {
-      // 樣式表每次都檢查：換頁時 <head> 會被替換，之前加的可能已經不在了
-      if (!document.querySelector('link[href="/pagefind/pagefind-ui.css"]')) {
-        const style = document.createElement('link');
-        style.rel = 'stylesheet';
-        style.href = '/pagefind/pagefind-ui.css';
-        document.head.appendChild(style);
-      }
-
-      if (!window.PagefindUI) {
-        // 動態載入 Pagefind 腳本
-        const script = document.createElement('script');
-        script.src = '/pagefind/pagefind-ui.js';
-        document.head.appendChild(script);
-
-        // 等待腳本加載
-        await new Promise((resolve) => {
-          script.onload = resolve;
-        });
-      }
-
-      // 初始化搜索
-      new window.PagefindUI({
-        element: '#search',
-        resetStyles: false,
-        showImages: false,
-        // 從導覽列點「搜尋」進來就可以直接打字
-        autofocus: true,
-        translations: {
-          placeholder: '輸入關鍵字搜尋...',
-          clear_search: '清除',
-          load_more: '載入更多結果',
-          search_label: '搜尋此網站',
-          filters_label: '篩選',
-          zero_results: '找不到符合「[SEARCH_TERM]」的結果',
-          many_results: '找到 [COUNT] 個符合「[SEARCH_TERM]」的結果',
-          one_result: '找到 1 個符合「[SEARCH_TERM]」的結果',
-          searching: '搜尋中...',
-        },
-      });
-    };
-
-    loadPagefind();
+    const container = document.querySelector<HTMLElement>('#search');
+    if (!container) return;
+    // 直接開這頁（新分頁、書籤）時，進來就可以直接打字
+    mountSearch(container, { labelledBy: 'search-title', autofocus: true });
   });
 </script>
-
-<style is:global>
-  #search {
-    margin-top: 32px;
-  }
-  .pagefind-ui {
-    --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: var(--accent);
-    --pagefind-ui-text: var(--fg);
-    --pagefind-ui-background: var(--bg);
-    --pagefind-ui-border: var(--softline);
-    --pagefind-ui-tag: var(--pill);
-    --pagefind-ui-border-radius: 12px;
-    --pagefind-ui-font: var(--font-body);
-  }
-</style>
 
 <style>
   section {
@@ -90,5 +31,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   h1 {
     margin: 0;
     font-size: clamp(32px, 5vw, 52px);
+  }
+  #search {
+    margin-top: 32px;
   }
 </style>
