@@ -9,6 +9,7 @@
     "astro": "astro",
     "add-photos": "node scripts/add-photos.mjs",
     "new": "node scripts/new-post.mjs",
+    "ship": "node scripts/ship.mjs",
     "test:e2e": "astro build && playwright test"
   },
   "dependencies": {

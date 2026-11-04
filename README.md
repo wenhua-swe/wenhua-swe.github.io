@@ -2,7 +2,7 @@
 
 在書頁邊緣寫下的想法、工作中學到的事，還有路上拍到的光。
 
-網站：<https://wenhua-swe.github.io>　·　用 [Astro](https://astro.build) 建置，推到 `master` 後由 GitHub Actions 自動部署到 GitHub Pages。
+網站：<https://wenhua-swe.github.io>　·　用 [Astro](https://astro.build) 建置，`master` 受保護，只能透過 PR 進入；每個分支 push 後 GitHub Actions 會跑測試，PR 測試通過才能 merge，merge 進 `master` 後自動部署到 GitHub Pages。
 
 ## 本機預覽
 
@@ -11,7 +11,8 @@ yarn install
 yarn dev        # http://localhost:4321，存檔就會自動更新；草稿也看得到
 yarn build      # 產生正式網站到 dist/，草稿不會出現
 yarn preview    # 預覽 build 結果；站內搜尋只有在這裡才能用
-yarn test:e2e   # build 後跑搜尋、選單、快捷鍵和 axe 無障礙測試；push 到 master 時 CI 也會跑，沒過就不部署
+yarn test:e2e   # build 後跑搜尋、選單、快捷鍵和 axe 無障礙測試；每次 push 任何分支 CI 也會跑
+yarn ship       # 把目前的分支送進 master：開 PR、測試通過後自動 merge 並部署
 ```
 
 第一次跑測試前要先裝瀏覽器：`yarn playwright install chromium`。
