@@ -1,7 +1,7 @@
 ---
 title: 開發無障礙網頁：使用瀏覽器開發者工具 Chrome vs Firefox
 pubDate: '2019-10-11'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   這篇文章要介紹的是如何使用瀏覽器內建的開發者工具作為無障礙檢測的好幫手，包含 Chrome 開發者工具的 Audits（Lighthouse）、Elements
   頁籤下的 Accessibility 與 Color Picker。
@@ -103,9 +103,9 @@ tags:
 
 來不及介紹火狐 Firefox 的開發者工具，但是其實火狐的開發者工具對於開發者製作無障礙非常友善呢！
 
-可以來參考[這則影片](https://www.youtube.com/watch?v=AHkLxt4BaXU)（影片已設為私人，目前無法觀看；講者：Maliha Islam，2019 年在 Mozilla 的實習生，介紹得很清楚）及 [Mozilla Firefox 的官方說明](https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/)：
+可以來參考[這則影片](https://www.youtube.com/watch?v=eBefjaWud-M)（Mozilla Developer 官方頻道示範用 Firefox 無障礙檢查器檢測色彩對比、模擬色盲，介紹得很清楚）及 [Mozilla Firefox 的官方說明](https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/)：
 
-[影片：Colour Accessibility on the Web - Maliha Islam（Mozilla Intern Presentations 2019）](https://www.youtube.com/watch?v=AHkLxt4BaXU)（已設為私人影片，目前無法觀看）
+[影片：Testing Color Contrast & Simulating Color Blindness with the Firefox Accessibility Inspector（Mozilla Developer）](https://www.youtube.com/watch?v=eBefjaWud-M)
 
 ---
 
@@ -113,8 +113,9 @@ tags:
 
 - [What's new in web accessibility (Google I/O '18)](https://www.youtube.com/watch?v=wkvslBGkhZY&list=PLNYkxOF6rcIBiiuN53rzwEidPcLZRtiOW) - Google Chrome Developers @Youtube
 - [Accessibility Reference](https://developer.chrome.com/docs/devtools/accessibility/reference) - Google Developers
-- [Colour Accessibility on the Web - Maliha Islam](https://www.youtube.com/watch?v=AHkLxt4BaXU) | Mozilla Intern Presentations 2019（已設為私人影片，目前無法觀看）
+- [Testing Color Contrast & Simulating Color Blindness with the Firefox Accessibility Inspector](https://www.youtube.com/watch?v=eBefjaWud-M) | Mozilla Developer
 
 ## 更正紀錄
 
 - 2026-10-27：依 Accessible Name and Description Computation 1.2 更正「`aria-labelledby` 指向隱藏元素會被忽略」的說法；依 Chrome DevTools、Lighthouse 官方文件更新 `Audits` 面板改名為 `Lighthouse`、按鈕名稱，以及 Lighthouse 使用的是 axe-core 函式庫；Chrome DevTools 與 Firefox 文件連結改到現行網址，並標註 YouTube 影片已設為私人。
+- 2026-11-04：原影片已設為私人，改用〈Testing Color Contrast & Simulating Color Blindness with the Firefox Accessibility Inspector〉（Mozilla Developer）

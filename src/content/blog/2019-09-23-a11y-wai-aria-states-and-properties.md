@@ -1,7 +1,7 @@
 ---
 title: 無障礙網站 WAI-ARIA 的 States and Properties，都是 Attribute 啊！
 pubDate: '2019-09-23'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   ARIA 的 States 與 Properties 都是以 aria-* 作為前綴、可以加在 HTML 標籤上的屬性（Attribute），但 State 和 Property 在概念上完全不同。
 author: Wen-Hua Lin
@@ -201,8 +201,9 @@ tags:
 
 - [WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-1.2/) -W3C
 - [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) - MDN
-- [HTML5 and the myth of WAI-ARIA redundance](https://developer.paciellogroup.com/blog/2010/04/html5-and-the-myth-of-wai-aria-redundance/)
+- [HTML5 and the myth of WAI-ARIA redundance](https://stevefaulkner.github.io/Articles/HTML5%20and%20the%20myth%20of%20WAI-ARIA%20redundance.html) - Steve Faulkner（原 Paciello Group 部落格已關閉，此為作者的個人存檔）
 
 ## 更正紀錄
 
 - 2026-10-27：依 WAI-ARIA 1.2、ARIA in HTML 更正「＊ 屬性無法於 HTML5 使用」的說法、標註已棄用的拖放屬性、修正 `aria-label`／`aria-labelledby` 範例的 `role="navigation"` 用法、更新 MDN 說明；WAI-ARIA 1.1 連結更新為 1.2。
+- 2026-11-04：Paciello Group〈HTML5 and the myth of WAI-ARIA redundance〉的失效連結改連作者 Steve Faulkner 的個人存檔。

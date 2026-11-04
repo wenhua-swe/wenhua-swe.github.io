@@ -1,7 +1,7 @@
 ---
 title: 無障礙網站又稱為可訪問的網站，難道還有不可訪問的網站嗎？ What is an accessible website exactly？
 pubDate: '2019-09-16'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   無障礙網站（Web Accessibility）指的是每個人都能順利取得資訊、操作的網站。本文從 A11Y 的縮寫與發音談起，思考「障礙」的定義、障礙類型與輔助技術，也實際體驗色盲的瀏覽情境。
 author: Wen-Hua Lin
@@ -19,9 +19,9 @@ tags:
 >
 > 2026-10-27 依 NIH MedlinePlus、Google 搜尋中心與 MDN 的官方文件校訂，改動處以刪除線或「更正」框標示，失效連結已直接更新。規範會持續修訂，實作前請以各「更正」框附的官方連結為準。
 
-## 只要花 60 秒瞭解「無障礙網站」概念
+## 只要花幾分鐘瞭解「無障礙網站」概念
 
-[影片：What is Web Accessibility in 60 seconds!（Google Women Techmaker）](https://www.youtube.com/watch?v=hufMi9LZX2I)
+[影片：Introduction to Web Accessibility and W3C Standards（W3C WAI）](https://www.youtube.com/watch?v=20SHvU2PKsM)
 
 > Your Website + Accessibility = BFF —— Jenn Lukas
 
@@ -204,7 +204,7 @@ tags:
 - [Assistive](https://webaim.org/articles/motor/assistive) - WebAIM
 - [Seizure](https://webaim.org/articles/seizure/) - WebAIM
 - [React Rally 2019](https://www.youtube.com/watch?v=dvtfNpt75aA&feature=youtu.be&t=25550) @YouTube
-- [What is Web Accessibility in 60 seconds!](https://www.youtube.com/watch?v=hufMi9LZX2I) - Google Women Techmaker
+- [Introduction to Web Accessibility and W3C Standards](https://www.youtube.com/watch?v=20SHvU2PKsM) - W3C WAI
 - [Blindness and vision impairment](https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment) - WHO
 - [設計師 YR Cheng 聊聊 Accessibility](https://www.facebook.com/color.cheng/posts/10215351794401924)
 - [Wikipedia - Accessibility](https://en.wikipedia.org/wiki/Accessibility)
@@ -213,3 +213,4 @@ tags:
 ## 更正紀錄
 
 - 2026-10-27：依 NIH MedlinePlus、Google 搜尋中心與 MDN 更正色盲比例與出處、`javascript:void(0)` 寫法、SEO 效益的說法；已下架的 YouTube 縮圖改為文字連結，更新 A11Y Project 失效連結。
+- 2026-11-04：原影片已刪除，改用〈Introduction to Web Accessibility and W3C Standards〉（W3C WAI）

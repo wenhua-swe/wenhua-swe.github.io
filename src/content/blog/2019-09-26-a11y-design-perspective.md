@@ -1,7 +1,7 @@
 ---
 title: 以設計層面來思考無障礙網站
 pubDate: '2019-09-26'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   網站的製作可不是僅靠工程師的力量而已，本文從可讀性與可操作性整理無障礙設計的相關資源，包含指示性的超連結、顏色對比度與為狀態設計。
 author: Wen-Hua Lin
@@ -34,7 +34,7 @@ tags:
 - [Mozilla](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Microsoft](https://www.microsoft.com/design/inclusive/)
 - [IBM](https://www.ibm.com/able/)
-- [Opera](https://dev.opera.com/tags/accessibility/)
+- [Opera](https://web.archive.org/web/20191015064154/https://dev.opera.com/tags/accessibility/)（Dev.Opera 已關站，此為 Internet Archive 存檔）
 - [Adobe](https://www.adobe.com/accessibility.html)
 - [Facebook](https://www.facebook.com/help/accessibility)
 
@@ -96,7 +96,7 @@ tags:
 - 根據字的級距 [[W3C](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)]
   - `3：1` 標題 18pt 以上 或是 14pt 的粗體（CSS 1pt = 1.333px，因此 14pt 和 18pt 大約等於 18.5px 和 24px）。
   - `4.5：1` 一般內文。
-- 提供幾個顏色工具：[colorsafe](http://colorsafe.co/)、[colorable](https://colorable.jxnblk.com/1d0066/00ffa2)、[contrast-ratio](https://contrast-ratio.com/#)。
+- 提供幾個顏色工具：[colorsafe](http://colorsafe.co/)、[colorable](https://colorable.jxnblk.com/)、[contrast-ratio](https://contrast-ratio.com/#)。
 
 #### 不要使用顏色作為唯一傳遞重要訊息的方法
 
@@ -131,7 +131,7 @@ tags:
 .toggle[aria-pressed="true"] { ... }
 ```
 
-### 其他議題：為焦慮設計（[參考文章](https://developer.paciellogroup.com/blog/2018/11/a-web-of-anxiety-accessibility-for-people-with-anxiety-and-panic-disorders-part-2/)）
+### 其他議題：為焦慮設計（[參考文章](https://web.archive.org/web/20190915202002/https://developer.paciellogroup.com/blog/2018/11/a-web-of-anxiety-accessibility-for-people-with-anxiety-and-panic-disorders-part-2/)，Internet Archive 存檔）
 
 - 為焦慮症和恐慌症患者思考，少一點~~黑暗模式~~ <ins>[欺騙性設計（dark patterns）](https://www.fastcompany.com/3060553/why-dark-patterns-wont-go-away)</ins>...。
 - 不要給使用者限時的完成任務。
@@ -168,3 +168,4 @@ tags:
 ## 更正紀錄
 
 - 2026-10-27：依 WCAG 2.2 更正顏色對比度標題的成功準則編號、點擊目標尺寸的出處與數值；依 W3C COGA 指引與 WCAG 2.2 更新焦慮與認知相關的說明；更正「黑暗模式」為欺騙性設計（dark patterns）；移除已變成無關網站的 The Paciello Group 連結；更新 WCAG 2.1／2.0、Material Design、Google Developers、MDN、IBM 的失效連結。
+- 2026-11-04：Dev.Opera 無障礙標籤頁與 Paciello Group〈A web of anxiety〉第 2 部分改連 Internet Archive 存檔；colorable 的失效網址改連工具首頁。

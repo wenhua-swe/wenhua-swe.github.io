@@ -1,7 +1,7 @@
 ---
 title: 真實世界：使用 iOS 輔助功能 VoiceOver 來瀏覽行動版網頁
 pubDate: '2019-10-13'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   VoiceOver 是 Apple 推出的輔助功能，在 iOS 中是倚靠「手勢」來進行操作。今天想介紹手機中經常使用的手勢，並附上一段使用 iOS
   VoiceOver 瀏覽網頁的紀錄影片。
@@ -79,7 +79,7 @@ VoiceOver 是 Apple 推出的輔助功能，內建在 macOS, iOS, tvOS, watchOS,
 
 和我預期的內容完全相同，有按照文件實踐果然沒錯，這個影片沒加字幕，如果有點開看的人～感謝收看！遺憾的是沒寫到 macOS 的 VoiceOver 詳細介紹，想了解的話，趕快來上我推薦的資源吧，一定大有幫助的！
 
-- 影片資源：[使用屏幕阅读器浏览网页](https://classroom.udacity.com/courses/ud891/lessons/8079270944/concepts/81639702060923) - ud891 at Udacity（課程已下架，連結會轉到登入頁）
+- 影片資源：原本推薦的 Udacity 課程 ud891〈使用屏幕阅读器浏览网页〉已下架，可改參考 web.dev 的 [Headings and landmarks](https://web.dev/articles/headings-and-landmarks)，說明螢幕閱讀器如何靠標題和地標瀏覽網頁
 - 閱讀文件：[在 Mac 上使用「旁白」來瀏覽網頁](https://help.apple.com/voiceover/mac/10.15/#/vo27974) - Apple
 
 ---
@@ -87,7 +87,7 @@ VoiceOver 是 Apple 推出的輔助功能，內建在 macOS, iOS, tvOS, watchOS,
 ## Reference
 
 - [VoiceOver](https://en.wikipedia.org/wiki/VoiceOver#Accessibility_Inspector) - 維基百科
-- [使用屏幕阅读器浏览网页](https://classroom.udacity.com/courses/ud891/lessons/8079270944/concepts/81639702060923) - ud891 at Udacity（課程已下架，連結會轉到登入頁）
+- [Headings and landmarks](https://web.dev/articles/headings-and-landmarks) - web.dev（取代已下架的 Udacity 課程 ud891〈使用屏幕阅读器浏览网页〉）
 - [談談行動裝置的Accessibility - 黃帝瑋老師](https://accessibility.moda.gov.tw/News/Detail/4337?Category=43) - 108年度「我國網站無障礙規範順應國際趨勢與發展」研討會(推廣說明會)
 - [Accessibility](https://www.apple.com/accessibility/mac/vision/) - Apple
 - [在 Mac 上使用「旁白」來瀏覽網頁](https://help.apple.com/voiceover/mac/10.15/#/vo27974) - Apple
@@ -96,3 +96,4 @@ VoiceOver 是 Apple 推出的輔助功能，內建在 macOS, iOS, tvOS, watchOS,
 ## 更正紀錄
 
 - 2026-10-27：內容未更動，手勢已對照 Apple 官方〈在 iPhone 上使用「旁白」手勢〉確認；標註 Udacity 課程連結已失效；研討會簡報改連數位發展部無障礙網路空間服務網的新網址。
+- 2026-11-04：已下架的 Udacity 課程 ud891 連結改為參考 web.dev〈Headings and landmarks〉。

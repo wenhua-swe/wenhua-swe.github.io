@@ -1,7 +1,7 @@
 ---
 title: 實作無障礙網頁功能：今天沒有拖棚之表單 radio，要選就只選我吧！
 pubDate: '2019-10-05'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   回想到剛開始學習網頁的時候，常常把「checkbox」和「radio」搞不清楚。介紹完 `radio` 的定義及原生的作法，再說明 `Radio Group`
   作為 WAI 中的設計模式之一，在無障礙中有什麼要注意的地方。
@@ -71,7 +71,7 @@ tags:
 
 ![日式料理餐廳的拉麵](/images/ironman-a11y/day20-3.webp)
 
-（圖片來源：[Unsplash](https://unsplash.com/photos/2t28IxSTqF4)）
+（圖片來源：[Unsplash](https://web.archive.org/web/20190823220256/https://unsplash.com/photos/2t28IxSTqF4)，原頁面已移除，此為 Internet Archive 存檔）
 
 今天想點套餐來吃個！
 
@@ -245,3 +245,4 @@ tags:
 ## 更正紀錄
 
 - 2026-10-27：依 WAI-ARIA 1.2、APG 與 HTML Standard 更正拉麵範例（只留一個 `checked`、`<label>` 內改用 `<span>`）、Space 鍵的行為、`aria-activedescendant` 的意義；修正連錯的文件錨點並更新失效的規範連結。
+- 2026-11-04：拉麵照片的 Unsplash 頁面已移除，圖片來源改連 Internet Archive 存檔。

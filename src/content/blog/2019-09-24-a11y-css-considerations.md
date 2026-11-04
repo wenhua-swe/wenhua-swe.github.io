@@ -1,7 +1,7 @@
 ---
 title: 無障礙網站之 CSS 注意事項
 pubDate: '2019-09-24'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   實踐無障礙網站時，關於 CSS 的注意事項，主要分為幾個大原則，都是以「資訊呈現、語義」之於螢幕閱讀器為主軸。
 author: Wen-Hua Lin
@@ -290,7 +290,7 @@ body {
 
 太多啦！還有想知道的嗎？
 
-- [不要把重要資訊塞在偽元素？](https://thatdevgirl.com/blog/before-after-accessibility)
+- [不要把重要資訊塞在偽元素？](https://web.archive.org/web/20190723213640/https://thatdevgirl.com/blog/before-after-accessibility)（原文已下架，此為 Internet Archive 存檔）
 - [讓互動元素容易點擊](https://a11yproject.com/posts/large-touch-targets/)：擴大手指及滑鼠觸及區。
 - [動畫的注意事項](https://a11yproject.com/posts/understanding-vestibular-disorders/)
 
@@ -305,3 +305,4 @@ body {
 ## 更正紀錄
 
 - 2026-10-27：依 MDN、Can I use 更正 `outline` 的說明、`:focus-visible` 與 `prefers-reduced-motion` 的瀏覽器支援度；補充 Bootstrap 5 的 `.visually-hidden` 改名；更新 `:focus-visible` 的 Can I use 連結。
+- 2026-11-04：thatdevgirl.com 偽元素文章的失效連結改連 Internet Archive 存檔。

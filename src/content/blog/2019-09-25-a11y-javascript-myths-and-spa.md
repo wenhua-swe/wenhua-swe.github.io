@@ -1,7 +1,7 @@
 ---
 title: 無障礙網站之 JavaScript 迷思和 SPA 探討
 pubDate: '2019-09-25'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   作為 Web 工程師，我們對於無障礙之於 JavaScript 很容易有一個誤解。本文整理沒有 JS 時的備援機制（表單、noscript）、SPA 的焦點策略，以及前端框架的無障礙相關資源。
 author: Wen-Hua Lin
@@ -118,7 +118,7 @@ tags:
 
 ![Udacity 焦點管理課程 Quiz 範例頁面截圖](/images/ironman-a11y/day10-4.webp)
 
-在 Google Developers 複習什麼是[焦點 focus](https://web.dev/learn/accessibility/focus)，[這邊](https://classroom.udacity.com/courses/ud891/lessons/7962031279/concepts/79667314390923)是 Google 在 Udacity 針對焦點管理的教學影片。這裡有很多觀念可以學習，主要是課程的 Quiz 有提供 [Repo](https://github.com/udacity/ud891) （lesson2-focus/03-managing-focus）去做練習，裡面也有成功的 Sample Code。
+在 Google Developers 複習什麼是[焦點 focus](https://web.dev/learn/accessibility/focus)，原本這邊是 Google 在 Udacity 針對焦點管理的教學影片（課程已下架），可改參考同一群作者在 web.dev 寫的[使用 tabindex 管理焦點](https://web.dev/articles/using-tabindex)。這裡有很多觀念可以學習，主要是課程的 Quiz 有提供 [Repo](https://github.com/udacity/ud891) （lesson2-focus/03-managing-focus）去做練習，裡面也有成功的 Sample Code。
 
 主要就是兩個重點：
 
@@ -162,8 +162,8 @@ tags:
 
 ### Angular
 
-- [教學文章] [Angular, Accessibility, and You](https://blog.dinolytics.com/2018/10/25/angular-accessibility-and-you/)
-- [教學文章] [Accessibility in Angular](https://angular-2-training-book.rangle.io/a11y)
+- [教學文章] [Angular, Accessibility, and You](https://web.archive.org/web/20190724063337/https://blog.dinolytics.com/2018/10/25/angular-accessibility-and-you/)（原網站已關閉，此為 Internet Archive 存檔）
+- [教學文章] [Accessibility in Angular](https://web.archive.org/web/20190919062732/https://angular-2-training-book.rangle.io/a11y)（原網址已下架，此為 Internet Archive 存檔）
 - [教學文章] [Angular Accessibility Tips and Tricks](https://coryrylan.com/blog/angular-accessibility-tips-and-tricks)
 
 ### Flutter
@@ -185,3 +185,4 @@ tags:
 ## 更正紀錄
 
 - 2026-10-27：依 HTML 4.01、WHATWG HTML Living Standard 更正 `<noscript>` 的出現版本；依 WebAIM 調查更正困擾項目排名並補上最新 JavaScript 數據；依 MDN 更正延遲載入與 `aria-live` 的用法；更新失效的 W3C、Google Web Fundamentals、MDN、React、Flutter 連結。
+- 2026-11-04：Udacity 焦點管理課程已下架，改參考 web.dev〈使用 tabindex 管理焦點〉；Dinolytics、Rangle 的 Angular 教學文章改連 Internet Archive 存檔。

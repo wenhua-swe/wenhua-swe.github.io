@@ -1,7 +1,7 @@
 ---
 title: 無障礙網站之 WAI-ARIA 的角色介紹（Role）
 pubDate: '2019-09-22'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   認識 ARIA 的基本要素：瞭解何時才需要使用 ARIA、知道角色是一種加在 HTML 上的屬性，以及角色的分類。
 author: Wen-Hua Lin
@@ -146,8 +146,9 @@ WAI-ARIA 中定義一系列的角色模型，讓我們可以賦予給元素，�
 - [ARIA 標籤和關係](https://web.dev/articles/aria-labels-and-relationships) - Google Developers
 - ~~[ARIA Landmark Roles](https://www.washington.edu/accessibility/web/landmarks/) - University of Washington~~ <ins>原連結已失效，可改看 [Landmark Regions](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) - W3C APG</ins>
 - [Using ARIA](https://w3c.github.io/using-aria/) - ~~Working Draft of W3C~~ <ins>W3C（已停止更新的草稿）</ins>
-- ~~[Introduction to WAI ARIA](https://dev.opera.com/articles/introduction-to-wai-aria/) - Opera~~ <ins>原連結已失效</ins>
+- [Introduction to WAI ARIA](https://github.com/operasoftware/devopera/blob/master/src/articles/_posts/2008-08-01-introduction-to-wai-aria.md) - Opera（Dev.Opera 已關站，此為 GitHub 上的原始檔）
 
 ## 更正紀錄
 
 - 2026-10-27：依 WAI-ARIA 1.2、APG 與 HTML Living Standard 更正進度條範例（改用 `<progress>`、補上名稱）、地標範例（改用 `<nav>`），補充 1.2 的角色異動（`directory` 棄用與新增的文件結構角色）；角色連結改指向 WAI-ARIA 1.2，更新 MDN、web.dev、University of Washington、Opera 等失效連結，Using ARIA 標註為已停止更新；刪除原文就已缺圖的「（來源：Google Developers）」說明。
+- 2026-11-04：Opera〈Introduction to WAI ARIA〉的失效連結改連 Dev.Opera 在 GitHub 上的原始檔。

@@ -1,7 +1,7 @@
 ---
 title: Web Accessibility：這 30 天的遺珠之憾與補充
 pubDate: '2019-10-15'
-updatedDate: '2026-10-27'
+updatedDate: '2026-11-04'
 description: >-
   系列最終篇：最終複習、30 天以來世界上的無障礙又更新了哪些重要訊息、遺珠之憾（SVG、CSS Grid、JavaScript 的焦點管理、WebGL、NVDA
   與 ChromeVox），以及關於網站可訪問性的面試題目與補充感謝。
@@ -109,9 +109,9 @@ tags:
 
 ### 主題：WebGL 之於網頁訪問性的挑戰
 
-> 文章資源：[Handling common accessibility problems](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility)（MDN 改版後原文已不存在，網址會轉到內容不同的新頁面）
+> 文章資源：[Handling common accessibility problems](https://web.archive.org/web/20191029164548/https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility)（MDN 改版後原文已不存在，此為 Internet Archive 存檔）
 
-文章只有提到了一句 WebGL，在講我們使用 WebGL 去建立盲人可訪問的遊戲未免太強人所難，但若可以實現支援鍵盤操作的話，就已大幅度的提升無障礙了。關於遊戲的訪問性可以看這篇文章：[Accessibility at the W3C Workshop on Web Games](https://developer.paciellogroup.com/blog/2019/07/accessibility-at-the-w3c-workshop-on-web-games/)（原部落格已關閉，連結已失效）。
+文章只有提到了一句 WebGL，在講我們使用 WebGL 去建立盲人可訪問的遊戲未免太強人所難，但若可以實現支援鍵盤操作的話，就已大幅度的提升無障礙了。關於遊戲的訪問性可以看這篇文章：[Accessibility at the W3C Workshop on Web Games](https://web.archive.org/web/20191021094753/https://developer.paciellogroup.com/blog/2019/07/accessibility-at-the-w3c-workshop-on-web-games/)（原部落格已關閉，此為 Internet Archive 存檔）。
 
 ### 輔助工具：NVDA 與 ChromeVox
 
@@ -172,3 +172,4 @@ tags:
 ## 更正紀錄
 
 - 2026-10-27：依美國最高法院案卷（No. 18-1539）與第九巡迴上訴法院判決更正達美樂案的結果；「關心訪問性的數位產品」的資源名稱改為正確的 Accessibility Wins；補充 WebAIM 最新的螢幕閱讀器調查；ChromeVox、WAI-ARIA 角色關係圖（改為 1.2）與舊部落格連結已更新，標註 MDN 舊文與 Paciello Group 部落格連結已失效。
+- 2026-11-04：MDN〈Handling common accessibility problems〉與 Paciello Group〈Accessibility at the W3C Workshop on Web Games〉改連 Internet Archive 存檔。
