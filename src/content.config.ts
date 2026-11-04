@@ -21,7 +21,7 @@ const blog = defineCollection({
 	}),
 });
 
-// Reading notes. Files starting with `_` (e.g. `_template.md`) are ignored.
+// Reading notes. Files starting with `_` are ignored. New drafts come from `yarn new`.
 const books = defineCollection({
 	loader: glob({ base: './src/content/books', pattern: '**/[^_]*.{md,mdx}' }),
 	schema: z.object({

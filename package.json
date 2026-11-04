@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "add-photos": "node scripts/add-photos.mjs",
+    "new": "node scripts/new-post.mjs",
     "test:e2e": "astro build && playwright test"
   },
   "dependencies": {

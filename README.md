@@ -23,8 +23,8 @@ yarn test:e2e   # build 後跑搜尋、選單、快捷鍵和 axe 無障礙測試
 | 閱讀筆記 | `src/content/books/` | `/books/<檔名>/` |
 | 技術和生活 | `src/content/blog/` | `/blog/<檔名>/` |
 
-1. 複製 `src/content/books/_template.md`，改名成 `YYYY-MM-DD-英文-slug.md`。底線開頭的檔案不會發布。
-2. 填好最上面的 frontmatter。技術和生活的文章不需要 `book:` 那一段。
+1. 執行 `yarn new`，選類型（心得或文章），輸入標題、網址用的英文 slug 和一句話摘要，就會用今天的日期建立草稿 `YYYY-MM-DD-slug.md`。檔名就是網址，發布後不要再改。
+2. 補完最上面的 frontmatter。範本在 `scripts/templates/`：`book.md` 是心得，`blog.md` 是文章，兩份共用 `cheatsheet.md` 的寫作小抄。
 3. 寫的時候保持 `draft: true`，只會在 `yarn dev` 看到；寫完改成 `false` 再 push 才會上線。
 
 ```yaml
@@ -43,7 +43,7 @@ book: # 只有閱讀筆記需要
 ---
 ```
 
-寫作小抄（程式碼強調、目錄、圖片）在 `_template.md` 最下面的註解裡。
+寫作小抄（程式碼強調、目錄、圖片）在每篇新草稿最下面的註解裡。
 
 - `##`、`###` 標題會自動出現在左側目錄；內文請從 `##` 開始，`#` 留給文章標題。
 - 圖片一定要寫替代文字：`![畫面描述](網址)`，讀螢幕軟體會唸出來。
