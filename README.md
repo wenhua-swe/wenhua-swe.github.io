@@ -13,6 +13,7 @@ yarn build      # 產生正式網站到 dist/，草稿不會出現
 yarn preview    # 預覽 build 結果；站內搜尋只有在這裡才能用
 yarn test:e2e   # build 後跑搜尋、選單、快捷鍵和 axe 無障礙測試；每次 push 任何分支 CI 也會跑
 yarn ship       # 把目前的分支送進 master：開 PR、測試通過後自動 merge 並部署
+yarn gh …       # 用 repo 擁有者 wenhua-swe 的身分執行 gh，例：yarn gh pr list
 ```
 
 第一次跑測試前要先裝瀏覽器：`yarn playwright install chromium`。

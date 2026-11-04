@@ -10,6 +10,7 @@
     "add-photos": "node scripts/add-photos.mjs",
     "new": "node scripts/new-post.mjs",
     "ship": "node scripts/ship.mjs",
+    "gh": "GH_TOKEN=$(gh auth token --user wenhua-swe) gh",
     "test:e2e": "astro build && playwright test"
   },
   "dependencies": {
