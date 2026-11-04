@@ -1,8 +1,9 @@
-name: Deploy to GitHub Pages
+name: Test and deploy
 
+# Every branch push runs the tests; only master deploys. master is protected and
+# requires the `test` check, so changes reach it through a pull request (`yarn ship`).
 on:
   push:
-    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -10,12 +11,15 @@ permissions:
   pages: write
   id-token: write
 
+# A newer push to the same branch replaces a run still in progress, except on master,
+# where every merge should finish deploying
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
-  build:
+  test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -27,7 +31,7 @@ jobs:
           cache-dependency-path: yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      # End-to-end and axe checks against the built site; a failure stops the deploy
+      # End-to-end and axe checks against the built site
       - run: yarn playwright install --with-deps chromium
       - run: yarn playwright test
       - if: failure()
@@ -36,13 +40,18 @@ jobs:
           name: playwright-traces
           path: test-results/
           retention-days: 7
-      - uses: actions/upload-pages-artifact@v4
+      - if: github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
   deploy:
-    needs: build
+    if: github.ref == 'refs/heads/master'
+    needs: test
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
